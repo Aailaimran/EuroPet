@@ -1,0 +1,66 @@
+[
+  {
+    "id": "dep-01",
+    "route": "Romania → UK",
+    "departureDate": "2026-06-20",
+    "arrivalDate": "2026-06-22",
+    "availableSpaces": 4,
+    "status": "Open"
+  },
+  {
+    "id": "dep-02",
+    "route": "Poland → UK",
+    "departureDate": "2026-06-28",
+    "arrivalDate": "2026-06-29",
+    "availableSpaces": 6,
+    "status": "Open"
+  },
+  {
+    "id": "dep-03",
+    "route": "Romania → UK",
+    "departureDate": "2026-07-04",
+    "arrivalDate": "2026-07-06",
+    "availableSpaces": 2,
+    "status": "Limited Spaces"
+  },
+  {
+    "id": "dep-04",
+    "route": "Bulgaria → UK",
+    "departureDate": "2026-07-12",
+    "arrivalDate": "2026-07-14",
+    "availableSpaces": 0,
+    "status": "Full"
+  },
+  {
+    "id": "dep-05",
+    "route": "Romania → UK",
+    "departureDate": "2026-07-18",
+    "arrivalDate": "2026-07-20",
+    "availableSpaces": 8,
+    "status": "Open"
+  },
+  {
+    "id": "dep-06",
+    "route": "Combined Route",
+    "departureDate": "2026-07-25",
+    "arrivalDate": "2026-07-27",
+    "availableSpaces": 10,
+    "status": "Open"
+  },
+  {
+    "id": "dep-07",
+    "route": "Poland → UK",
+    "departureDate": "2026-08-01",
+    "arrivalDate": "2026-08-02",
+    "availableSpaces": 12,
+    "status": "Open"
+  },
+  {
+    "id": "dep-08",
+    "route": "Romania → UK",
+    "departureDate": "2026-08-08",
+    "arrivalDate": "2026-08-10",
+    "availableSpaces": 5,
+    "status": "Open"
+  }
+]

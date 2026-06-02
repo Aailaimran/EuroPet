@@ -1,0 +1,38 @@
+[
+  {
+    "id": "romania-uk",
+    "title": "Romania → UK",
+    "frequency": "Twice-monthly departures",
+    "cities": ["Bucharest", "Brasov", "Cluj-Napoca", "Constanța and surrounding areas"],
+    "flag": "🇷🇴",
+    "color": "#C8102E",
+    "slug": "romania"
+  },
+  {
+    "id": "poland-uk",
+    "title": "Poland → UK",
+    "frequency": "Monthly departures",
+    "cities": ["Warsaw", "Katowice", "Wroclaw", "Poznań and surrounding areas"],
+    "flag": "🇵🇱",
+    "color": "#DC143C",
+    "slug": "poland"
+  },
+  {
+    "id": "bulgaria-uk",
+    "title": "Bulgaria → UK",
+    "frequency": "Combined route departures",
+    "cities": ["Sofia and surrounding areas", "via Romania corridor"],
+    "flag": "🇧🇬",
+    "color": "#00966E",
+    "slug": "bulgaria"
+  },
+  {
+    "id": "combined",
+    "title": "Combined Route",
+    "frequency": "Multi-country collections",
+    "cities": ["Romania", "Bulgaria", "Poland", "Germany", "France → UK"],
+    "flag": "🇪🇺",
+    "color": "#003399",
+    "slug": "combined"
+  }
+]
