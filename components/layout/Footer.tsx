@@ -29,8 +29,8 @@ export default function Footer() {
   const { ref, isInView } = useScrollAnimation()
 
   const socialLinks = [
-    { Icon: Facebook, href: "#" },
-    { Icon: Instagram, href: "#" },
+    { Icon: Facebook, href: "https://www.facebook.com/share/18HAUnUYuM/?mibextid=wwXIfr" },
+    { Icon: Instagram, href: "https://www.instagram.com/europet26?utm_source=qr" },
     { Icon: MessageCircle, href: "https://wa.me/447711123456" }
   ]
 
@@ -149,8 +149,8 @@ export default function Footer() {
             <Link href="/privacy" className="text-gray-500 text-xs hover:text-brand-gold transition-colors">
               Privacy Policy
             </Link>
-            {/* TODO: Create separate /terms page when client provides Terms of Service content */}
-            <Link href="/privacy" className="text-gray-500 text-xs hover:text-brand-gold transition-colors">
+
+            <Link href="/terms" className="text-gray-500 text-xs hover:text-brand-gold transition-colors">
               Terms of Service
             </Link>
           </div>
