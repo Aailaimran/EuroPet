@@ -24,7 +24,6 @@ export default function Navbar() {
     { label: 'Our Services', href: '/services' },
     { label: 'About Us', href: '/about' },
     { label: 'Licensing & Compliance', href: '/compliance' },
-    { label: 'Privacy Policy', href: '/privacy' },
     { label: 'Contact', href: '/contact' },
   ]
 

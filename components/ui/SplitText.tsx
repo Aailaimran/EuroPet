@@ -15,7 +15,7 @@ export default function SplitText({ text, className = '', delay = 0 }: SplitText
   return (
     <span className={`inline-block ${className}`}>
       {words.map((word, i) => (
-        <span key={`${word}-${i}`} className="inline-block overflow-hidden mr-[0.25em]">
+        <span key={`${word}-${i}`} className="inline-block overflow-hidden">
           <motion.span
             className="inline-block"
             initial={{ y: '100%', opacity: 0 }}
@@ -29,6 +29,7 @@ export default function SplitText({ text, className = '', delay = 0 }: SplitText
           >
             {word}
           </motion.span>
+          {i < words.length - 1 ? '\u00A0' : ''}
         </span>
       ))}
     </span>

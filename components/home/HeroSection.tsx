@@ -95,7 +95,7 @@ export default function HeroSection() {
               transition={{ delay: 1.0 }}
               className="text-gray-300 text-lg leading-relaxed mb-10 max-w-lg"
             >
-              DEFRA authorised long-distance journeys supporting rescues, breeders, shelters and private owners across Romania, Poland and Bulgaria.
+              DEFRA authorised long-distance journeys supporting rescues, breeders, shelters and private owners across 9 European destinations including Romania, Serbia, Germany, France and beyond.
             </motion.p>
 
             {/* Trust Badges */}

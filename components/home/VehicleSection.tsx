@@ -1,6 +1,7 @@
 'use client'
 
-import { CheckCircle2, Truck, PawPrint } from 'lucide-react'
+import { CheckCircle2, PawPrint } from 'lucide-react'
+import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
@@ -88,20 +89,22 @@ export default function VehicleSection() {
             animate={isInView ? 'visible' : 'hidden'}
             className="lg:col-span-4 flex items-center justify-center"
           >
+            {/* TODO: Replace with actual Euro Pet Express van photograph when provided by client */}
             <motion.div
               whileHover={{ scale: 1.03, transition: springSnappy }}
-              className="rounded-2xl p-8 w-full aspect-[4/3] flex items-center justify-center border border-white/10"
-              style={{
-                background: 'rgba(255, 255, 255, 0.05)',
-                backdropFilter: 'blur(20px)',
-                boxShadow: '0 8px 32px rgba(0, 0, 0, 0.25)',
-              }}
+              className="relative rounded-2xl w-full overflow-hidden border border-brand-gold/20 shadow-2xl"
             >
-              <div className="text-center space-y-3">
-                <div className="flex justify-center">
-                  <Truck className="w-16 h-16 text-gold" />
-                </div>
-                <div className="text-gold font-bold text-sm tracking-wider">EURO PET EXPRESS</div>
+              <Image
+                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
+                alt="Professional pet transport vehicle"
+                width={600}
+                height={400}
+                className="w-full h-auto object-cover"
+              />
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-dark/80 to-transparent p-4">
+                <p className="text-gray-300 text-xs text-center italic">
+                  Our purpose-built pet transport vehicle
+                </p>
               </div>
             </motion.div>
           </motion.div>

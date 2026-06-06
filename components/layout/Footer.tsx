@@ -143,13 +143,14 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="border-t border-gray-800 pt-6 mt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-500 text-xs text-center md:text-left">
-            © 2024 Euro Pet Express. All rights reserved.
+            © {new Date().getFullYear()} Euro Pet Express. All rights reserved.
           </p>
           <div className="flex gap-4">
             <Link href="/privacy" className="text-gray-500 text-xs hover:text-brand-gold transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/terms" className="text-gray-500 text-xs hover:text-brand-gold transition-colors">
+            {/* TODO: Create separate /terms page when client provides Terms of Service content */}
+            <Link href="/privacy" className="text-gray-500 text-xs hover:text-brand-gold transition-colors">
               Terms of Service
             </Link>
           </div>

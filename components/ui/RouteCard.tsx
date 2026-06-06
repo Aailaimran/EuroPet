@@ -28,23 +28,23 @@ export default function RouteCard({ route, index }: RouteCardProps) {
       }}
       className="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_16px_40px_rgba(10,22,40,0.08)]"
     >
-      <div className="relative flex h-28 items-center justify-center overflow-hidden bg-gradient-to-br from-navy via-navy-light to-[#15253f]">
+      <div className="relative flex flex-col items-center justify-center gap-2 py-6 px-4 overflow-hidden bg-gradient-to-br from-navy via-navy-light to-[#15253f]">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(201,168,76,0.18),transparent_55%)]" />
         <div className="relative z-10 flex items-center gap-4">
           <CountryFlag countryCode={route.originCode} className="w-12 h-auto rounded shadow-lg ring-1 ring-white/15" />
           <ArrowRight className="w-5 h-5 text-brand-gold" />
           <CountryFlag countryCode={route.destinationCode} className="w-12 h-auto rounded shadow-lg ring-1 ring-white/15" />
         </div>
+        <h3 className="relative z-10 font-display text-xl font-bold text-white text-center mt-1 leading-tight">
+          {route.name}
+        </h3>
+        <p className="relative z-10 text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-gold">
+          {route.departureFrequency}
+        </p>
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-gold">
-          {route.departureFrequency}
-        </p>
-        <h3 className="font-display text-2xl font-bold leading-tight text-navy">
-          {route.name}
-        </h3>
-        <p className="mt-3 text-sm leading-relaxed text-gray-600">
+        <p className="text-sm leading-relaxed text-gray-600">
           {route.shortDescription}
         </p>
 
