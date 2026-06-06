@@ -1,5 +1,13 @@
+import Image from 'next/image'
+import type { Metadata } from 'next'
 import PageHero from '@/components/ui/PageHero'
 import VehicleSection from '@/components/home/VehicleSection'
+import { PET_IMAGES } from '@/lib/petImages'
+
+export const metadata: Metadata = {
+  title: 'About Us | Euro Pet Express',
+  description: 'Learn about Euro Pet Express — a dedicated, DEFRA-authorised, and compassionate dog transport service between the UK and Europe.',
+}
 
 export default function About() {
   return (
@@ -10,15 +18,27 @@ export default function About() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <div>
             <h3 className="font-display text-2xl text-navy font-bold mb-4">Our Story</h3>
-            <p className="text-gray-700 mb-4">Euro Pet Express was founded with a single purpose: to provide safe, compliant, and stress-free transport for dogs travelling between Eastern Europe and the United Kingdom. We understand that your pet is family — and we treat every animal in our care with the same respect and attention we would give our own.</p>
-            <p className="text-gray-700">Our service is fully DEFRA Type 2 Authorised, TRACES NT Registered, and operates in full compliance with UK and EU animal welfare transport legislation.</p>
+            <p className="text-gray-700 mb-4">Euro Pet Express was founded with a single purpose: to provide safe, compliant, and stress-free transport for dogs travelling between Europe and the United Kingdom. We understand that your pet is family — and we treat every animal in our care with the same respect and attention we would give our own.</p>
+            <p className="text-gray-700 mb-6">Our service is fully DEFRA Type 2 Authorised, TRACES NT Registered, and operates in full compliance with UK and EU animal welfare transport legislation.</p>
+
+            {/* Story image */}
+            <div className="relative h-64 rounded-xl overflow-hidden border border-gray-200 shadow-sm">
+              <Image
+                src={PET_IMAGES.dogFamily}
+                alt="Happy dog family — the reason we do what we do"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent" />
+            </div>
           </div>
 
           <div className="grid grid-cols-2 gap-4">
             {[
               { stat: '500+', label: 'Dogs transported' },
               { stat: '3+', label: 'Years operating' },
-              { stat: '3', label: 'Countries served' },
+              { stat: '9', label: 'Countries served' },
               { stat: '100%', label: 'DEFRA compliant' },
             ].map((item) => (
               <div key={item.label} className="bg-navy text-white rounded-xl p-6 text-center">
@@ -26,6 +46,18 @@ export default function About() {
                 <div className="text-sm text-gray-400 mt-2">{item.label}</div>
               </div>
             ))}
+
+            {/* Travel image */}
+            <div className="col-span-2 relative h-48 rounded-xl overflow-hidden border border-gray-200 shadow-sm mt-2">
+              <Image
+                src={PET_IMAGES.dogTravel}
+                alt="Dog travelling comfortably — safe journey with Euro Pet Express"
+                fill
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent" />
+            </div>
           </div>
         </div>
       </section>

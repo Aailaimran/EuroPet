@@ -1,47 +1,92 @@
 'use client'
-import Image from 'next/image'
+
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { CheckCircle2, Clock, ArrowRight } from 'lucide-react'
+import CountryFlag from '@/components/CountryFlag'
+import MagneticButton from '@/components/ui/MagneticButton'
+import { cardVariant, springGentle } from '@/lib/motion'
+import type { Route } from '@/lib/routesData'
 
 interface RouteCardProps {
-  flag: string;
-  title: string;
-  subtitle: string;
-  cities: string;
-  buttonText: string;
-  href: string;
-  image: string;
-  index: number;
+  route: Route
+  index: number
 }
 
-export default function RouteCard({ flag, title, subtitle, cities, buttonText, href, image, index }: RouteCardProps) {
+export default function RouteCard({ route, index }: RouteCardProps) {
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.5, delay: index * 0.1 }}
-      className="flex flex-col h-full"
+    <motion.article
+      variants={cardVariant}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ delay: index * 0.12 }}
+      whileHover={{
+        scale: 1.02,
+        y: -8,
+        transition: springGentle,
+      }}
+      className="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_16px_40px_rgba(10,22,40,0.08)]"
     >
-      <div className="h-[200px] rounded-t-xl overflow-hidden relative bg-gray-200">
-        <div className="absolute inset-0 flex items-center justify-center text-4xl">
-          {flag}
-        </div>
-        {/* Placeholder banner image */}
-        <div className="w-full h-full bg-gradient-to-br from-navy/80 to-navy-border/80 flex items-center justify-center text-white/50 text-xs">
-          [Banner Image]
+      <div className="relative flex h-28 items-center justify-center overflow-hidden bg-gradient-to-br from-navy via-navy-light to-[#15253f]">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(201,168,76,0.18),transparent_55%)]" />
+        <div className="relative z-10 flex items-center gap-4">
+          <CountryFlag countryCode={route.originCode} className="w-12 h-auto rounded shadow-lg ring-1 ring-white/15" />
+          <ArrowRight className="w-5 h-5 text-brand-gold" />
+          <CountryFlag countryCode={route.destinationCode} className="w-12 h-auto rounded shadow-lg ring-1 ring-white/15" />
         </div>
       </div>
-      <div className="bg-white rounded-b-xl border border-gray-200 shadow-sm p-6 flex flex-col flex-1">
-        <h3 className="font-bold text-navy uppercase tracking-wide text-lg">{title}</h3>
-        <div className="text-gold font-semibold text-sm mt-1">{subtitle}</div>
-        <p className="text-gray-600 text-sm mt-2 leading-relaxed whitespace-pre-line flex-1">
-          {cities.replace(' • ', '\n')}
+
+      <div className="flex flex-1 flex-col p-6">
+        <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-gold">
+          {route.departureFrequency}
         </p>
-        <Link href={href} className="w-full bg-navy text-white hover:bg-gold hover:text-navy transition-all rounded mt-4 py-3 text-sm font-semibold tracking-wide text-center block">
-          {buttonText}
-        </Link>
+        <h3 className="font-display text-2xl font-bold leading-tight text-navy">
+          {route.name}
+        </h3>
+        <p className="mt-3 text-sm leading-relaxed text-gray-600">
+          {route.shortDescription}
+        </p>
+
+        <div className="mt-4 flex items-center gap-2 text-sm text-gray-500">
+          <Clock className="h-4 w-4 text-brand-gold" />
+          {route.typicalTravelTime}
+        </div>
+
+        <div className="mt-4">
+          <div className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">
+            Pickup Cities
+          </div>
+          <div className="flex flex-wrap gap-2">
+            {route.pickupCities.map((city) => (
+              <span key={city} className="rounded-full border border-gray-200 bg-[#F8F6F1] px-2.5 py-1 text-[11px] text-gray-600">
+                {city}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-5 border-t border-gray-200 pt-4">
+          <ul className="space-y-2">
+            {route.routeHighlights.slice(0, 4).map((highlight) => (
+              <li key={highlight} className="flex items-start gap-2 text-sm text-gray-600">
+                <CheckCircle2 className="mt-0.5 h-4 w-4 flex-shrink-0 text-green-600" />
+                <span>{highlight}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <MagneticButton className="mt-5">
+          <Link
+            href={`/contact?route=${route.slug}`}
+            data-cursor="hover"
+            className="block w-full rounded bg-navy py-3 text-center text-sm font-semibold tracking-wide text-white transition-all hover:bg-gold hover:text-navy"
+          >
+            Request Quote
+          </Link>
+        </MagneticButton>
       </div>
-    </motion.div>
+    </motion.article>
   )
 }

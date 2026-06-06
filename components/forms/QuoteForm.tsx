@@ -1,5 +1,6 @@
 'use client'
 import { useState } from 'react'
+import { PawPrint, CheckCircle } from 'lucide-react'
 
 export default function QuoteForm() {
   const [submitted, setSubmitted] = useState(false)
@@ -14,7 +15,9 @@ export default function QuoteForm() {
     return (
       <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
         <div className="text-center">
-          <span className="text-4xl mb-3 block">✅</span>
+          <div className="flex justify-center mb-3">
+            <CheckCircle className="w-10 h-10 text-green-500" />
+          </div>
           <div className="text-gold font-bold text-lg">Thank you!</div>
           <p className="text-gray-500 text-sm mt-1">We&apos;ll respond within 12–24 hours.</p>
         </div>
@@ -66,8 +69,8 @@ export default function QuoteForm() {
         <label htmlFor="agree" className="text-gray-500 text-xs">I agree to be contacted by Euro Pet Express regarding my quote request</label>
       </div>
 
-      <button type="submit" className="w-full bg-gold text-navy font-bold px-6 py-4 rounded-lg hover:bg-gold-light transition-colors uppercase tracking-wider text-sm">
-        REQUEST TRANSPORT QUOTE 🐾
+      <button type="submit" className="w-full bg-gold text-navy font-bold px-6 py-4 rounded-lg hover:bg-gold-light transition-colors uppercase tracking-wider text-sm flex items-center justify-center gap-2">
+        REQUEST TRANSPORT QUOTE <PawPrint className="w-4 h-4" />
       </button>
     </form>
   )

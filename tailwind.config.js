@@ -14,7 +14,12 @@ module.exports = {
         'navy-border': '#1E2D47',
         gold: '#C9A84C',
         'gold-light': '#E8D5A3',
+        'gold-hover': '#b8960c',
         'off-white': '#F8F6F1',
+        'brand-gold': '#C9A84C',
+        'brand-dark': '#0a0e1a',
+        'brand-darkSecondary': '#111827',
+        'brand-cream': '#f8f7f4',
       },
       fontFamily: {
         display: ['var(--font-playfair)', 'Georgia', 'serif'],

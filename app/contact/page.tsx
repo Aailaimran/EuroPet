@@ -1,5 +1,6 @@
 import PageHero from '@/components/ui/PageHero'
 import QuoteForm from '@/components/forms/QuoteForm'
+import { Phone, MessageCircle, Mail, Clock } from 'lucide-react'
 
 export default function Contact() {
   return (
@@ -16,13 +17,22 @@ export default function Contact() {
             <aside className="lg:col-span-1">
               <div className="bg-navy text-white rounded-xl p-8">
                 <h4 className="font-display text-lg font-bold mb-4">Other Ways to Reach Us</h4>
-                <div className="text-gold font-semibold">📞 +44 7711 123456</div>
+                <div className="text-gold font-semibold flex items-center gap-2">
+                  <Phone className="w-4 h-4 shrink-0" />
+                  <span>+44 7711 123456</span>
+                </div>
                 <div className="text-gray-400 text-sm">Mon–Sat, 8am–8pm UK time</div>
 
-                <div className="mt-4 text-gold">💬 <a href="https://wa.me/447711123456" className="hover:underline">WhatsApp Us</a></div>
+                <div className="mt-4 text-gold flex items-center gap-2">
+                  <MessageCircle className="w-4 h-4 shrink-0" />
+                  <a href="https://wa.me/447711123456" className="hover:underline">WhatsApp Us</a>
+                </div>
                 <div className="text-gray-400 text-sm">Fastest response method</div>
 
-                <div className="mt-4 text-gold">✉ info@europetexpress.co.uk</div>
+                <div className="mt-4 text-gold flex items-center gap-2">
+                  <Mail className="w-4 h-4 shrink-0" />
+                  <span>info@europetexpress.co.uk</span>
+                </div>
 
                 <div className="border-t border-navy-border my-6" />
 
@@ -37,7 +47,8 @@ export default function Contact() {
                   </div>
 
                   <div className="inline-flex items-center gap-2 bg-green-900/50 text-green-300 text-xs px-3 py-2 rounded mt-4">
-                    ⏱ Typical response: 12–24 hours
+                    <Clock className="w-4 h-4 shrink-0" />
+                    <span>Typical response: 12–24 hours</span>
                   </div>
                 </div>
               </div>

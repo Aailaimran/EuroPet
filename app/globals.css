@@ -5,6 +5,35 @@
 :root {
   --navy: #0A1628;
   --gold: #C9A84C;
+  
+  --shadow-sm: 
+    0 1px 2px rgba(0,0,0,0.05),
+    0 1px 4px rgba(0,0,0,0.04);
+
+  --shadow-md:
+    0 4px 6px rgba(0,0,0,0.04),
+    0 8px 16px rgba(0,0,0,0.06),
+    0 16px 32px rgba(0,0,0,0.04);
+
+  --shadow-lg:
+    0 8px 16px rgba(0,0,0,0.06),
+    0 16px 32px rgba(0,0,0,0.08),
+    0 32px 64px rgba(0,0,0,0.06);
+
+  --shadow-xl:
+    0 16px 32px rgba(0,0,0,0.08),
+    0 32px 64px rgba(0,0,0,0.12),
+    0 64px 128px rgba(0,0,0,0.08);
+
+  --shadow-gold:
+    0 0 0 1px rgba(201, 168, 76, 0.2),
+    0 4px 16px rgba(201, 168, 76, 0.15),
+    0 16px 48px rgba(201, 168, 76, 0.1);
+
+  --shadow-gold-intense:
+    0 0 0 1px rgba(201, 168, 76, 0.4),
+    0 8px 24px rgba(201, 168, 76, 0.25),
+    0 24px 64px rgba(201, 168, 76, 0.15);
 }
 
 * {
@@ -13,8 +42,30 @@
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
+/* Smooth scrollbar hiding */
+html { 
+  scroll-behavior: auto !important; 
+}
+
+/* Selection colour */
+::selection {
+  background: rgba(201, 168, 76, 0.3);
+  color: #0a0e1a;
+}
+
+/* Focus visible ring */
+:focus-visible {
+  outline: 2px solid #C9A84C;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+
+/* GPU acceleration for animated elements */
+.gpu {
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
 }
 
 body {
@@ -22,4 +73,59 @@ body {
   background-color: #ffffff;
   color: #0A1628;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Gold shimmer keyframe (used on cards) */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+/* Orb float keyframes */
+@keyframes floatOrb1 {
+  0% { transform: translateY(0px) translateX(0px); }
+  100% { transform: translateY(-40px) translateX(20px); }
+}
+@keyframes floatOrb2 {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(30px) rotate(8deg); }
+}
+@keyframes floatOrb3 {
+  0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+  100% { transform: translateY(-30px) translateX(-20px) rotate(-10deg); }
+}
+@keyframes floatOrb4 {
+  0% { transform: translateY(0px) scale(1); }
+  100% { transform: translateY(20px) scale(1.05); }
+}
+@keyframes floatOrb5 {
+  0% { transform: translateX(0px); }
+  100% { transform: translateX(30px); }
+}
+@keyframes floatOrb6 {
+  0% { transform: translateY(0px) rotate(0deg); }
+  100% { transform: translateY(-25px) rotate(5deg); }
+}
+
+@keyframes floatBlob1 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(10vw, 10vw); }
+}
+@keyframes floatBlob2 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-10vw, 15vw); }
+}
+@keyframes floatBlob3 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(15vw, -5vw); }
+}
+@keyframes floatBlob4 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-5vw, -15vw); }
+}
+@keyframes floatBlob5 {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(10vw, -10vw); }
 }
