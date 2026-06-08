@@ -10,7 +10,8 @@ export default function BackToTop() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsVisible(window.scrollY > 400)
+      if (window.scrollY > 400) setIsVisible(true)
+      else setIsVisible(false)
     }
 
     window.addEventListener('scroll', handleScroll)
@@ -31,7 +32,7 @@ export default function BackToTop() {
           whileHover={{ scale: 1.1, transition: springGentle }}
           whileTap={{ scale: 0.9 }}
           onClick={scrollToTop}
-          className="fixed bottom-8 right-8 z-[9000] w-12 h-12 bg-gold text-navy rounded-full flex items-center justify-center hover:bg-gold-light transition-colors"
+          className="fixed bottom-24 right-4 sm:right-6 z-[998] w-12 h-12 bg-gold text-navy rounded-full flex items-center justify-center hover:bg-gold-light transition-colors"
           style={{ boxShadow: 'var(--shadow-gold)' }}
           aria-label="Back to top"
           data-cursor="hover"
