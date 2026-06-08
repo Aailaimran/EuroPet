@@ -24,7 +24,7 @@ const sections = [
     id: 'data-we-collect',
     title: '3. Data We Collect',
     icon: <Database className="w-5 h-5" />,
-    content: `We may collect the following types of personal information:\n\n• **Contact information**: Your name, email address, phone number, and postal address.\n• **Pet information**: Your dog's name, breed, age, weight, microchip number, vaccination records, and health certificates.\n• **Transport details**: Pickup and delivery addresses, preferred dates, and route preferences.\n• **Payment information**: Billing details and transaction records (processed through secure third-party payment providers).\n• **Communication records**: Emails, WhatsApp messages, and phone call logs related to your booking.\n• **Website usage data**: IP address, browser type, pages visited, and cookies (see Section 10).`,
+    content: `We may collect the following types of personal information:\n\n• **Contact information**: Your name, email address, phone number, and postal address.\n• **Pet information**: Your pet's name, breed, age, weight, microchip number, vaccination records, and health certificates.\n• **Transport details**: Pickup and delivery addresses, preferred dates, and route preferences.\n• **Payment information**: Billing details and transaction records (processed through secure third-party payment providers).\n• **Communication records**: Emails, WhatsApp messages, and phone call logs related to your booking.\n• **Website usage data**: IP address, browser type, pages visited, and cookies (see Section 10).`,
   },
   {
     id: 'how-we-use',

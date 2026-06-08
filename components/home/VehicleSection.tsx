@@ -60,7 +60,7 @@ export default function VehicleSection() {
               animate={isInView ? 'visible' : 'hidden'}
               className="text-gray-300 text-sm leading-relaxed mb-6"
             >
-              Our long-wheelbase Peugeot Boxer is configured for the safe and comfortable transport of up to 18 dogs in individual secure crates.
+              Our purpose-built fleet of climate-controlled vehicles is configured for the safe and comfortable transport of pets in individual secure crates. Multiple vehicle sizes are available to cater for all transportation requirements.
             </motion.p>
 
             <motion.ul
@@ -80,6 +80,25 @@ export default function VehicleSection() {
                 </motion.li>
               ))}
             </motion.ul>
+
+            <div className="mt-6 pt-6 border-t border-white/10">
+              <p className="text-brand-gold text-xs uppercase tracking-widest font-semibold mb-3">
+                Fleet Flexibility
+              </p>
+              <div className="grid grid-cols-2 gap-2">
+                {[
+                  'Single pet transport',
+                  'Family pet relocation', 
+                  'Breeder bulk transport',
+                  'Rescue organisation runs',
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-2 text-gray-300 text-xs">
+                    <div className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0" />
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
           </motion.div>
 
           {/* Centre — Van placeholder */}
@@ -134,7 +153,7 @@ export default function VehicleSection() {
               </div>
 
               <p className="text-gray-300 text-sm leading-relaxed flex-1">
-                All journeys are carried out in accordance with UK and EU animal welfare transport regulations. Dogs travel in individual secured crates and are monitored throughout the journey with scheduled welfare checks and rest stops.
+                All journeys are carried out in accordance with UK and EU animal welfare transport regulations. Pets travel in individual secured crates and are monitored throughout the journey with scheduled welfare checks and rest stops.
               </p>
 
               <MagneticButton className="mt-6">

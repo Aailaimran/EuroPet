@@ -54,15 +54,70 @@ export default function QuoteForm() {
           <option value="Breeder">Breeder</option>
           <option value="Other">Other</option>
         </select>
-        <input required type="number" min="1" max="18" name="number_of_dogs" placeholder="Number of dogs" className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 text-sm" />
+        <input required type="number" min="1" max="18" name="number_of_pets" placeholder="Number of pets" className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 text-sm" />
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input required name="dog_breeds" placeholder="Dog breed(s)" className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 text-sm" />
-        <input type="month" required name="departure_month" className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 text-sm" />
+        {/* FIX A — Add Pet Type dropdown */}
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-gray-700">
+            Pet Type *
+          </label>
+          <select 
+            required
+            name="pet_type"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm bg-white"
+          >
+            <option value="">Select pet type</option>
+            <option value="dog">Dog</option>
+            <option value="cat">Cat</option>
+            <option value="ferret">Ferret</option>
+            <option value="other">Other (please specify in notes)</option>
+          </select>
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-gray-700">
+            Pet's Name *
+          </label>
+          <input required name="pet_name" placeholder="Pet's Name" className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 text-sm" />
+        </div>
       </div>
 
-      <textarea rows={4} name="special_requirements" placeholder="Any special requirements" className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 text-sm" />
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-gray-700">
+            Pet Breed / Species *
+          </label>
+          <input required name="pet_breed" placeholder="e.g. Golden Retriever, Persian Cat, Ferret" className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 text-sm" />
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-gray-700">
+            Pet Age & Weight *
+          </label>
+          <div className="grid grid-cols-2 gap-2">
+            <input required name="pet_age" placeholder="e.g. 2 years 3 months" className="w-full border border-gray-300 rounded-lg px-3 py-3 text-gray-700 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 text-sm" />
+            <input required name="pet_weight" placeholder="Weight in kg" className="w-full border border-gray-300 rounded-lg px-3 py-3 text-gray-700 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 text-sm" />
+          </div>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-gray-700">
+            Preferred Departure Month *
+          </label>
+          <input type="month" required name="departure_month" className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 text-sm" />
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-1">
+        <label className="text-sm font-medium text-gray-700">
+          About your pet / Any special requirements
+        </label>
+        <textarea rows={4} name="special_requirements" placeholder="Any special requirements" className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 text-sm" />
+      </div>
 
       <div className="flex items-center gap-2">
         <input required type="checkbox" id="agree" className="w-4 h-4 rounded border-gray-300" />

@@ -82,7 +82,7 @@ export default function HeroSection() {
             </motion.span>
 
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-2 text-white">
-              <SplitText text="Premium Dog Transport" delay={0.3} />
+              <SplitText text="Premium Pet Transport" delay={0.3} />
             </h1>
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6 text-gold">
               <SplitText text="Between the UK and Europe" delay={0.7} />

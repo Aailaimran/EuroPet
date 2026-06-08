@@ -48,9 +48,9 @@ export default function RouteCard({ route, index }: RouteCardProps) {
           {route.shortDescription}
         </p>
 
-        <div className="mt-4 flex items-center gap-2 text-sm text-gray-500">
-          <Clock className="h-4 w-4 text-brand-gold" />
-          {route.typicalTravelTime}
+        <div className="mt-4 flex items-center gap-2 text-gray-400 text-xs italic">
+          <Clock className="h-4 w-4 text-brand-gold shrink-0" />
+          <span>Journey duration varies — contact us for current estimates</span>
         </div>
 
         <div className="mt-4">

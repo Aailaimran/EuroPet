@@ -6,6 +6,7 @@ import SmoothScrollProvider from '@/components/ui/SmoothScrollProvider'
 import PageTransition from '@/components/ui/PageTransition'
 import ScrollProgress from '@/components/ui/ScrollProgress'
 import BackToTop from '@/components/ui/BackToTop'
+import FloatingWhatsApp from '@/components/ui/FloatingWhatsApp'
 const inter = Inter({
   subsets: ['latin'],
   variable: '--font-inter',
@@ -19,9 +20,15 @@ const playfair = Playfair_Display({
 })
 
 export const metadata = {
-  title: 'Euro Pet Express | Premium Dog Transport UK & Europe',
-  description: 'DEFRA authorised dog transport between Romania, Poland, Bulgaria and the UK. Safe, compliant, and welfare-focused journeys for rescues, breeders and private owners.',
-  keywords: 'dog transport UK Europe, pet transport Romania UK, DEFRA authorised dog transport, dog courier Europe'
+  title: 'Euro Pet Express | Premium Pet Transport UK & Europe',
+  description: 'DEFRA authorised premium pet transport between the UK and Europe. Safe, compliant, scheduled departures for dogs, cats and small animals across Romania, Serbia, Germany, France and 9+ destinations. Owner accompanied travel available.',
+  keywords: 'premium pet transport UK Europe, pet transport Romania UK, DEFRA authorised pet transport, cat transport Europe, dog transport Europe, pet courier UK, bespoke pet transport',
+}
+
+export const viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -37,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </PageTransition>
           </main>
           <Footer />
+          <FloatingWhatsApp />
           <BackToTop />
         </SmoothScrollProvider>
       </body>

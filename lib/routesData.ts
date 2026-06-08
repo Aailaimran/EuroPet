@@ -214,5 +214,49 @@ export const ROUTES: Route[] = [
     ],
     isActive: true,
     displayOrder: 9
+  },
+  {
+    id: "uk-uk",
+    name: "UK to UK Transport",
+    originCountry: "United Kingdom",
+    destinationCountry: "United Kingdom",
+    originCode: "GB",
+    destinationCode: "GB",
+    slug: "uk-uk",
+    departureFrequency: "Available on request",
+    shortDescription: "Domestic UK pet transport for relocations, rehoming and breeder deliveries across England, Scotland and Wales.",
+    pickupCities: ["London", "Birmingham", "Manchester", "Edinburgh", "Cardiff", "Bristol"],
+    typicalTravelTime: "Varies by destination",
+    priceFrom: 0,
+    routeHighlights: [
+      "Door-to-door domestic service",
+      "Climate-controlled transport",
+      "All UK regions covered",
+      "Same welfare standards as European routes"
+    ],
+    isActive: true,
+    displayOrder: 10
+  },
+  {
+    id: "transatlantic",
+    name: "Transatlantic Pet Transport",
+    originCountry: "United Kingdom",
+    destinationCountry: "United States / Canada",
+    originCode: "GB",
+    destinationCode: "US",
+    slug: "transatlantic",
+    departureFrequency: "By arrangement",
+    shortDescription: "Long-haul transatlantic pet transport with full documentation and handling support for USA and Canada destinations.",
+    pickupCities: ["London Heathrow", "Manchester", "Edinburgh"],
+    typicalTravelTime: "Varies by arrangement",
+    priceFrom: 0,
+    routeHighlights: [
+      "Full USDA/CFIA documentation support",
+      "Coordination with air cargo partners",
+      "Health certificate and rabies titre support",
+      "Bespoke pricing — contact us to discuss"
+    ],
+    isActive: true,
+    displayOrder: 11
   }
 ];

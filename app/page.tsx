@@ -26,7 +26,7 @@ export default function HomePage() {
             </h2>
             <div className="w-16 h-0.5 bg-brand-gold mt-2 mb-4 mx-auto" />
             <p className="text-gray-500 max-w-2xl mx-auto">
-              Secure your dog&apos;s space on the next scheduled run.
+              Secure your pet&apos;s space on the next scheduled run.
             </p>
           </div>
 
@@ -37,7 +37,7 @@ export default function HomePage() {
               Scheduled Departures Available
             </h3>
             <p className="text-gray-400 text-base max-w-xl mx-auto mb-8">
-              We run regular scheduled departures across all our European routes. Contact us to find the next available departure for your chosen route and secure your dog&apos;s space.
+              We run regular scheduled departures across all our European routes. Contact us to find the next available departure for your chosen route and secure your pet&apos;s space.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <Link
