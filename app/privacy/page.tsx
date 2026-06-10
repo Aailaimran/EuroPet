@@ -193,7 +193,7 @@ export default function PrivacyPage() {
                     <Phone className="w-4 h-4" />
                     +44 7711 123456
                   </a>
-                  <a href="https://wa.me/447711123456" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-brand-gold hover:underline text-sm font-medium">
+                  <a href="https://wa.me/447853147342" target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-brand-gold hover:underline text-sm font-medium">
                     <MessageCircle className="w-4 h-4" />
                     Chat on WhatsApp
                   </a>

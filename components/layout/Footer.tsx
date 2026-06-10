@@ -64,7 +64,7 @@ export default function Footer() {
     },
     {
       name: 'WhatsApp',
-      href: 'https://wa.me/447711123456',
+      href: 'https://wa.me/447853147342',
       color: '#25D366',
       svg: (
         <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
@@ -172,7 +172,7 @@ export default function Footer() {
                 info@europetsexpress.com
               </a>
               <a
-                href="https://wa.me/447711123456"
+                href="https://wa.me/447853147342"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-brand-gold hover:underline text-sm flex items-center gap-2 font-medium"

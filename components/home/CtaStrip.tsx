@@ -75,7 +75,7 @@ export default function CtaStrip() {
             <motion.div variants={fadeUpFastVariant}>
               <MagneticButton>
                 <a
-                  href="https://wa.me/447711123456"
+                  href="https://wa.me/447853147342"
                   target="_blank"
                   rel="noopener noreferrer"
                   data-cursor="hover"

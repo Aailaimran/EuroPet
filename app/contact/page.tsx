@@ -101,7 +101,7 @@ export default function Contact() {
 
                 <div className="mt-4 text-gold flex items-center gap-2">
                   <MessageCircle className="w-4 h-4 shrink-0" />
-                  <a href="https://wa.me/447711123456" className="hover:underline">WhatsApp Us</a>
+                  <a href="https://wa.me/447853147342" className="hover:underline">WhatsApp Us</a>
                 </div>
                 <div className="text-gray-400 text-sm">Fastest response method</div>
 

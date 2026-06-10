@@ -5,7 +5,7 @@ import { useState } from 'react'
 
 export default function FloatingWhatsApp() {
   const [showTooltip, setShowTooltip] = useState(false)
-  const whatsappUrl = 'https://wa.me/447711123456?text=Hello%2C%20I%20would%20like%20to%20enquire%20about%20pet%20transport.'
+  const whatsappUrl = 'https://wa.me/447853147342'
 
   return (
     <div className="fixed bottom-6 right-6 z-[999] flex flex-col items-end gap-3">
