@@ -6,7 +6,7 @@ import { ROUTES } from '@/lib/routesData'
 
 export const metadata: Metadata = {
   title: 'Routes & Schedule | Euro Pet Express',
-  description: 'Browse all scheduled UK to Europe pet transport routes. DEFRA authorised routes to Serbia, Romania, Hungary, Croatia, France, Spain, Germany, Netherlands, and Czech Republic.',
+  description: 'Explore our scheduled pet transport routes connecting the UK with Romania, Serbia, Hungary, Croatia, France, Spain, Germany, Netherlands, Czech Republic, and beyond.',
 }
 
 export default function RoutesPage() {
@@ -20,10 +20,10 @@ export default function RoutesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto mb-10 max-w-3xl text-center">
             <span className="mb-2 block text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold">All Routes</span>
-            <h2 className="mb-3 font-display text-2xl font-bold text-navy md:text-3xl">Static route cards for every destination</h2>
+            <h2 className="mb-3 font-display text-2xl font-bold text-navy md:text-3xl">Scheduled Routes</h2>
             <div className="mx-auto mb-4 h-0.5 w-12 bg-brand-gold" />
-            <p className="text-sm text-gray-600 md:text-base">
-              Every destination below is loaded from a local data file and rendered without CMS dependencies.
+            <p className="text-sm text-gray-600 md:text-base max-w-2xl mx-auto">
+              Browse our complete network of scheduled pet transport routes connecting the UK with destinations across Europe and beyond.
             </p>
           </div>
 

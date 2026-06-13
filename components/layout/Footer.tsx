@@ -1,3 +1,10 @@
+// TODO — CONFIRM WITH CLIENT: Phone number 
+// standardised to +44 7853 147342 (matches existing 
+// WhatsApp links) since +44 7711 123456 appeared to 
+// be placeholder text. Please confirm this is the 
+// correct live business number, or provide the 
+// correct one to use everywhere.
+
 'use client'
 
 import React from 'react'
@@ -163,13 +170,13 @@ export default function Footer() {
           <motion.div variants={cardVariant} className="flex flex-col">
             <h4 className="text-brand-gold text-xs tracking-widest uppercase font-semibold mb-4">GET IN TOUCH</h4>
             <div className="space-y-2 mb-4">
-              <a href="tel:+447711123456" className="text-gray-400 hover:text-brand-gold transition-colors text-sm flex items-center gap-2">
+              <a href="tel:+447853147342" className="text-gray-400 hover:text-brand-gold transition-colors text-sm flex items-center gap-2">
                 <Phone size={14} className="text-gray-400" />
-                +44 7711 123456
+                +44 7853 147342
               </a>
-              <a href="mailto:info@europetsexpress.com" className="text-gray-400 hover:text-brand-gold transition-colors text-sm flex items-center gap-2">
+              <a href="mailto:info@europetexpress.co.uk" className="text-gray-400 hover:text-brand-gold transition-colors text-sm flex items-center gap-2">
                 <Mail size={14} className="text-gray-400" />
-                info@europetsexpress.com
+                info@europetexpress.co.uk
               </a>
               <a
                 href="https://wa.me/447853147342"
@@ -182,9 +189,15 @@ export default function Footer() {
               </a>
             </div>
 
+            {/* TODO — CONFIRM WITH CLIENT: Replace with real 
+            DEFRA Type 2 authorisation number. Previously showed 
+            two conflicting fake numbers (AT/2023/12345 and 
+            AT/2025/12345) — both appear to be placeholders. 
+            Using honest interim text until real number 
+            is provided. */}
             <div className="bg-brand-darkSecondary rounded-lg p-4 border border-white/5 mt-2 shadow-inner">
-              <div className="text-gray-400 text-xs font-semibold">DEFRA Type 2 Authorised</div>
-              <div className="text-gray-500 text-[11px] mt-0.5">Auth No: AT/2023/12345</div>
+              <div className="text-gray-400 text-xs font-semibold">DEFRA Type 2 Authorised Transporter</div>
+              <div className="text-gray-500 text-[11px] mt-0.5">Authorisation number available on request</div>
               <div className="text-gray-400 text-xs font-semibold mt-2.5">TRACES NT Registered</div>
             </div>
           </motion.div>

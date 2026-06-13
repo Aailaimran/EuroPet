@@ -1,5 +1,12 @@
+import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CalendarDays } from 'lucide-react'
+import NewsletterSignup from '@/components/ui/NewsletterSignup'
+
+export const metadata: Metadata = {
+  title: 'Euro Pet Express | Premium Pet Transport UK & Europe',
+  description: 'DEFRA authorised premium pet transport between the UK and Europe. Safe, compliant, scheduled departures for dogs, cats and small animals.',
+}
 import HeroSection from '@/components/home/HeroSection'
 import TrustBar from '@/components/home/TrustBar'
 import RoutesSection from '@/components/home/RoutesSection'
@@ -59,6 +66,11 @@ export default function HomePage() {
 
       {/* PetGallery section temporarily removed — awaiting real customer photos and testimonials from client to replace stock imagery */}
       <VehicleSection />
+      <section className="bg-brand-dark py-16 md:py-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <NewsletterSignup />
+        </div>
+      </section>
       <CtaStrip />
     </>
   )

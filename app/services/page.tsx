@@ -1,3 +1,13 @@
+// TODO — CONFIRM WITH CLIENT: "Live Vehicle 
+// Tracking" claims have been changed to "Regular 
+// Photo & Video Updates via WhatsApp" across the 
+// site to match the FAQ description and avoid 
+// contradictory claims. If the business does have 
+// real GPS live tracking technology available to 
+// customers, please confirm and we will reinstate 
+// this claim consistently with proper implementation 
+// details (e.g. tracking link format, app used, etc).
+
 import Image from 'next/image'
 import type { Metadata } from 'next'
 import PageHero from '@/components/ui/PageHero'
@@ -6,7 +16,7 @@ import { PET_IMAGES } from '@/lib/petImages'
 
 export const metadata: Metadata = {
   title: 'Our Services | Euro Pet Express',
-  description: 'Tailored pet transport services for rescues, breeders, shelters and private owners. DEFRA authorised, TRACES compliant.',
+  description: 'Premium pet transport services including scheduled European routes, rescue and breeder transport, family relocation, and bespoke transport options.',
 }
 
 export default function Services() {
@@ -149,12 +159,12 @@ export default function Services() {
                   desc: 'Fully authorised Type 2 long-journey pet transporter'
                 },
                 {
-                  title: '24/7 Live Tracking',
-                  desc: 'Real-time vehicle tracking accessible by pet owners throughout journey'
+                  title: 'Regular Photo & Video Updates Throughout the Journey',
+                  desc: 'Stay connected throughout your pet\'s journey with regular photo and video updates sent directly via WhatsApp.'
                 },
                 {
-                  title: '30+ Years Experience',
-                  desc: 'Professional pet handling experience across Europe and beyond'
+                  title: 'Founder-Led',
+                  desc: 'Decades of hands-on dog-industry experience'
                 },
               ].map((item) => (
                 <div key={item.title} className="text-center p-4 rounded-xl bg-white/5 border border-white/10">

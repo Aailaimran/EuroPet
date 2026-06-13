@@ -1,3 +1,11 @@
+// TODO — CONFIRM WITH TAZ/CLIENT: Content currently 
+// describes ONE purpose-built 18-crate vehicle 
+// (matching the hero badge) rather than a "fleet". 
+// If the business has or plans multiple vehicles, 
+// please confirm and we will update this section 
+// (and the hero badge) to describe a fleet with 
+// multiple vehicle sizes instead.
+
 'use client'
 
 import { CheckCircle2, PawPrint } from 'lucide-react'
@@ -60,7 +68,7 @@ export default function VehicleSection() {
               animate={isInView ? 'visible' : 'hidden'}
               className="text-gray-300 text-sm leading-relaxed mb-6"
             >
-              Our purpose-built fleet of climate-controlled vehicles is configured for the safe and comfortable transport of pets in individual secure crates. Multiple vehicle sizes are available to cater for all transportation requirements.
+              Our purpose-built, climate-controlled vehicle is configured for the safe and comfortable transport of pets in individual secure crates, with 18 individual crate spaces available per journey.
             </motion.p>
 
             <motion.ul
@@ -83,14 +91,14 @@ export default function VehicleSection() {
 
             <div className="mt-6 pt-6 border-t border-white/10">
               <p className="text-brand-gold text-xs uppercase tracking-widest font-semibold mb-3">
-                Fleet Flexibility
+                Suitable For
               </p>
               <div className="grid grid-cols-2 gap-2">
                 {[
                   'Single pet transport',
                   'Family pet relocation', 
-                  'Breeder bulk transport',
-                  'Rescue organisation runs',
+                  'Breeder transport',
+                  'Rescue organisation transport',
                 ].map((item) => (
                   <div key={item} className="flex items-center gap-2 text-gray-300 text-xs">
                     <div className="w-1.5 h-1.5 rounded-full bg-brand-gold shrink-0" />

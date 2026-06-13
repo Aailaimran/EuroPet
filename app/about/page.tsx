@@ -1,3 +1,13 @@
+// TODO — CONFIRM WITH CLIENT: "Live Vehicle 
+// Tracking" claims have been changed to "Regular 
+// Photo & Video Updates via WhatsApp" across the 
+// site to match the FAQ description and avoid 
+// contradictory claims. If the business does have 
+// real GPS live tracking technology available to 
+// customers, please confirm and we will reinstate 
+// this claim consistently with proper implementation 
+// details (e.g. tracking link format, app used, etc).
+
 import Image from 'next/image'
 import type { Metadata } from 'next'
 import PageHero from '@/components/ui/PageHero'
@@ -6,7 +16,7 @@ import { PET_IMAGES } from '@/lib/petImages'
 
 export const metadata: Metadata = {
   title: 'About Us | Euro Pet Express',
-  description: 'Learn about Euro Pet Express — a dedicated, DEFRA-authorised, and compassionate pet transport service between the UK and Europe.',
+  description: 'Learn about Euro Pet Express, our commitment to animal welfare, and our DEFRA-authorised pet transport service.',
 }
 
 export default function About() {
@@ -20,6 +30,20 @@ export default function About() {
             <h3 className="font-display text-2xl text-navy font-bold mb-4">Our Story</h3>
             <p className="text-gray-700 mb-4">Euro Pet Express was founded with a single purpose: to provide safe, compliant, and stress-free transport for pets travelling between Europe and the United Kingdom. We understand that your pet is family — and we treat every animal in our care with the same respect and attention we would give our own.</p>
             <p className="text-gray-700 mb-6">Our service is fully DEFRA Type 2 Authorised, TRACES NT Registered, and operates in full compliance with UK and EU animal welfare transport legislation.</p>
+            {/* TODO — CONFIRM WITH CLIENT: 
+            1) Confirm exact number of years of experience 
+               (currently using "decades" as a safe interim term 
+               instead of "30+ years" since the business itself 
+               is newly registered).
+            2) Confirm founder's name and preferred spelling 
+               (Tarik or Taz) to personalise this section, 
+               e.g. "Founded by [Name], a dog-industry 
+               professional with [X]+ years of hands-on 
+               experience."
+            3) Once confirmed, update wording to: 
+               "Founded by a dog-industry professional with 
+               [X]+ years of hands-on experience." */}
+            <p className="text-gray-700 mb-6">Euro Pet Express was founded by a dog-industry professional with extensive hands-on experience in animal care and handling, bringing decades of expertise to every journey we manage.</p>
 
             {/* Story image */}
             <div className="relative h-64 rounded-xl overflow-hidden border border-gray-200 shadow-sm">
@@ -33,13 +57,25 @@ export default function About() {
               <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent" />
             </div>
           </div>
-
           <div className="grid grid-cols-2 gap-4">
+            {/* TODO — CONFIRM WITH CLIENT: 
+            1) Confirm exact number of years of experience 
+               (currently using "decades" as a safe interim term 
+               instead of "30+ years" since the business itself 
+               is newly registered).
+            2) Confirm founder's name and preferred spelling 
+               (Tarik or Taz) to personalise this section, 
+               e.g. "Founded by [Name], a dog-industry 
+               professional with [X]+ years of hands-on 
+               experience."
+            3) Once confirmed, update wording to: 
+               "Founded by a dog-industry professional with 
+               [X]+ years of hands-on experience." */}
             {[
               { stat: 'Europe-Wide', label: 'Coverage' },
-              { stat: '30+', label: 'Years of Professional Dog Handling Experience' },
+              { stat: 'Founder-Led', label: 'Decades of hands-on dog-industry experience' },
               { stat: '100%', label: 'DEFRA Compliant' },
-              { stat: '24/7', label: 'Live Vehicle Tracking with Customer Access' },
+              { stat: 'Updates', label: 'Regular Photo & Video Updates via WhatsApp' },
             ].map((item) => (
               <div key={item.label} className="bg-navy text-white rounded-xl p-6 text-center flex flex-col justify-center items-center">
                 <div className="font-display text-2xl sm:text-3xl text-gold font-bold">{item.stat}</div>
@@ -99,12 +135,12 @@ export default function About() {
                   desc: 'Fully authorised Type 2 long-journey pet transporter'
                 },
                 {
-                  title: '24/7 Live Tracking',
-                  desc: 'Real-time vehicle tracking accessible by pet owners throughout journey'
+                  title: 'Regular Photo & Video Updates Throughout the Journey',
+                  desc: 'Stay connected throughout your pet\'s journey with regular photo and video updates sent directly via WhatsApp.'
                 },
                 {
-                  title: '30+ Years Experience',
-                  desc: 'Professional pet handling experience across Europe and beyond'
+                  title: 'Founder-Led',
+                  desc: 'Decades of hands-on dog-industry experience'
                 },
               ].map((item) => (
                 <div key={item.title} className="text-center p-4 rounded-xl bg-white/5 border border-white/10">
@@ -125,7 +161,7 @@ export default function About() {
 
           <div className="space-y-4">
             {[
-              { q: 'What documents does my dog need to travel to the UK?', a: 'Dogs entering Great Britain must have: a valid microchip, a rabies vaccination (after microchipping), and a health certificate issued by an official vet within 10 days of travel. Dogs must also have had a tapeworm treatment 24–120 hours before arrival in Great Britain.' },
+              { q: 'What documents does my pet need to travel?', a: 'All pets (dogs, cats, and ferrets) entering Great Britain must have a valid microchip, an up-to-date rabies vaccination administered after microchipping, and an Animal Health Certificate (AHC) or valid pet passport issued by an official vet within the required timeframe before travel. Dogs entering Great Britain also require a tapeworm treatment administered 24–120 hours before arrival — this requirement does not currently apply to cats or ferrets. We will guide you through the exact requirements for your specific pet and route when you request a quote.' },
               { q: 'How long does the journey take?', a: 'Journey duration varies based on weather, traffic, border crossings, welfare stops, and ferry/tunnel schedules. Please contact us for current estimates.' },
               { q: 'Can I track my pet during the journey?', a: 'We provide regular WhatsApp updates throughout the journey including welfare check photos and location updates at key stages.' },
               { q: 'What size are the transport crates?', a: "We carry crates suitable for pets from small breeds up to large breeds. Please state your pet's breed, weight, and height when requesting a quote so we can confirm crate availability." },

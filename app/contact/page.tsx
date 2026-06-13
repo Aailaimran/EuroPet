@@ -1,6 +1,12 @@
+import type { Metadata } from 'next'
 import PageHero from '@/components/ui/PageHero'
 import QuoteForm from '@/components/forms/QuoteForm'
 import { Phone, MessageCircle, Mail, Clock } from 'lucide-react'
+
+export const metadata: Metadata = {
+  title: 'Request a Quote | Euro Pet Express',
+  description: 'Get a personalised pet transport quote for dogs, cats, and ferrets travelling between the UK and Europe. We respond to all enquiries within 12–24 hours.',
+}
 
 export default function Contact() {
   return (
@@ -49,10 +55,10 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-white text-sm font-semibold">
-                        24-Hour Live Vehicle Tracking
+                        Regular Photo & Video Updates Throughout the Journey
                       </p>
                       <p className="text-gray-400 text-xs mt-0.5 leading-relaxed">
-                        Monitor your pet's transport progress in real time throughout the journey.
+                        Stay connected throughout your pet's journey with regular photo and video updates sent directly via WhatsApp.
                       </p>
                     </div>
                   </div>
@@ -95,7 +101,7 @@ export default function Contact() {
                 <h4 className="font-display text-lg font-bold mb-4">Other Ways to Reach Us</h4>
                 <div className="text-gold font-semibold flex items-center gap-2">
                   <Phone className="w-4 h-4 shrink-0" />
-                  <span>+44 7711 123456</span>
+                  <a href="tel:+447853147342" className="hover:underline">+44 7853 147342</a>
                 </div>
                 <div className="text-gray-400 text-sm">Mon–Sat, 8am–8pm UK time</div>
 
@@ -113,11 +119,17 @@ export default function Contact() {
                 <div className="border-t border-navy-border my-6" />
 
                 <div className="text-gray-400 text-xs space-y-2">
+                  {/* TODO — CONFIRM WITH CLIENT: Replace with real 
+                  DEFRA Type 2 authorisation number. Previously showed 
+                  two conflicting fake numbers (AT/2023/12345 and 
+                  AT/2025/12345) — both appear to be placeholders. 
+                  Using honest interim text until real number 
+                  is provided. */}
                   <div className="flex items-center gap-3">
                     <div className="w-14 h-8 bg-navy-border rounded flex items-center justify-center text-[10px] font-semibold text-gray-400">DEFRA</div>
                     <div>
-                      <div>DEFRA Type 2 Authorised</div>
-                      <div>Authorisation No: AT/2025/12345</div>
+                      <div>DEFRA Type 2 Authorised Transporter</div>
+                      <div>Authorisation number available on request</div>
                       <div>TRACES NT Registered</div>
                     </div>
                   </div>

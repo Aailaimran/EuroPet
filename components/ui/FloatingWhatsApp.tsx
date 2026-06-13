@@ -1,3 +1,10 @@
+// TODO — CONFIRM WITH CLIENT: Phone number 
+// standardised to +44 7853 147342 (matches existing 
+// WhatsApp links) since +44 7711 123456 appeared to 
+// be placeholder text. Please confirm this is the 
+// correct live business number, or provide the 
+// correct one to use everywhere.
+
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'

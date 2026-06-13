@@ -1,6 +1,7 @@
 'use client'
 import { useState } from 'react'
 import { PawPrint, CheckCircle } from 'lucide-react'
+import { ROUTES } from '@/lib/routesData'
 
 export default function QuoteForm() {
   const [submitted, setSubmitted] = useState(false)
@@ -35,14 +36,16 @@ export default function QuoteForm() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <input type="tel" name="phone" placeholder="Phone Number (with country code)" className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 text-sm" />
         <select required name="route" className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-gold focus:ring-1 focus:ring-gold/30 text-sm">
-          <option value="">Select Route</option>
-          <option value="Romania → UK">Romania → UK</option>
-          <option value="Poland → UK">Poland → UK</option>
-          <option value="Bulgaria → UK">Bulgaria → UK</option>
-          <option value="UK → Romania">UK → Romania</option>
-          <option value="UK → Poland">UK → Poland</option>
-          <option value="UK → Bulgaria">UK → Bulgaria</option>
-          <option value="Combined route">Combined route</option>
+          <option value="">Select your route</option>
+          {ROUTES
+            .filter(route => route.isActive)
+            .sort((a, b) => a.displayOrder - b.displayOrder)
+            .map(route => (
+              <option key={route.slug} value={route.slug}>
+                {route.name}
+              </option>
+            ))}
+          <option value="other">Other / Not Listed</option>
         </select>
       </div>
 

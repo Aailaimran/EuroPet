@@ -1,4 +1,10 @@
+import type { Metadata } from 'next'
 import PageHero from '@/components/ui/PageHero'
+
+export const metadata: Metadata = {
+  title: 'Licensing & Compliance | Euro Pet Express',
+  description: 'Euro Pet Express is DEFRA Type 2 authorised and TRACES NT registered. Learn about our animal welfare policy, compliance standards, and regulatory authorisations for pet transport between the UK and Europe.',
+}
 
 export default function Compliance() {
   return (
@@ -9,7 +15,13 @@ export default function Compliance() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="bg-white border-l-4 border-gold rounded-xl p-6">
             <h4 className="font-display text-xl font-bold text-navy">DEFRA Type 2 Authorised Transporter</h4>
-            <div className="text-sm text-gray-700 mt-2">Authorisation No: AT/2025/12345</div>
+            {/* TODO — CONFIRM WITH CLIENT: Replace with real 
+            DEFRA Type 2 authorisation number. Previously showed 
+            two conflicting fake numbers (AT/2023/12345 and 
+            AT/2025/12345) — both appear to be placeholders. 
+            Using honest interim text until real number 
+            is provided. */}
+            <div className="text-sm text-gray-700 mt-2">Authorisation number available on request</div>
             <p className="text-gray-600 mt-3">DEFRA Type 2 authorisation is required by UK law for any commercial transport of animals on journeys exceeding 65km. Euro Pet Express holds full Type 2 authorisation, which requires a Certificate of Competence for the driver and a Vehicle Approval Certificate.</p>
             <p className="text-gray-600 mt-2">What this means for your dog: legally compliant long-distance transport, driver trained in animal welfare.</p>
           </div>
@@ -21,7 +33,15 @@ export default function Compliance() {
 
           <div className="bg-white border-l-4 border-gold rounded-xl p-6">
             <h4 className="font-display text-xl font-bold text-navy">Animal Welfare Transport Regulation Compliance</h4>
-            <p className="text-gray-600 mt-2">We operate under both UK Regulation (EC) 1/2005 on the protection of animals during transport and the equivalent retained UK legislation. This covers journey planning, welfare inspection stops, vehicle standards, and driver competency.</p>
+            {/* TODO — CONFIRM WITH TAZ/CLIENT: Legal/regulatory 
+            wording has been corrected from a doubled-up 
+            reference to a cleaner single statement: "Council 
+            Regulation (EC) No 1/2005 on the protection of 
+            animals during transport, as retained in UK law." 
+            Please have this reviewed/confirmed before treating 
+            as final, as it relates to regulatory compliance 
+            claims. */}
+            <p className="text-gray-600 mt-2">We operate in full compliance with Council Regulation (EC) No 1/2005 on the protection of animals during transport, as retained in UK law. This covers journey planning, welfare inspection stops, vehicle standards, and driver competency.</p>
           </div>
 
           <div className="bg-white border-l-4 border-gold rounded-xl p-6">

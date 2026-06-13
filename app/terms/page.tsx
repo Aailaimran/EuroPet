@@ -55,8 +55,8 @@ export default function TermsPage() {
               Questions about these terms or your booking? Reach out and we will respond promptly.
             </p>
             <div className="flex flex-col gap-3 text-sm sm:flex-row">
-              <a href="mailto:info@europetsexpress.com" className="text-brand-gold hover:underline">info@europetsexpress.com</a>
-              <a href="tel:+447711123456" className="text-brand-gold hover:underline">+44 7711 123456</a>
+              <a href="mailto:info@europetexpress.co.uk" className="text-brand-gold hover:underline">info@europetexpress.co.uk</a>
+              <a href="tel:+447853147342" className="text-brand-gold hover:underline">+44 7853 147342</a>
               <Link href="/contact" className="text-brand-gold hover:underline">Request a quote</Link>
             </div>
           </div>

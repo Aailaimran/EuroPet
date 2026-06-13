@@ -1,3 +1,16 @@
+// TODO — CONFIRM WITH CLIENT: Current departure 
+// frequencies are:
+//   UK → Netherlands: Weekly
+//   UK → France: Every two weeks (was "bi-weekly")
+//   UK → Germany: Every two weeks (was "bi-weekly")
+//   UK → Romania: Twice monthly
+//   UK → Spain: Twice monthly
+//   UK → Serbia, Hungary, Croatia, Czech Republic: 
+//   Monthly
+// Please confirm these frequencies are accurate to 
+// actual operating schedule, or provide updated 
+// frequencies for each route.
+
 export interface Route {
   id: string;
   name: string;
@@ -47,7 +60,7 @@ export const ROUTES: Route[] = [
     originCode: "GB",
     destinationCode: "RO",
     slug: "uk-romania",
-    departureFrequency: "Twice-monthly departures",
+    departureFrequency: "Departures twice per month",
     shortDescription: "Established twice-monthly route from the UK to Bucharest, Cluj-Napoca, Brașov and beyond.",
     pickupCities: ["London", "Birmingham", "Leeds", "Bristol", "Manchester", "Cardiff"],
     typicalTravelTime: "Approximately 36–48 hours",
@@ -113,15 +126,15 @@ export const ROUTES: Route[] = [
     originCode: "GB",
     destinationCode: "FR",
     slug: "uk-france",
-    departureFrequency: "Bi-weekly departures",
-    shortDescription: "Frequent bi-weekly service from the UK to Paris, Lyon, Marseille and across France.",
+    departureFrequency: "Departures every two weeks",
+    shortDescription: "Regular departures every two weeks from the UK to Paris, Lyon, Marseille and across France.",
     pickupCities: ["London", "Birmingham", "Leeds", "Bristol", "Southampton", "Cambridge", "Manchester"],
     typicalTravelTime: "Approximately 8–16 hours",
     priceFrom: 0,
     routeHighlights: [
       "Fastest European route available",
       "Eurotunnel or ferry crossing options",
-      "Bi-weekly departures for flexibility",
+      "Departures every two weeks for flexibility",
       "Most affordable European destination"
     ],
     isActive: true,
@@ -135,7 +148,7 @@ export const ROUTES: Route[] = [
     originCode: "GB",
     destinationCode: "ES",
     slug: "uk-spain",
-    departureFrequency: "Twice-monthly departures",
+    departureFrequency: "Departures twice per month",
     shortDescription: "Popular route to Madrid, Barcelona, Valencia, and the Spanish costas.",
     pickupCities: ["London", "Birmingham", "Bristol", "Exeter", "Plymouth", "Manchester"],
     typicalTravelTime: "Approximately 20–28 hours",
@@ -144,7 +157,7 @@ export const ROUTES: Route[] = [
       "Covers all major Spanish regions",
       "Via France Eurotunnel crossing",
       "Spanish pet import documentation",
-      "Air-conditioned vehicle essential for heat"
+      "Full climate control for safe travel in warm conditions"
     ],
     isActive: true,
     displayOrder: 6
@@ -157,13 +170,13 @@ export const ROUTES: Route[] = [
     originCode: "GB",
     destinationCode: "DE",
     slug: "uk-germany",
-    departureFrequency: "Bi-weekly departures",
+    departureFrequency: "Departures every two weeks",
     shortDescription: "Regular service to Berlin, Munich, Hamburg, Frankfurt and across Germany.",
     pickupCities: ["London", "Birmingham", "Newcastle", "Edinburgh", "Leeds", "Manchester"],
     typicalTravelTime: "Approximately 14–20 hours",
     priceFrom: 0,
     routeHighlights: [
-      "Bi-weekly service for maximum flexibility",
+      "Departures every two weeks for maximum flexibility",
       "Multiple German delivery cities",
       "EU pet passport compliance",
       "Via Belgium Eurotunnel corridor"
