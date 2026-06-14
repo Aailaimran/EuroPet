@@ -22,28 +22,28 @@ export const metadata: Metadata = {
 export default function Services() {
   const services = [
     {
-      icon: <Heart className="w-8 h-8" />,
+      icon: <Heart className="w-5 h-5 text-brand-gold" />,
       title: 'Private Owner Transport',
       desc: "You're moving to the UK or reuniting with your pet. We provide door-to-door or collection-point transport for privately owned pets with full welfare documentation support.",
       features: ['Flexible collection points', 'Welfare updates during journey', 'TRACES documentation support', 'Microchip & vaccination verification'],
       image: PET_IMAGES.dogHappy,
     },
     {
-      icon: <Shield className="w-8 h-8" />,
+      icon: <Shield className="w-5 h-5 text-brand-gold" />,
       title: 'Rescue & Shelter Transport',
       desc: 'We work directly with registered rescue organisations to transport rehomed pets from European shelters to their UK foster or forever homes.',
       features: ['Volume discount for registered rescues', 'Coordination with shelter staff', 'Full EU/UK import compliance', 'DEFRA-authorised journey documentation'],
       image: PET_IMAGES.dogFamily,
     },
     {
-      icon: <Award className="w-8 h-8" />,
+      icon: <Award className="w-5 h-5 text-brand-gold" />,
       title: 'Breeder Transport',
       desc: 'Trusted by registered breeders across Romania and Poland to transport puppies and adult pets to new owners in the UK safely and in compliance with all regulations.',
       features: ['Age-verified puppy transport (min. 15 weeks)', 'Health certificate coordination', 'Rabies titre test verification', 'Microchip & passport checking'],
-      image: PET_IMAGES.dogCute1,
+      image: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80',
     },
     {
-      icon: <FileText className="w-8 h-8" />,
+      icon: <FileText className="w-5 h-5 text-brand-gold" />,
       title: 'Documentation Assistance',
       desc: 'Navigating UK pet import rules post-Brexit is complex. We guide owners and organisations through the required paperwork.',
       features: ['TRACES NT movement document guidance', 'Health certificate requirements', 'Rabies vaccination timing', 'Tapeworm treatment guidance'],
@@ -52,8 +52,8 @@ export default function Services() {
     {
       title: 'Bespoke Pet Transport',
       subtitle: 'Pricing: P.O.A.',
-      icon: <Star className="w-8 h-8" />,
-      image: 'https://images.unsplash.com/photo-1436116115267-4f6a6b52fa3a?w=600&q=80',
+      icon: <Star className="w-5 h-5 text-brand-gold" />,
+      image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&q=80',
       alt: 'Bespoke premium pet transport service',
       desc: 'For unique or complex transport requirements, we offer fully bespoke pet transport solutions tailored to your specific needs. Whether transporting multiple pets, exotic animals, or requiring specialist handling, we can accommodate.',
       features: [
@@ -89,17 +89,17 @@ export default function Services() {
             {services.map((s) => (
               <div key={s.title} className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow group flex flex-col h-full">
                 {/* Service image banner */}
-                <div className="relative h-48 overflow-hidden shrink-0">
+                <div className="relative w-full h-48 overflow-hidden flex-shrink-0">
                   <Image
                     src={s.image}
                     alt={s.alt || s.title}
                     fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover object-center hover:scale-105 transition-transform duration-500"
+                    sizes="(max-width: 768px) 100vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-navy/60 to-transparent" />
-                  <div className="absolute bottom-4 left-4 text-white">
-                    <div className="text-gold">{s.icon}</div>
+                  {/* Icon overlay */}
+                  <div className="absolute bottom-3 left-3 bg-brand-dark/70 backdrop-blur-sm rounded-lg p-2">
+                    {s.icon}
                   </div>
                 </div>
 
