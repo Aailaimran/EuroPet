@@ -7,10 +7,10 @@
 
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { MessageCircle, Phone, Mail } from 'lucide-react'
+import { MessageCircle, Phone, Mail, CheckCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import MagneticButton from '@/components/ui/MagneticButton'
@@ -30,6 +30,72 @@ function FooterLink({ label, href }: { label: string; href: string }) {
         {label}
       </Link>
     </li>
+  )
+}
+
+function NewsletterSignupInline() {
+  const [email, setEmail] = useState('')
+  const [submitted, setSubmitted] = useState(false)
+  const [focused, setFocused] = useState(false)
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // TODO: Wire to email service provider
+    // (Mailchimp, ConvertKit, Brevo, etc.)
+    // when client decides on provider.
+    // Currently shows success UI only.
+    if (email) {
+      setSubmitted(true)
+    }
+  }
+
+  if (submitted) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 8 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="flex items-center gap-3 bg-brand-gold/10 border border-brand-gold/30 rounded-xl px-6 py-4"
+      >
+        <CheckCircle className="w-5 h-5 text-brand-gold shrink-0" />
+        <div>
+          <p className="text-white text-sm font-semibold">
+            You're on the list!
+          </p>
+          <p className="text-gray-400 text-xs mt-0.5">
+            We'll be in touch with route updates and pet travel news.
+          </p>
+        </div>
+      </motion.div>
+    )
+  }
+
+  return (
+    <form 
+      onSubmit={handleSubmit}
+      className="flex flex-col sm:flex-row gap-3"
+    >
+      <div className={`flex-1 relative rounded-lg border transition-all duration-200 ${focused ? 'border-brand-gold ring-2 ring-brand-gold/20' : 'border-white/10'} bg-white/5`}>
+        <input
+          type="email"
+          required
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          onFocus={() => setFocused(true)}
+          onBlur={() => setFocused(false)}
+          placeholder="Enter your email address"
+          className="w-full bg-transparent px-4 py-3 text-white text-sm placeholder:text-gray-500 focus:outline-none rounded-lg"
+        />
+      </div>
+
+      <motion.button
+        type="submit"
+        whileHover={{ scale: 1.03 }}
+        whileTap={{ scale: 0.97 }}
+        className="bg-brand-gold text-brand-dark font-semibold px-6 py-3 rounded-lg hover:bg-brand-goldHover transition-colors uppercase tracking-wider text-sm whitespace-nowrap inline-flex items-center justify-center gap-2 shadow-md"
+      >
+        Subscribe
+      </motion.button>
+    </form>
   )
 }
 
@@ -93,6 +159,33 @@ export default function Footer() {
 
   return (
     <footer className="bg-brand-dark border-t border-brand-gold/10 text-white py-16 md:py-24">
+      {/* Newsletter Signup — full width above footer columns */}
+      <div className="border-b border-brand-gold/10 pb-12 mb-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8">
+
+            {/* Left side — heading and description */}
+            <div className="text-center lg:text-left max-w-md">
+              <p className="text-brand-gold text-xs font-semibold uppercase tracking-[0.2em] mb-2">
+                Stay Connected
+              </p>
+              <h3 className="font-playfair text-2xl md:text-3xl font-bold text-white mb-2">
+                Get Route Updates
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Receive departure schedules, pet travel tips, and service updates from Euro Pet Express directly in your inbox.
+              </p>
+            </div>
+
+            {/* Right side — email form */}
+            <div className="w-full lg:w-auto lg:min-w-[420px]">
+              <NewsletterSignupInline />
+            </div>
+
+          </div>
+        </div>
+      </div>
+
       <div ref={ref} className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={staggerContainerVariant}
@@ -106,10 +199,10 @@ export default function Footer() {
               <Image
                 src="/logo.png"
                 alt="Euro Pet Express"
-                width={180}
-                height={65}
-                priority={true}
-                className="object-contain h-14 w-auto"
+                width={200}
+                height={75}
+                priority={false}
+                className="object-contain h-16 w-auto drop-shadow-sm"
               />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mt-3 max-w-xs">

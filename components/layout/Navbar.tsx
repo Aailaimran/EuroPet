@@ -13,7 +13,7 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   const pathname = usePathname()
   const { scrollY } = useScroll()
-  
+
   const bgOpacity = useTransform(scrollY, [0, 80], [0, 0.85])
   const blurValue = useTransform(scrollY, [0, 80], [0, 20])
   const borderOpacity = useTransform(scrollY, [0, 80], [0, 0.1])
@@ -34,7 +34,7 @@ export default function Navbar() {
 
   return (
     <motion.header
-      className="fixed top-0 left-0 right-0 z-50 transform-gpu"
+      className="fixed top-0 left-0 right-0 z-50 h-20 md:h-28 flex items-center transition-all duration-300 transform-gpu"
       style={{
         backgroundColor: useTransform(bgOpacity, v => `rgba(10, 14, 26, ${v})`),
         backdropFilter: useTransform(blurValue, v => `blur(${v}px)`),
@@ -42,23 +42,23 @@ export default function Navbar() {
         borderBottom: useTransform(borderOpacity, v => `1px solid rgba(201, 168, 76, ${v})`)
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20 md:h-24 py-3 md:py-4">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div className="flex items-center justify-between h-20 md:h-28">
 
           {/* Logo */}
           <Link href="/" className="flex items-center" data-cursor="hover">
             <Image
               src="/logo.png"
               alt="Euro Pet Express"
-              width={200}
-              height={70}
+              width={240}
+              height={90}
               priority={true}
-              className="object-contain h-12 md:h-16 w-auto"
+              className="object-contain h-16 md:h-20 w-auto drop-shadow-sm"
             />
           </Link>
 
           {/* Desktop Nav */}
-          <motion.nav 
+          <motion.nav
             variants={staggerContainerVariant}
             initial="hidden"
             animate="visible"
@@ -66,7 +66,7 @@ export default function Navbar() {
           >
             {links.map((link) => {
               const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href))
-              
+
               return (
                 <motion.div key={link.href} variants={fadeUpFastVariant}>
                   <Link
@@ -75,7 +75,7 @@ export default function Navbar() {
                     className={`relative text-[11px] font-medium uppercase tracking-wider px-3 py-2 rounded transition-colors block group ${isActive ? 'text-brand-gold' : 'text-gray-300 hover:text-white'}`}
                   >
                     {link.label}
-                    <motion.div 
+                    <motion.div
                       className="absolute bottom-0 left-3 right-3 h-[1px] bg-brand-gold origin-left"
                       initial={{ scaleX: isActive ? 1 : 0 }}
                       animate={{ scaleX: isActive ? 1 : 0 }}
@@ -106,14 +106,14 @@ export default function Navbar() {
       {/* Mobile Menu */}
       <AnimatePresence>
         {open && (
-          <motion.div 
+          <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: easeOutExpo }}
             className="lg:hidden bg-navy/95 backdrop-blur-xl border-t border-brand-gold/10 overflow-hidden"
           >
-            <motion.div 
+            <motion.div
               variants={staggerContainerVariant}
               initial="hidden"
               animate="visible"
