@@ -46,14 +46,14 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-20 md:h-28">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center" data-cursor="hover">
+          <Link href="/" className="inline-block flex-shrink-0" data-cursor="hover">
             <Image
               src="/logo.png"
               alt="Euro Pet Express"
               width={240}
               height={90}
               priority={true}
-              className="object-contain h-16 md:h-20 w-auto drop-shadow-sm"
+              className="object-contain h-16 md:h-20 w-auto"
             />
           </Link>
 

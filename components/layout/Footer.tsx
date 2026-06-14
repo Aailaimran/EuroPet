@@ -202,7 +202,7 @@ export default function Footer() {
                 width={200}
                 height={75}
                 priority={false}
-                className="object-contain h-16 w-auto drop-shadow-sm"
+                className="object-contain h-16 w-auto"
               />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mt-3 max-w-xs">

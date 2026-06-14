@@ -1,10 +1,4 @@
-// TODO — CONFIRM WITH TAZ/CLIENT: Content currently 
-// describes ONE purpose-built 18-crate vehicle 
-// (matching the hero badge) rather than a "fleet". 
-// If the business has or plans multiple vehicles, 
-// please confirm and we will update this section 
-// (and the hero badge) to describe a fleet with 
-// multiple vehicle sizes instead.
+// Updated to describe fleet of multiple vehicles per client request.
 
 'use client'
 
@@ -68,7 +62,7 @@ export default function VehicleSection() {
               animate={isInView ? 'visible' : 'hidden'}
               className="text-gray-300 text-sm leading-relaxed mb-6"
             >
-              Our purpose-built, climate-controlled vehicle is configured for the safe and comfortable transport of pets in individual secure crates, with 18 individual crate spaces available per journey.
+              Our fleet of purpose-built, climate-controlled vehicles is configured for the safe and comfortable transport of pets in individual secure crates, catering for single pets through to large rescue or breeder consignments.
             </motion.p>
 
             <motion.ul
@@ -91,7 +85,7 @@ export default function VehicleSection() {
 
             <div className="mt-6 pt-6 border-t border-white/10">
               <p className="text-brand-gold text-xs uppercase tracking-widest font-semibold mb-3">
-                Suitable For
+                Our Fleet
               </p>
               <div className="grid grid-cols-2 gap-2">
                 {[

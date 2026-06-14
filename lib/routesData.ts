@@ -1,15 +1,5 @@
-// TODO — CONFIRM WITH CLIENT: Current departure 
-// frequencies are:
-//   UK → Netherlands: Weekly
-//   UK → France: Every two weeks (was "bi-weekly")
-//   UK → Germany: Every two weeks (was "bi-weekly")
-//   UK → Romania: Twice monthly
-//   UK → Spain: Twice monthly
-//   UK → Serbia, Hungary, Croatia, Czech Republic: 
-//   Monthly
-// Please confirm these frequencies are accurate to 
-// actual operating schedule, or provide updated 
-// frequencies for each route.
+// Departure frequencies standardised to "Departures twice per month" per client request.
+// Bespoke routes (Transatlantic, UK-UK) use "By arrangement — contact us for scheduling".
 
 export interface Route {
   id: string;
@@ -38,7 +28,7 @@ export const ROUTES: Route[] = [
     originCode: "GB",
     destinationCode: "RS",
     slug: "uk-serbia",
-    departureFrequency: "Monthly departures",
+    departureFrequency: "Departures twice per month",
     shortDescription: "Safe and direct pet transport from the UK to Belgrade and surrounding areas.",
     pickupCities: ["London", "Birmingham", "Leeds", "Bristol", "Manchester"],
     typicalTravelTime: "Approximately 28–36 hours",
@@ -82,7 +72,7 @@ export const ROUTES: Route[] = [
     originCode: "GB",
     destinationCode: "HU",
     slug: "uk-hungary",
-    departureFrequency: "Monthly departures",
+    departureFrequency: "Departures twice per month",
     shortDescription: "Comfortable pet transport from the UK to Budapest and surrounding Hungarian cities.",
     pickupCities: ["London", "Birmingham", "Nottingham", "Coventry", "Manchester"],
     typicalTravelTime: "Approximately 26–34 hours",
@@ -104,7 +94,7 @@ export const ROUTES: Route[] = [
     originCode: "GB",
     destinationCode: "HR",
     slug: "uk-croatia",
-    departureFrequency: "Monthly departures",
+    departureFrequency: "Departures twice per month",
     shortDescription: "Pet transport from the UK to Zagreb, Split, and key Croatian cities.",
     pickupCities: ["London", "Birmingham", "Bristol", "Southampton", "Reading"],
     typicalTravelTime: "Approximately 30–38 hours",
@@ -126,15 +116,15 @@ export const ROUTES: Route[] = [
     originCode: "GB",
     destinationCode: "FR",
     slug: "uk-france",
-    departureFrequency: "Departures every two weeks",
-    shortDescription: "Regular departures every two weeks from the UK to Paris, Lyon, Marseille and across France.",
+    departureFrequency: "Departures twice per month",
+    shortDescription: "Regular twice-monthly departures from the UK to Paris, Lyon, Marseille and across France.",
     pickupCities: ["London", "Birmingham", "Leeds", "Bristol", "Southampton", "Cambridge", "Manchester"],
     typicalTravelTime: "Approximately 8–16 hours",
     priceFrom: 0,
     routeHighlights: [
       "Fastest European route available",
       "Eurotunnel or ferry crossing options",
-      "Departures every two weeks for flexibility",
+      "Departures twice per month for flexibility",
       "Most affordable European destination"
     ],
     isActive: true,
@@ -170,13 +160,13 @@ export const ROUTES: Route[] = [
     originCode: "GB",
     destinationCode: "DE",
     slug: "uk-germany",
-    departureFrequency: "Departures every two weeks",
+    departureFrequency: "Departures twice per month",
     shortDescription: "Regular service to Berlin, Munich, Hamburg, Frankfurt and across Germany.",
     pickupCities: ["London", "Birmingham", "Newcastle", "Edinburgh", "Leeds", "Manchester"],
     typicalTravelTime: "Approximately 14–20 hours",
     priceFrom: 0,
     routeHighlights: [
-      "Departures every two weeks for maximum flexibility",
+      "Departures twice per month for maximum flexibility",
       "Multiple German delivery cities",
       "EU pet passport compliance",
       "Via Belgium Eurotunnel corridor"
@@ -192,13 +182,13 @@ export const ROUTES: Route[] = [
     originCode: "GB",
     destinationCode: "NL",
     slug: "uk-netherlands",
-    departureFrequency: "Weekly departures",
-    shortDescription: "Frequent weekly service to Amsterdam, Rotterdam, The Hague and all Dutch cities.",
+    departureFrequency: "Departures twice per month",
+    shortDescription: "Regular twice-monthly service to Amsterdam, Rotterdam, The Hague and all Dutch cities.",
     pickupCities: ["London", "Birmingham", "Cambridge", "Norwich", "Leeds", "Manchester"],
     typicalTravelTime: "Approximately 6–10 hours",
     priceFrom: 0,
     routeHighlights: [
-      "Shortest international route — weekly service",
+      "Shortest international route — twice-monthly service",
       "Hook of Holland or Eurotunnel options",
       "Ideal for urgent pet relocations",
       "Dutch customs documentation included"
@@ -214,7 +204,7 @@ export const ROUTES: Route[] = [
     originCode: "GB",
     destinationCode: "CZ",
     slug: "uk-czech-republic",
-    departureFrequency: "Monthly departures",
+    departureFrequency: "Departures twice per month",
     shortDescription: "Pet transport to Prague, Brno, Ostrava and surrounding Czech regions.",
     pickupCities: ["London", "Birmingham", "Leeds", "Sheffield", "Nottingham", "Manchester"],
     typicalTravelTime: "Approximately 18–24 hours",
@@ -236,7 +226,7 @@ export const ROUTES: Route[] = [
     originCode: "GB",
     destinationCode: "GB",
     slug: "uk-uk",
-    departureFrequency: "Available on request",
+    departureFrequency: "By arrangement — contact us for scheduling",
     shortDescription: "Domestic UK pet transport for relocations, rehoming and breeder deliveries across England, Scotland and Wales.",
     pickupCities: ["London", "Birmingham", "Manchester", "Edinburgh", "Cardiff", "Bristol"],
     typicalTravelTime: "Varies by destination",
@@ -258,7 +248,7 @@ export const ROUTES: Route[] = [
     originCode: "GB",
     destinationCode: "US",
     slug: "transatlantic",
-    departureFrequency: "By arrangement",
+    departureFrequency: "By arrangement — contact us for scheduling",
     shortDescription: "Long-haul transatlantic pet transport with full documentation and handling support for USA and Canada destinations.",
     pickupCities: ["London Heathrow", "Manchester", "Edinburgh"],
     typicalTravelTime: "Varies by arrangement",

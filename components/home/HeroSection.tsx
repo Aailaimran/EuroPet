@@ -23,7 +23,7 @@ import {
 const badges = [
   'DEFRA Type 2\nAuthorised',
   'TRACES\nRegistered',
-  '18-Crate\nVehicle',
+  'Multiple\nVehicles',
   'Scheduled Eastern\nEurope Routes',
 ]
 
