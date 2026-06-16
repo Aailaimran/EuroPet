@@ -12,6 +12,7 @@ import Image from 'next/image'
 import type { Metadata } from 'next'
 import PageHero from '@/components/ui/PageHero'
 import VehicleSection from '@/components/home/VehicleSection'
+import ManifestoSection from '@/components/home/ManifestoSection'
 import { PET_IMAGES } from '@/lib/petImages'
 
 export const metadata: Metadata = {
@@ -24,27 +25,75 @@ export default function About() {
     <div>
       <PageHero title="About Euro Pet Express" subtitle="A dedicated, compliant, and compassionate pet transport service." />
 
+      {/* Change 2: Founder Story — FIRST section after PageHero */}
+      <section
+        id="founder-story"
+        className="bg-brand-cream py-16 md:py-24"
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto">
+
+            {/* Section label */}
+            <p className="text-brand-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">
+              Our Story
+            </p>
+
+            {/* Main heading */}
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-brand-dark mb-4">
+              Why Euro Pet Express Exists
+            </h2>
+
+            {/* Gold divider */}
+            <div className="w-16 h-0.5 bg-brand-gold mb-10" />
+
+            {/* Story paragraphs */}
+            <div className="space-y-6">
+
+              <p className="text-gray-600 text-lg leading-relaxed font-medium">
+                I&apos;ve been around dogs my whole life, and for the last 20 years I&apos;ve been moving them across Europe and into the UK.
+              </p>
+
+              <p className="text-gray-600 text-base leading-relaxed">
+                I&apos;ve seen puppies put on the road before they were ready. I&apos;ve seen vans packed too tight and journeys running too long with no proper stops. And gosh, I&apos;ve seen people taking paperwork for granted which gives troubles later. Consequently, I&apos;ve watched dogs arrive frightened and shut down, and watched people sign for them anyway, because there was money to be made and a schedule to keep.
+              </p>
+
+              <p className="text-gray-600 text-base leading-relaxed">
+                For years I told myself it was just how things were done. Then I decided I didn&apos;t want to be part of how things were done anymore.
+              </p>
+
+              <p className="text-brand-dark text-base leading-relaxed font-semibold border-l-4 border-brand-gold pl-5 py-2 bg-brand-gold/5 rounded-r-lg">
+                That&apos;s why Euro Pet Express exists. I know every shortcut in this trade, because I&apos;ve witnessed them firsthand. That&apos;s exactly why I can avoid them.
+              </p>
+
+              <p className="text-gray-600 text-base leading-relaxed">
+                When you hand us your dog, you&apos;re handing it to someone who spent 20 years learning what not to do, and built a company to prove there&apos;s a better way.
+              </p>
+
+            </div>
+
+            {/* Founder attribution */}
+            <div className="mt-10 flex items-center gap-4 pt-8 border-t border-gray-200">
+              <div className="w-12 h-0.5 bg-brand-gold" />
+              <div>
+                <p className="font-playfair text-xl font-bold text-brand-dark">
+                  Tarik
+                </p>
+                <p className="text-brand-gold text-sm font-semibold uppercase tracking-wider mt-0.5">
+                  Founder, Euro Pet Express
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      {/* Change 3: Manifesto Section — after Founder Story */}
+      <ManifestoSection />
+
       <section className="py-16 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
           <div>
-            <h3 className="font-display text-2xl text-navy font-bold mb-4">Our Story</h3>
-            <p className="text-gray-700 mb-4">Euro Pet Express was founded with a single purpose: to provide safe, compliant, and stress-free transport for pets travelling between Europe and the United Kingdom. We understand that your pet is family — and we treat every animal in our care with the same respect and attention we would give our own.</p>
-            <p className="text-gray-700 mb-6">Our service is fully DEFRA Type 2 Authorised, TRACES NT Registered, and operates in full compliance with UK and EU animal welfare transport legislation.</p>
-            {/* TODO — CONFIRM WITH CLIENT: 
-            1) Confirm exact number of years of experience 
-               (currently using "decades" as a safe interim term 
-               instead of "30+ years" since the business itself 
-               is newly registered).
-            2) Confirm founder's name and preferred spelling 
-               (Tarik or Taz) to personalise this section, 
-               e.g. "Founded by [Name], a dog-industry 
-               professional with [X]+ years of hands-on 
-               experience."
-            3) Once confirmed, update wording to: 
-               "Founded by a dog-industry professional with 
-               [X]+ years of hands-on experience." */}
-            <p className="text-gray-700 mb-6">Euro Pet Express was founded by a dog-industry professional with extensive hands-on experience in animal care and handling, bringing decades of expertise to every journey we manage.</p>
-
             {/* Story image */}
             <div className="relative h-64 rounded-xl overflow-hidden border border-gray-200 shadow-sm">
               <Image
@@ -136,7 +185,7 @@ export default function About() {
                 },
                 {
                   title: 'Regular Photo & Video Updates Throughout the Journey',
-                  desc: 'Stay connected throughout your pet\'s journey with regular photo and video updates sent directly via WhatsApp.'
+                  desc: "Stay connected throughout your pet's journey with regular photo and video updates sent directly via WhatsApp."
                 },
                 {
                   title: 'Founder-Led',

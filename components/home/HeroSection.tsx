@@ -2,30 +2,18 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { ShieldCheck, Clock, PawPrint } from 'lucide-react'
+import { Shield, Star, Truck, Globe, Clock, ArrowRight, PawPrint } from 'lucide-react'
 import { PET_IMAGES } from '@/lib/petImages'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
 import MeshGradient from '@/components/ui/MeshGradient'
 import FloatingOrbs from '@/components/ui/FloatingOrbs'
-import SplitText from '@/components/ui/SplitText'
 import MagneticButton from '@/components/ui/MagneticButton'
 import {
   fadeUpVariant,
-  fadeUpFastVariant,
-  scaleInVariant,
   slideInRightVariant,
-  staggerContainerVariant,
   easeOutExpo,
-  springSnappy,
 } from '@/lib/motion'
-
-const badges = [
-  'DEFRA Type 2\nAuthorised',
-  'TRACES\nRegistered',
-  'Multiple\nVehicles',
-  'Scheduled Eastern\nEurope Routes',
-]
 
 export default function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
@@ -81,56 +69,26 @@ export default function HeroSection() {
               DEFRA Authorised Transport
             </motion.span>
 
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-2 text-white">
-              <SplitText text="Premium Pet Transport" delay={0.3} />
-            </h1>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] mb-6 text-gold">
-              <SplitText text="Between the UK and Europe" delay={0.7} />
+            {/* 1A: Updated headline */}
+            <h1 className="font-playfair font-bold text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
+              <span className="text-white block">
+                Your dog is family.
+              </span>
+              <span className="text-brand-gold block mt-2">
+                Every journey treats it that way.
+              </span>
             </h1>
 
-            <motion.p
-              variants={fadeUpVariant}
-              initial="hidden"
-              animate="visible"
-              transition={{ delay: 1.0 }}
-              className="text-gray-300 text-lg leading-relaxed mb-10 max-w-lg"
-            >
-              DEFRA authorised long-distance journeys supporting rescues, breeders, shelters and private owners across 9 European destinations including Romania, Serbia, Germany, France and beyond.
-            </motion.p>
-
-            {/* Trust Badges */}
-            <motion.div
-              variants={staggerContainerVariant}
-              initial="hidden"
-              animate="visible"
-              custom={{ delayChildren: 1.2 }}
-              className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10"
-            >
-              {badges.map((badge, i) => (
-                <motion.div
-                  key={i}
-                  variants={scaleInVariant}
-                  transition={{ delay: 1.2 + i * 0.1 }}
-                  whileHover={{ scale: 1.05 }}
-                  className="flex flex-col items-center text-center gap-2 p-3 rounded-xl border border-gold/15 bg-white/[0.04] backdrop-blur-xl"
-                  style={{ boxShadow: '0 2px 12px rgba(201, 168, 76, 0.1)' }}
-                >
-                  <motion.div
-                    whileHover={{ scale: 1.2, transition: springSnappy }}
-                    className="w-8 h-8 rounded-full bg-gold/10 flex items-center justify-center"
-                  >
-                    <ShieldCheck className="w-4 h-4 text-gold" />
-                  </motion.div>
-                  <span className="text-white text-[10px] font-medium leading-tight whitespace-pre-line">{badge}</span>
-                </motion.div>
-              ))}
-            </motion.div>
+            {/* 1B: Updated subheadline */}
+            <p className="text-gray-300 text-lg leading-relaxed mb-8 max-w-xl">
+              Euro Pet Express was founded by someone who spent twenty years moving dogs across Europe the way this industry does it, and decided it had to be done better. Welfare first. Paperwork right. No corners cut, ever.
+            </p>
 
             {/* CTAs */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.5, ease: easeOutExpo }}
+              transition={{ duration: 0.6, delay: 1.0, ease: easeOutExpo }}
               className="flex flex-col sm:flex-row gap-4"
             >
               <MagneticButton>
@@ -158,11 +116,105 @@ export default function HeroSection() {
             <motion.div
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 1.7, ease: easeOutExpo }}
+              transition={{ duration: 0.5, delay: 1.2, ease: easeOutExpo }}
               className="flex items-center gap-2 text-gray-400 text-sm mt-6"
             >
               <Clock className="w-4 h-4" />
               Typical response time: within 12–24 hours
+            </motion.div>
+
+            {/* 1C: Trust Badge Strip — below CTAs */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.4, ease: easeOutExpo }}
+              className="mt-8 pt-6 border-t border-white/10"
+            >
+              <div className="flex flex-wrap items-center gap-6 md:gap-8">
+
+                {/* Badge 1 */}
+                <div className="flex items-center gap-2">
+                  <Shield className="w-4 h-4 text-brand-gold shrink-0" />
+                  <div>
+                    <p className="text-white text-xs font-semibold leading-tight">
+                      DEFRA Type 2
+                    </p>
+                    <p className="text-gray-400 text-[10px] leading-tight">
+                      Authorised
+                    </p>
+                  </div>
+                </div>
+
+                {/* Divider */}
+                <div className="hidden md:block w-px h-8 bg-white/10" />
+
+                {/* Badge 2 */}
+                <div className="flex items-center gap-2">
+                  <Star className="w-4 h-4 text-brand-gold shrink-0" />
+                  <div>
+                    <p className="text-white text-xs font-semibold leading-tight">
+                      TRACES NT
+                    </p>
+                    <p className="text-gray-400 text-[10px] leading-tight">
+                      Registered
+                    </p>
+                  </div>
+                </div>
+
+                {/* Divider */}
+                <div className="hidden md:block w-px h-8 bg-white/10" />
+
+                {/* Badge 3 */}
+                <div className="flex items-center gap-2">
+                  <Truck className="w-4 h-4 text-brand-gold shrink-0" />
+                  <div>
+                    <p className="text-white text-xs font-semibold leading-tight">
+                      Multiple
+                    </p>
+                    <p className="text-gray-400 text-[10px] leading-tight">
+                      Vehicles
+                    </p>
+                  </div>
+                </div>
+
+                {/* Divider */}
+                <div className="hidden md:block w-px h-8 bg-white/10" />
+
+                {/* Badge 4 */}
+                <div className="flex items-center gap-2">
+                  <Globe className="w-4 h-4 text-brand-gold shrink-0" />
+                  <div>
+                    <p className="text-white text-xs font-semibold leading-tight">
+                      9+ European
+                    </p>
+                    <p className="text-gray-400 text-[10px] leading-tight">
+                      Destinations
+                    </p>
+                  </div>
+                </div>
+
+              </div>
+            </motion.div>
+
+            {/* 1D: Founder teaser */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 1.6, ease: easeOutExpo }}
+              className="mt-6 flex items-start gap-3"
+            >
+              <div className="w-0.5 h-12 bg-brand-gold/40 shrink-0 mt-1" />
+              <div>
+                <p className="text-gray-400 text-sm leading-relaxed italic max-w-sm">
+                  &ldquo;I&apos;ve been around dogs my whole life, and for the last 20 years I&apos;ve been moving them across Europe and into the UK.&rdquo;
+                </p>
+                <a
+                  href="/about#founder-story"
+                  className="text-brand-gold text-xs font-semibold uppercase tracking-wider hover:underline mt-2 inline-flex items-center gap-1"
+                >
+                  Read our story <ArrowRight className="w-3 h-3" />
+                </a>
+              </div>
             </motion.div>
           </div>
 

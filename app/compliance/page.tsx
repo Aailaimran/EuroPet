@@ -11,6 +11,35 @@ export default function Compliance() {
     <div>
       <PageHero title="Licensing & Compliance" subtitle="Fully authorised. Fully regulated. Fully transparent." />
 
+      {/* Change 4: Founder statement — between PageHero and first compliance block */}
+      <div className="bg-brand-dark">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 md:py-14">
+          <div className="max-w-3xl mx-auto">
+            <div className="flex items-start gap-5 p-8 rounded-2xl border border-brand-gold/20 bg-brand-gold/5">
+
+              {/* Quote mark decoration */}
+              <div className="flex-shrink-0 font-playfair text-5xl text-brand-gold/30 font-bold leading-none mt-[-8px]">
+                &ldquo;
+              </div>
+
+              {/* Statement */}
+              <div>
+                <p className="font-playfair text-xl md:text-2xl text-white font-medium leading-relaxed italic">
+                  We&apos;re not compliant just because a regulator told us to. We&apos;re compliant because we&apos;ve seen, up close, what happens when people aren&apos;t.
+                </p>
+                <div className="flex items-center gap-3 mt-5">
+                  <div className="w-8 h-0.5 bg-brand-gold" />
+                  <p className="text-brand-gold text-sm font-semibold uppercase tracking-wider">
+                    Tarik, Founder
+                  </p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
       <section className="py-16 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
           <div className="bg-white border-l-4 border-gold rounded-xl p-6">

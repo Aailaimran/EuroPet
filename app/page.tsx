@@ -9,6 +9,7 @@ export const metadata: Metadata = {
 import HeroSection from '@/components/home/HeroSection'
 import TrustBar from '@/components/home/TrustBar'
 import RoutesSection from '@/components/home/RoutesSection'
+import ManifestoSection from '@/components/home/ManifestoSection'
 import VehicleSection from '@/components/home/VehicleSection'
 import CtaStrip from '@/components/home/CtaStrip'
 import { ROUTES } from '@/lib/routesData'
@@ -64,6 +65,10 @@ export default function HomePage() {
       </section>
 
       {/* PetGallery section temporarily removed — awaiting real customer photos and testimonials from client to replace stock imagery */}
+
+      {/* Manifesto section — NEW */}
+      <ManifestoSection />
+
       <VehicleSection />
       <CtaStrip />
     </>
