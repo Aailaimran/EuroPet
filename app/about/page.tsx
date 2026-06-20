@@ -101,7 +101,7 @@ export default function About() {
               "areaServed": [
                 "United Kingdom",
                 "Romania",
-                "Serbia", 
+                "Serbia",
                 "Hungary",
                 "Croatia",
                 "France",
@@ -324,8 +324,8 @@ export default function About() {
               <div className="w-16 h-0.5 bg-brand-gold mb-10" />
 
               {/* Story paragraphs */}
-              <article 
-                itemScope 
+              <article
+                itemScope
                 itemType="https://schema.org/Article"
                 className="space-y-6"
               >
@@ -355,8 +355,8 @@ export default function About() {
               </article>
 
               {/* Founder attribution line */}
-              <div 
-                itemScope 
+              <div
+                itemScope
                 itemType="https://schema.org/Person"
                 className="mt-10 pt-8 border-t border-gray-200"
               >
@@ -369,7 +369,7 @@ export default function About() {
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-0.5 bg-brand-gold" />
                   <p className="text-gray-400 text-sm italic">
-                    Founder&apos;s personal account
+                    Tarik, Founder
                   </p>
                 </div>
               </div>
@@ -438,7 +438,7 @@ export default function About() {
                   desc: (
                     <>
                       Fully authorised Type 2 long-journey pet transporter — certified under{' '}
-                      <a 
+                      <a
                         href="https://www.gov.uk/guidance/moving-pets-to-great-britain"
                         target="_blank"
                         rel="noopener noreferrer"
@@ -476,12 +476,12 @@ export default function About() {
 
           <div className="space-y-4">
             {[
-              { 
-                q: 'What documents does my pet need to travel?', 
+              {
+                q: 'What documents does my pet need to travel?',
                 a: (
                   <>
                     All pets (dogs, cats, and ferrets) entering Great Britain must have a valid microchip, an up-to-date rabies vaccination administered after microchipping, and an Animal Health Certificate (AHC) or valid pet passport issued by an official vet within the required timeframe before travel. Dogs entering Great Britain also require a tapeworm treatment administered 24–120 hours before arrival — this requirement does not currently apply to cats or ferrets. Euro Pet Express will guide you through the exact requirements for your specific pet and route when you request a quote. For full official guidance, visit the{' '}
-                    <a 
+                    <a
                       href="https://www.gov.uk/bring-pet-to-great-britain"
                       target="_blank"
                       rel="noopener noreferrer"
