@@ -11,7 +11,6 @@
 import Image from 'next/image'
 import type { Metadata } from 'next'
 import PageHero from '@/components/ui/PageHero'
-import VehicleSection from '@/components/home/VehicleSection'
 import ManifestoSection from '@/components/home/ManifestoSection'
 import { PET_IMAGES } from '@/lib/petImages'
 import PhotoCarousel from '@/components/ui/PhotoCarousel'
@@ -153,10 +152,6 @@ export default function About() {
           </div>
 
         </div>
-      </section>
-
-      <section id="vehicle">
-        <VehicleSection />
       </section>
 
       <section id="welfare" className="py-16 bg-white">
