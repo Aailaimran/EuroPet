@@ -197,16 +197,6 @@ export default function PhotoCarousel() {
         ))}
       </div>
 
-      {/* Auto-play indicator */}
-      {!isPaused && (
-        <div className="flex items-center justify-center gap-2 mt-3">
-          <div className="w-1 h-1 rounded-full bg-brand-gold/50 animate-pulse" />
-          <p className="text-gray-400 text-xs">
-            Auto-advancing • Hover to pause
-          </p>
-        </div>
-      )}
-
     </div>
   )
 }

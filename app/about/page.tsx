@@ -51,7 +51,7 @@ export default function About() {
 
                 {/* Gold accent corner decoration */}
                 <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-brand-gold/40 rounded-br-2xl pointer-events-none" />
-                
+
                 <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-brand-gold/40 rounded-tl-2xl pointer-events-none" />
 
                 {/* Founder name badge overlaid at bottom */}
@@ -140,10 +140,6 @@ export default function About() {
               Life at Euro Pet Express
             </h2>
             <div className="w-16 h-0.5 bg-brand-gold mx-auto mb-4" />
-            <p className="text-gray-500 text-base max-w-xl mx-auto">
-              Real journeys. Real pets. Real care.
-              A look behind the scenes at how we work.
-            </p>
           </div>
 
           {/* Photo carousel */}
