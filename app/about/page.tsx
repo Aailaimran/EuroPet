@@ -14,6 +14,10 @@ import PageHero from '@/components/ui/PageHero'
 import VehicleSection from '@/components/home/VehicleSection'
 import ManifestoSection from '@/components/home/ManifestoSection'
 import { PET_IMAGES } from '@/lib/petImages'
+import PhotoCarousel from '@/components/ui/PhotoCarousel'
+import { User } from 'lucide-react'
+import fs from 'fs'
+import path from 'path'
 
 export const metadata: Metadata = {
   title: 'About Us | Euro Pet Express',
@@ -21,6 +25,10 @@ export const metadata: Metadata = {
 }
 
 export default function About() {
+  const founderPhotoExists = fs.existsSync(
+    path.join(process.cwd(), 'public/images/about/tarik.jpg')
+  )
+
   return (
     <div>
       <PageHero title="About Euro Pet Express" subtitle="A dedicated, compliant, and compassionate pet transport service." />
@@ -31,57 +39,110 @@ export default function About() {
         className="bg-brand-cream py-16 md:py-24"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 items-start">
 
-            {/* Section label */}
-            <p className="text-brand-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">
-              Our Story
-            </p>
+            {/* Left column — Founder photo */}
+            <div className="lg:col-span-1">
+              <div className="relative">
 
-            {/* Main heading */}
-            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-brand-dark mb-4">
-              Why Euro Pet Express Exists
-            </h2>
+                {/* Main founder photo */}
+                {founderPhotoExists ? (
+                  <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border border-brand-gold/20">
+                    <Image
+                      src="/images/about/tarik.jpg"
+                      alt="Tarik — Founder of Euro Pet Express"
+                      fill
+                      className="object-cover object-top"
+                      sizes="(max-width: 1024px) 100vw, 33vw"
+                    />
+                  </div>
+                ) : (
+                  <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border border-brand-gold/20 bg-brand-darkSecondary flex flex-col items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-brand-gold/20 border-2 border-brand-gold/30 flex items-center justify-center mb-4">
+                      <User className="w-8 h-8 text-brand-gold/60" />
+                    </div>
+                    <p className="text-gray-500 text-sm text-center px-4">
+                      Founder photo coming soon
+                    </p>
+                  </div>
+                )}
 
-            {/* Gold divider */}
-            <div className="w-16 h-0.5 bg-brand-gold mb-10" />
+                {/* Gold accent corner decoration */}
+                <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-brand-gold/40 rounded-br-2xl pointer-events-none" />
+                
+                <div className="absolute -top-4 -left-4 w-24 h-24 border-t-2 border-l-2 border-brand-gold/40 rounded-tl-2xl pointer-events-none" />
 
-            {/* Story paragraphs */}
-            <div className="space-y-6">
+                {/* Founder name badge overlaid at bottom */}
+                <div className="absolute bottom-4 left-4 right-4 bg-brand-dark/85 backdrop-blur-sm rounded-xl p-4 border border-brand-gold/20">
+                  <p className="font-playfair text-white font-bold text-lg">
+                    Tarik
+                  </p>
+                  <p className="text-brand-gold text-xs font-semibold uppercase tracking-wider mt-0.5">
+                    Founder, Euro Pet Express
+                  </p>
+                </div>
 
-              <p className="text-gray-600 text-lg leading-relaxed font-medium">
-                I&apos;ve been around dogs my whole life, and for the last 20 years I&apos;ve been moving them across Europe and into the UK.
-              </p>
+              </div>
 
-              <p className="text-gray-600 text-base leading-relaxed">
-                I&apos;ve seen puppies put on the road before they were ready. I&apos;ve seen vans packed too tight and journeys running too long with no proper stops. And gosh, I&apos;ve seen people taking paperwork for granted which gives troubles later. Consequently, I&apos;ve watched dogs arrive frightened and shut down, and watched people sign for them anyway, because there was money to be made and a schedule to keep.
-              </p>
-
-              <p className="text-gray-600 text-base leading-relaxed">
-                For years I told myself it was just how things were done. Then I decided I didn&apos;t want to be part of how things were done anymore.
-              </p>
-
-              <p className="text-brand-dark text-base leading-relaxed font-semibold border-l-4 border-brand-gold pl-5 py-2 bg-brand-gold/5 rounded-r-lg">
-                That&apos;s why Euro Pet Express exists. I know every shortcut in this trade, because I&apos;ve witnessed them firsthand. That&apos;s exactly why I can avoid them.
-              </p>
-
-              <p className="text-gray-600 text-base leading-relaxed">
-                When you hand us your dog, you&apos;re handing it to someone who spent 20 years learning what not to do, and built a company to prove there&apos;s a better way.
-              </p>
+              {/* TODO: Replace /images/about/tarik.jpg 
+                  with real founder photo when provided.
+                  Photo should be portrait orientation 
+                  (taller than wide) for best fit.
+                  Store at: public/images/about/tarik.jpg */}
 
             </div>
 
-            {/* Founder attribution */}
-            <div className="mt-10 flex items-center gap-4 pt-8 border-t border-gray-200">
-              <div className="w-12 h-0.5 bg-brand-gold" />
-              <div>
-                <p className="font-playfair text-xl font-bold text-brand-dark">
-                  Tarik
+            {/* Right column — Story text */}
+            <div className="lg:col-span-2">
+
+              {/* Section label */}
+              <p className="text-brand-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">
+                Our Story
+              </p>
+
+              {/* Main heading */}
+              <h2 className="font-playfair text-3xl md:text-4xl font-bold text-brand-dark mb-4">
+                Why Euro Pet Express Exists
+              </h2>
+
+              {/* Gold divider */}
+              <div className="w-16 h-0.5 bg-brand-gold mb-10" />
+
+              {/* Story paragraphs */}
+              <div className="space-y-6">
+
+                <p className="text-gray-600 text-lg leading-relaxed font-medium">
+                  I&apos;ve been around dogs my whole life, and for the last 20 years I&apos;ve been moving them across Europe and into the UK.
                 </p>
-                <p className="text-brand-gold text-sm font-semibold uppercase tracking-wider mt-0.5">
-                  Founder, Euro Pet Express
+
+                <p className="text-gray-600 text-base leading-relaxed">
+                  I&apos;ve seen puppies put on the road before they were ready. I&apos;ve seen vans packed too tight and journeys running too long with no proper stops. And gosh, I&apos;ve seen people taking paperwork for granted which gives troubles later. Consequently, I&apos;ve watched dogs arrive frightened and shut down, and watched people sign for them anyway, because there was money to be made and a schedule to keep.
                 </p>
+
+                <p className="text-gray-600 text-base leading-relaxed">
+                  For years I told myself it was just how things were done. Then I decided I didn&apos;t want to be part of how things were done anymore.
+                </p>
+
+                <p className="text-brand-dark text-base leading-relaxed font-semibold border-l-4 border-brand-gold pl-5 py-2 bg-brand-gold/5 rounded-r-lg">
+                  That&apos;s why Euro Pet Express exists. I know every shortcut in this trade, because I&apos;ve witnessed them firsthand. That&apos;s exactly why I can avoid them.
+                </p>
+
+                <p className="text-gray-600 text-base leading-relaxed">
+                  When you hand us your dog, you&apos;re handing it to someone who spent 20 years learning what not to do, and built a company to prove there&apos;s a better way.
+                </p>
+
               </div>
+
+              {/* Founder attribution line */}
+              <div className="mt-10 pt-8 border-t border-gray-200">
+                <div className="flex items-center gap-3">
+                  <div className="w-12 h-0.5 bg-brand-gold" />
+                  <p className="text-gray-400 text-sm italic">
+                    Founder&apos;s personal account
+                  </p>
+                </div>
+              </div>
+
             </div>
 
           </div>
@@ -91,59 +152,39 @@ export default function About() {
       {/* Change 3: Manifesto Section — after Founder Story */}
       <ManifestoSection />
 
-      <section className="py-16 bg-off-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-          <div>
-            {/* Story image */}
-            <div className="relative h-64 rounded-xl overflow-hidden border border-gray-200 shadow-sm">
-              <Image
-                src={PET_IMAGES.dogFamily}
-                alt="Happy dog family — the reason we do what we do"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent" />
-            </div>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            {/* TODO — CONFIRM WITH CLIENT: 
-            1) Confirm exact number of years of experience 
-               (currently using "decades" as a safe interim term 
-               instead of "30+ years" since the business itself 
-               is newly registered).
-            2) Confirm founder's name and preferred spelling 
-               (Tarik or Taz) to personalise this section, 
-               e.g. "Founded by [Name], a dog-industry 
-               professional with [X]+ years of hands-on 
-               experience."
-            3) Once confirmed, update wording to: 
-               "Founded by a dog-industry professional with 
-               [X]+ years of hands-on experience." */}
-            {[
-              { stat: 'Europe-Wide', label: 'Coverage' },
-              { stat: 'Founder-Led', label: 'Decades of hands-on dog-industry experience' },
-              { stat: '100%', label: 'DEFRA Compliant' },
-              { stat: 'Updates', label: 'Regular Photo & Video Updates via WhatsApp' },
-            ].map((item) => (
-              <div key={item.label} className="bg-navy text-white rounded-xl p-6 text-center flex flex-col justify-center items-center">
-                <div className="font-display text-2xl sm:text-3xl text-gold font-bold">{item.stat}</div>
-                <div className="text-gray-400 text-xs leading-relaxed text-center mt-1 max-w-[120px] mx-auto">{item.label}</div>
-              </div>
-            ))}
+      <section className="bg-white py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            {/* Travel image */}
-            <div className="col-span-2 relative h-48 rounded-xl overflow-hidden border border-gray-200 shadow-sm mt-2">
-              <Image
-                src={PET_IMAGES.dogTravel}
-                alt="Dog travelling comfortably — safe journey with Euro Pet Express"
-                fill
-                sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-navy/30 to-transparent" />
-            </div>
+          {/* Section header */}
+          <div className="text-center mb-12">
+            <p className="text-brand-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3">
+              Our World
+            </p>
+            <h2 className="font-playfair text-3xl md:text-4xl font-bold text-brand-dark mb-4">
+              Life at Euro Pet Express
+            </h2>
+            <div className="w-16 h-0.5 bg-brand-gold mx-auto mb-4" />
+            <p className="text-gray-500 text-base max-w-xl mx-auto">
+              Real journeys. Real pets. Real care.
+              A look behind the scenes at how we work.
+            </p>
           </div>
+
+          {/* Photo carousel */}
+          <div className="max-w-4xl mx-auto">
+            <PhotoCarousel />
+          </div>
+
+          {/* Add photos CTA for client — 
+              remove this block once real 
+              photos are added */}
+          <p className="text-center text-gray-400 text-xs mt-6 italic">
+            Real photos coming soon — 
+            add your images to 
+            public/images/about/gallery-1.jpg 
+            through gallery-5.jpg
+          </p>
+
         </div>
       </section>
 
