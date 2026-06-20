@@ -14,27 +14,27 @@ interface CarouselImage {
 const CAROUSEL_IMAGES: CarouselImage[] = [
   {
     src: '/images/about/image1.jpg',
-    alt: 'Euro Pet Express — pet transport journey',
+    alt: 'Euro Pet Express — professional pet transport service UK to Europe',
     exists: true,
   },
   {
     src: '/images/about/image2.jpg',
-    alt: 'Euro Pet Express — happy pets in transport',
+    alt: 'Euro Pet Express — dogs safely transported in individual crates',
     exists: true,
   },
   {
     src: '/images/about/image3.jpg',
-    alt: 'Euro Pet Express — vehicle and operations',
+    alt: 'Euro Pet Express — DEFRA authorised transport vehicle for pet relocation',
     exists: true,
   },
   {
     src: '/images/about/image4.png',
-    alt: 'Euro Pet Express — team and care',
+    alt: 'Euro Pet Express — welfare-first pet transport with regular stops',
     exists: true,
   },
   {
     src: '/images/about/image5.png',
-    alt: 'Euro Pet Express — pets arriving safely',
+    alt: 'Euro Pet Express — trusted pet courier service UK Romania Serbia Germany',
     exists: true,
   },
 ]
