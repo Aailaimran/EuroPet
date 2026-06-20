@@ -15,9 +15,6 @@ import VehicleSection from '@/components/home/VehicleSection'
 import ManifestoSection from '@/components/home/ManifestoSection'
 import { PET_IMAGES } from '@/lib/petImages'
 import PhotoCarousel from '@/components/ui/PhotoCarousel'
-import { User } from 'lucide-react'
-import fs from 'fs'
-import path from 'path'
 
 export const metadata: Metadata = {
   title: 'About Us | Euro Pet Express',
@@ -25,10 +22,6 @@ export const metadata: Metadata = {
 }
 
 export default function About() {
-  const founderPhotoExists = fs.existsSync(
-    path.join(process.cwd(), 'public/images/about/tarik.jpg')
-  )
-
   return (
     <div>
       <PageHero title="About Euro Pet Express" subtitle="A dedicated, compliant, and compassionate pet transport service." />
@@ -46,26 +39,16 @@ export default function About() {
               <div className="relative">
 
                 {/* Main founder photo */}
-                {founderPhotoExists ? (
-                  <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border border-brand-gold/20">
-                    <Image
-                      src="/images/about/tarik.jpg"
-                      alt="Tarik — Founder of Euro Pet Express"
-                      fill
-                      className="object-cover object-top"
-                      sizes="(max-width: 1024px) 100vw, 33vw"
-                    />
-                  </div>
-                ) : (
-                  <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border border-brand-gold/20 bg-brand-darkSecondary flex flex-col items-center justify-center">
-                    <div className="w-16 h-16 rounded-full bg-brand-gold/20 border-2 border-brand-gold/30 flex items-center justify-center mb-4">
-                      <User className="w-8 h-8 text-brand-gold/60" />
-                    </div>
-                    <p className="text-gray-500 text-sm text-center px-4">
-                      Founder photo coming soon
-                    </p>
-                  </div>
-                )}
+                <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border border-brand-gold/20">
+                  <Image
+                    src="/images/about/owner.png"
+                    alt="Tarik — Founder of Euro Pet Express"
+                    fill
+                    className="object-cover object-top"
+                    sizes="(max-width: 1024px) 100vw, 33vw"
+                    priority={true}
+                  />
+                </div>
 
                 {/* Gold accent corner decoration */}
                 <div className="absolute -bottom-4 -right-4 w-24 h-24 border-b-2 border-r-2 border-brand-gold/40 rounded-br-2xl pointer-events-none" />
@@ -83,12 +66,6 @@ export default function About() {
                 </div>
 
               </div>
-
-              {/* TODO: Replace /images/about/tarik.jpg 
-                  with real founder photo when provided.
-                  Photo should be portrait orientation 
-                  (taller than wide) for best fit.
-                  Store at: public/images/about/tarik.jpg */}
 
             </div>
 
@@ -174,16 +151,6 @@ export default function About() {
           <div className="max-w-4xl mx-auto">
             <PhotoCarousel />
           </div>
-
-          {/* Add photos CTA for client — 
-              remove this block once real 
-              photos are added */}
-          <p className="text-center text-gray-400 text-xs mt-6 italic">
-            Real photos coming soon — 
-            add your images to 
-            public/images/about/gallery-1.jpg 
-            through gallery-5.jpg
-          </p>
 
         </div>
       </section>

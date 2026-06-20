@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight, ImageIcon } from 'lucide-react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface CarouselImage {
   src: string
@@ -13,27 +13,27 @@ interface CarouselImage {
 
 const CAROUSEL_IMAGES: CarouselImage[] = [
   {
-    src: '/images/about/gallery-1.jpg',
+    src: '/images/about/image1.jpg',
     alt: 'Euro Pet Express — pet transport journey',
     exists: true,
   },
   {
-    src: '/images/about/gallery-2.jpg',
+    src: '/images/about/image2.jpg',
     alt: 'Euro Pet Express — happy pets in transport',
     exists: true,
   },
   {
-    src: '/images/about/gallery-3.jpg',
-    alt: 'Euro Pet Express — vehicle and facilities',
+    src: '/images/about/image3.jpg',
+    alt: 'Euro Pet Express — vehicle and operations',
     exists: true,
   },
   {
-    src: '/images/about/gallery-4.jpg',
-    alt: 'Euro Pet Express — team and operations',
+    src: '/images/about/image4.png',
+    alt: 'Euro Pet Express — team and care',
     exists: true,
   },
   {
-    src: '/images/about/gallery-5.jpg',
+    src: '/images/about/image5.png',
     alt: 'Euro Pet Express — pets arriving safely',
     exists: true,
   },
@@ -138,14 +138,6 @@ export default function PhotoCarousel() {
             }}
             className="absolute inset-0"
           >
-            {/* 
-              PLACEHOLDER STATE — shows when image 
-              file does not exist yet.
-              Replace this with actual Image component 
-              once real photos are added to:
-              public/images/about/gallery-1.jpg through
-              public/images/about/gallery-5.jpg
-            */}
             <div className="relative w-full h-full">
               <Image
                 src={currentImage.src}
@@ -153,29 +145,9 @@ export default function PhotoCarousel() {
                 fill
                 className="object-cover object-center"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 70vw"
-                onError={(e) => {
-                  // If image fails to load, 
-                  // show placeholder
-                  const target = e.target as HTMLImageElement
-                  target.style.display = 'none'
-                }}
+                priority={currentIndex === 0}
               />
             </div>
-
-            {/* Placeholder shown when no image */}
-            <div className="absolute inset-0 flex flex-col items-center justify-center bg-brand-darkSecondary -z-10">
-              <ImageIcon className="w-16 h-16 text-brand-gold/30 mb-4" />
-              <p className="text-gray-500 text-sm text-center px-8">
-                Photo {currentIndex + 1} of 5
-              </p>
-              <p className="text-gray-600 text-xs text-center px-8 mt-2">
-                Add photos to:
-              </p>
-              <code className="text-brand-gold/50 text-xs mt-1 text-center px-8">
-                public/images/about/gallery-{currentIndex + 1}.jpg
-              </code>
-            </div>
-
           </motion.div>
         </AnimatePresence>
 
@@ -234,31 +206,6 @@ export default function PhotoCarousel() {
           </p>
         </div>
       )}
-
-      {/* Photo naming guide for client */}
-      {/* 
-        TODO — ADD REAL PHOTOS:
-        Save 5 photos to these exact paths:
-          public/images/about/gallery-1.jpg
-          public/images/about/gallery-2.jpg
-          public/images/about/gallery-3.jpg
-          public/images/about/gallery-4.jpg
-          public/images/about/gallery-5.jpg
-        
-        Recommended photo subjects:
-          gallery-1: Tarik with dogs / team photo
-          gallery-2: Dogs in transport crates
-          gallery-3: The Euro Pet Express vehicle
-          gallery-4: Dogs arriving / happy reunion
-          gallery-5: European transport route / 
-                     border crossing
-        
-        Recommended dimensions:
-          Width:  1200px minimum
-          Height: 800px minimum
-          Format: JPG, quality 80%
-          Max size: 500KB each
-      */}
 
     </div>
   )
