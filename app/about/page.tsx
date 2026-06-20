@@ -307,7 +307,7 @@ export default function About() {
             <div className="lg:col-span-2">
 
               <p className="text-brand-gold text-sm font-medium leading-relaxed mb-6 border-l-2 border-brand-gold/30 pl-4">
-                Euro Pet Express is a DEFRA Type 2 authorised pet transport service operating scheduled routes between the United Kingdom and destinations across Europe — including Romania, Serbia, Hungary, Croatia, France, Spain, Germany, the Netherlands, and Czech Republic. We transport dogs, cats, ferrets, and small animals with welfare, documentation, and transparency at the centre of everything we do.
+                Euro Pet Express is a DEFRA Type 2 authorised pet transport service operating scheduled routes between the United Kingdom and destinations across Europe. We transport dogs, cats, ferrets, and small animals with welfare, documentation, and transparency at the centre of everything we do.
               </p>
 
               {/* Section label */}
