@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Shield, Star, Truck, Globe, Clock, ArrowRight, PawPrint } from 'lucide-react'
+import { Clock, ArrowRight, PawPrint } from 'lucide-react'
 import { PET_IMAGES } from '@/lib/petImages'
 import { motion, useScroll, useTransform } from 'framer-motion'
 import { useRef } from 'react'
@@ -123,78 +123,7 @@ export default function HeroSection() {
               Typical response time: within 12–24 hours
             </motion.div>
 
-            {/* 1C: Trust Badge Strip — below CTAs */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 1.4, ease: easeOutExpo }}
-              className="mt-8 pt-6 border-t border-white/10"
-            >
-              <div className="flex flex-wrap items-center gap-6 md:gap-8">
-
-                {/* Badge 1 */}
-                <div className="flex items-center gap-2">
-                  <Shield className="w-4 h-4 text-brand-gold shrink-0" />
-                  <div>
-                    <p className="text-white text-xs font-semibold leading-tight">
-                      DEFRA Type 2
-                    </p>
-                    <p className="text-gray-400 text-[10px] leading-tight">
-                      Authorised
-                    </p>
-                  </div>
-                </div>
-
-                {/* Divider */}
-                <div className="hidden md:block w-px h-8 bg-white/10" />
-
-                {/* Badge 2 */}
-                <div className="flex items-center gap-2">
-                  <Star className="w-4 h-4 text-brand-gold shrink-0" />
-                  <div>
-                    <p className="text-white text-xs font-semibold leading-tight">
-                      TRACES NT
-                    </p>
-                    <p className="text-gray-400 text-[10px] leading-tight">
-                      Registered
-                    </p>
-                  </div>
-                </div>
-
-                {/* Divider */}
-                <div className="hidden md:block w-px h-8 bg-white/10" />
-
-                {/* Badge 3 */}
-                <div className="flex items-center gap-2">
-                  <Truck className="w-4 h-4 text-brand-gold shrink-0" />
-                  <div>
-                    <p className="text-white text-xs font-semibold leading-tight">
-                      Multiple
-                    </p>
-                    <p className="text-gray-400 text-[10px] leading-tight">
-                      Vehicles
-                    </p>
-                  </div>
-                </div>
-
-                {/* Divider */}
-                <div className="hidden md:block w-px h-8 bg-white/10" />
-
-                {/* Badge 4 */}
-                <div className="flex items-center gap-2">
-                  <Globe className="w-4 h-4 text-brand-gold shrink-0" />
-                  <div>
-                    <p className="text-white text-xs font-semibold leading-tight">
-                      9+ European
-                    </p>
-                    <p className="text-gray-400 text-[10px] leading-tight">
-                      Destinations
-                    </p>
-                  </div>
-                </div>
-
-              </div>
-            </motion.div>
+            {/* Trust badge strip removed — content covered by TrustBar component below hero */}
 
             {/* 1D: Founder teaser */}
             <motion.div

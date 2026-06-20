@@ -47,7 +47,7 @@ export default function Services() {
       title: 'Documentation Assistance',
       desc: 'Navigating UK pet import rules post-Brexit is complex. We guide owners and organisations through the required paperwork.',
       features: ['TRACES NT movement document guidance', 'Health certificate requirements', 'Rabies vaccination timing', 'Tapeworm treatment guidance'],
-      image: PET_IMAGES.dogSmall,
+      image: PET_IMAGES.assistanceDoc,
     },
     {
       title: 'Bespoke Pet Transport',

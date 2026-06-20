@@ -28,4 +28,6 @@ export const PET_IMAGES = {
 
   dogCute3: "https://images.unsplash.com/photo-1543466835-00a7907e9de1?w=400&q=80",
   // dog outside
+
+  assistanceDoc: "/images/assistanceDoc.jpg",
 };
