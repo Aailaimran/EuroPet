@@ -422,51 +422,6 @@ export default function About() {
               </div>
             ))}
           </div>
-
-          <div className="mt-16 bg-brand-dark rounded-2xl p-8 border border-brand-gold/20">
-            <p className="text-brand-gold text-xs uppercase tracking-widest font-semibold mb-6 text-center">
-              Our Standards
-            </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-              {[
-                {
-                  title: 'Animal First Aid Trained',
-                  desc: 'All drivers certified in animal first aid and welfare response'
-                },
-                {
-                  title: 'DEFRA Authorised',
-                  desc: (
-                    <>
-                      Fully authorised Type 2 long-journey pet transporter — certified under{' '}
-                      <a
-                        href="https://www.gov.uk/guidance/moving-pets-to-great-britain"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-brand-gold hover:underline"
-                      >
-                        UK Government pet travel regulations
-                      </a>
-                    </>
-                  )
-                },
-                {
-                  title: 'Regular Photo & Video Updates Throughout the Journey',
-                  desc: "Stay connected throughout your pet's journey with regular photo and video updates sent directly via WhatsApp."
-                },
-                {
-                  title: 'Founder-Led',
-                  desc: 'Decades of hands-on dog-industry experience'
-                },
-              ].map((item) => (
-                <div key={item.title} className="text-center p-4 rounded-xl bg-white/5 border border-white/10">
-                  <div className="w-2 h-2 rounded-full bg-brand-gold mx-auto mb-3" />
-                  <p className="text-white text-sm font-semibold mb-2">{item.title}</p>
-                  <div className="text-gray-400 text-xs leading-relaxed">{item.desc}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
         </div>
       </section>
 
