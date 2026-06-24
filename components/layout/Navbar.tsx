@@ -44,24 +44,25 @@ export default function Navbar() {
           : 'bg-transparent border-b border-transparent'
         }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full py-3">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full py-1">
 
         {/* Logo */}
         <Link href="/" className="flex-shrink-0 flex items-center" data-cursor="hover">
           <Image
             src="/Logo.png"
             alt="Euro Pet Express"
-            width={300}
-            height={200}
+            width={400}
+            height={260}
             priority={true}
             quality={100}
-            className="object-contain"
+            className="object-contain block"
             style={{
-              height: '110px',
-              width: 'auto',
-              minHeight: '110px',
-              maxHeight: '110px',
-              minWidth: '80px',
+              height: 'clamp(80px, 10vw, 130px)',
+              width: 'clamp(120px, 15vw, 200px)',
+              minHeight: '80px',
+              maxHeight: '130px',
+              minWidth: '120px',
+              maxWidth: '200px',
               display: 'block',
             }}
           />
