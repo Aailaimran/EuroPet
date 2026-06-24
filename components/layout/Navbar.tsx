@@ -40,8 +40,8 @@ export default function Navbar() {
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 transform-gpu ${scrolled
-          ? 'bg-brand-dark/95 backdrop-blur-md shadow-lg border-b border-white/10'
-          : 'bg-transparent border-b border-transparent'
+        ? 'bg-brand-dark/95 backdrop-blur-md shadow-lg border-b border-white/10'
+        : 'bg-transparent border-b border-transparent'
         }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full py-1">
@@ -51,16 +51,16 @@ export default function Navbar() {
           <Image
             src="/Logo.png"
             alt="Euro Pet Express"
-            width={400}
-            height={260}
+            width={600}
+            height={360}
             priority={true}
             quality={100}
             className="object-contain block"
             style={{
-              height: 'clamp(80px, 10vw, 130px)',
-              width: 'clamp(120px, 15vw, 200px)',
-              minHeight: '80px',
-              maxHeight: '130px',
+              height: 'clamp(80px, 10vw, 230px)',
+              width: 'clamp(120px, 15vw, 300px)',
+              minHeight: '130px',
+              maxHeight: '230px',
               minWidth: '120px',
               maxWidth: '200px',
               display: 'block',
