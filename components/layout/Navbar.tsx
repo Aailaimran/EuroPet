@@ -49,7 +49,7 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex-shrink-0 flex items-center" data-cursor="hover">
           <Image
-            src="/Logo.png"
+            src="/logo.png"
             alt="Euro Pet Express"
             width={600}
             height={360}
