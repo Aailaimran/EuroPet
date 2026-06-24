@@ -39,22 +39,31 @@ export default function Navbar() {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 flex items-center transition-all duration-300 transform-gpu ${scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 transform-gpu ${scrolled
           ? 'bg-brand-dark/95 backdrop-blur-md shadow-lg border-b border-white/10'
           : 'bg-transparent border-b border-transparent'
         }`}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full py-2 md:py-2">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full py-3">
 
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0" data-cursor="hover">
+        <Link href="/" className="flex-shrink-0 flex items-center" data-cursor="hover">
           <Image
             src="/Logo.png"
             alt="Euro Pet Express"
-            width={160}
-            height={100}
+            width={300}
+            height={200}
             priority={true}
-            className="object-contain w-auto h-[56px] md:h-[64px] lg:h-[72px]"
+            quality={100}
+            className="object-contain"
+            style={{
+              height: '110px',
+              width: 'auto',
+              minHeight: '110px',
+              maxHeight: '110px',
+              minWidth: '80px',
+              display: 'block',
+            }}
           />
         </Link>
 
