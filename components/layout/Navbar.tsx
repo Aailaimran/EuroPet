@@ -39,25 +39,22 @@ export default function Navbar() {
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 flex items-center transition-all duration-300 transform-gpu ${
-        scrolled 
-          ? 'bg-brand-dark/95 backdrop-blur-md shadow-lg border-b border-white/10' 
+      className={`fixed top-0 left-0 right-0 z-50 flex items-center transition-all duration-300 transform-gpu ${scrolled
+          ? 'bg-brand-dark/95 backdrop-blur-md shadow-lg border-b border-white/10'
           : 'bg-transparent border-b border-transparent'
-      }`}
+        }`}
     >
-      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between transition-all duration-300 w-full ${
-        scrolled ? 'py-2 md:py-3' : 'py-3 md:py-4'
-      }`}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full py-2 md:py-2">
 
         {/* Logo */}
         <Link href="/" className="flex-shrink-0" data-cursor="hover">
           <Image
-            src="/logo.png"
+            src="/Logo.png"
             alt="Euro Pet Express"
-            width={180}
-            height={120}
+            width={160}
+            height={100}
             priority={true}
-            className="object-contain w-auto h-[65px] md:h-[75px] lg:h-[85px]"
+            className="object-contain w-auto h-[56px] md:h-[64px] lg:h-[72px]"
           />
         </Link>
 
@@ -76,9 +73,8 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   data-cursor="hover"
-                  className={`relative text-xs font-medium uppercase tracking-wider px-3 py-2 rounded transition-colors duration-200 block group ${
-                    isActive ? 'text-brand-gold' : 'text-white hover:text-brand-gold'
-                  }`}
+                  className={`relative text-xs font-medium uppercase tracking-wider px-3 py-2 rounded transition-colors duration-200 block group ${isActive ? 'text-brand-gold' : 'text-white hover:text-brand-gold'
+                    }`}
                 >
                   {link.label}
                   <motion.div
@@ -134,9 +130,8 @@ export default function Navbar() {
                   <motion.div key={link.href} variants={fadeUpFastVariant}>
                     <Link
                       href={link.href}
-                      className={`block py-3 px-2 border-b border-white/10 text-sm uppercase tracking-wider font-medium transition-colors ${
-                        isActive ? 'text-brand-gold' : 'text-white hover:text-brand-gold'
-                      }`}
+                      className={`block py-3 px-2 border-b border-white/10 text-sm uppercase tracking-wider font-medium transition-colors ${isActive ? 'text-brand-gold' : 'text-white hover:text-brand-gold'
+                        }`}
                     >
                       {link.label}
                     </Link>
