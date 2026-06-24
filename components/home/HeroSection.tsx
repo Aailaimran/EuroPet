@@ -157,7 +157,7 @@ export default function HeroSection() {
           >
             <motion.div
               style={{ y: imageY }}
-              className="relative w-full h-[500px] rounded-2xl border-2 border-gold/20 overflow-hidden bg-navy-light gpu"
+              className="relative w-full h-auto aspect-[837/601] rounded-2xl border-2 border-gold/20 overflow-hidden bg-navy-light gpu"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.6, ease: easeOutExpo }}
               data-cursor="view"
@@ -167,7 +167,7 @@ export default function HeroSection() {
                 style={{ boxShadow: 'var(--shadow-gold)' }}
               />
               <Image
-                src={PET_IMAGES.hero}
+                src="/images/heroimage.png"
                 alt="Happy golden retriever travelling safely with Euro Pet Express"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
@@ -175,22 +175,6 @@ export default function HeroSection() {
                 priority
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-transparent" />
-
-              {/* Floating glassmorphism badge */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.8, duration: 0.6, ease: easeOutExpo }}
-                className="absolute bottom-6 left-6 right-6 flex justify-center"
-              >
-                <div className="bg-white/10 backdrop-blur-xl border border-white/20 rounded-xl px-5 py-3 flex items-center gap-3 shadow-lg">
-                  <PawPrint className="w-6 h-6 text-gold flex-shrink-0" />
-                  <div>
-                    <p className="text-white text-sm font-semibold">Safe &amp; Comfortable</p>
-                    <p className="text-gray-300 text-xs">Climate-controlled • Individual crates</p>
-                  </div>
-                </div>
-              </motion.div>
             </motion.div>
           </motion.div>
         </div>
