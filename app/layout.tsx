@@ -23,6 +23,15 @@ export const metadata = {
   title: 'Euro Pet Express | Premium Pet Transport UK & Europe',
   description: 'DEFRA authorised premium pet transport between the UK and Europe. Safe, compliant, scheduled departures for dogs, cats and small animals across Romania, Serbia, Germany, France and 9+ destinations. Owner accompanied travel available.',
   keywords: 'premium pet transport UK Europe, pet transport Romania UK, DEFRA authorised pet transport, cat transport Europe, dog transport Europe, pet courier UK, bespoke pet transport',
+  icons: {
+    icon: [
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', type: 'image/png' },
+    ],
+    shortcut: '/icon.png',
+  },
 }
 
 export const viewport = {
@@ -34,6 +43,11 @@ export const viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/apple-icon.png" />
+        <link rel="shortcut icon" href="/icon.png" />
+      </head>
       <body className="font-sans antialiased bg-off-white text-navy flex flex-col min-h-screen">
         <SmoothScrollProvider>
           <ScrollProgress />
