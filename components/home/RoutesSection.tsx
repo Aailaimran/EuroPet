@@ -3,23 +3,19 @@
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
+import { staggerContainerVariant, fadeUpVariant, cardVariant, easeOutExpo } from '@/lib/motion'
+import CountryFlag from '@/components/CountryFlag'
 import SplitText from '@/components/ui/SplitText'
-import RouteCard from '@/components/ui/RouteCard'
-import { ROUTES, Route } from '@/lib/routesData'
-import {
-  fadeUpVariant,
-  staggerContainerVariant,
-  easeOutExpo,
-} from '@/lib/motion'
+import { ROUTES } from '@/lib/routesData'
 
-interface RoutesSectionProps {
-  routes?: Route[]
-}
+const POA_SLUGS = ['transatlantic', 'uk-uk']
 
-export default function RoutesSection({ routes = ROUTES }: RoutesSectionProps) {
+export default function RoutesSection() {
   const { ref, isInView } = useScrollAnimation()
 
-  const activeRoutes = routes.filter(r => r.isActive).sort((a, b) => a.displayOrder - b.displayOrder)
+  const activeRoutes = ROUTES
+    .filter(r => r.isActive)
+    .sort((a, b) => a.displayOrder - b.displayOrder)
 
   return (
     <section className="relative bg-off-white py-20 overflow-hidden">
@@ -34,6 +30,8 @@ export default function RoutesSection({ routes = ROUTES }: RoutesSectionProps) {
       />
 
       <div ref={ref} className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+        {/* Section header — kept identical to original */}
         <div className="text-center mb-14">
           <h2 className="font-display text-navy text-3xl md:text-4xl font-bold uppercase tracking-wider mb-3">
             <SplitText text="Our Routes" />
@@ -54,45 +52,92 @@ export default function RoutesSection({ routes = ROUTES }: RoutesSectionProps) {
           </motion.p>
         </div>
 
+        {/* Clean minimal route rows — 2-column grid */}
         <motion.div
           variants={staggerContainerVariant}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 gap-3 md:gap-4 mb-10 md:mb-12"
         >
-          {activeRoutes.slice(0, 4).map((route: Route, index: number) => (
-            <RouteCard key={route.id} route={route} index={index} />
+          {activeRoutes.map((route) => (
+            <motion.div
+              key={route.id}
+              variants={cardVariant}
+              className="flex items-center gap-4 p-4 md:p-5 rounded-xl border border-gray-100 bg-white hover:border-brand-gold/40 hover:bg-brand-gold/[0.02] hover:shadow-md transition-all duration-200 group"
+            >
+              {/* Flags */}
+              <div className="flex items-center gap-2 flex-shrink-0">
+                <CountryFlag
+                  countryCode="GB"
+                  className="w-7 h-auto rounded-sm shadow-sm"
+                />
+                <span className="text-gray-300 text-sm font-light">→</span>
+                <CountryFlag
+                  countryCode={route.destinationCode}
+                  className="w-7 h-auto rounded-sm shadow-sm"
+                />
+              </div>
+
+              {/* Route name + frequency */}
+              <div className="flex-1 min-w-0">
+                <p className="font-display font-bold text-brand-dark text-sm md:text-base truncate">
+                  {route.name}
+                </p>
+                <p className="text-gray-400 text-xs mt-0.5">
+                  {route.departureFrequency}
+                </p>
+              </div>
+
+              {/* Status indicator */}
+              <div className="flex-shrink-0">
+                {POA_SLUGS.includes(route.slug) ? (
+                  <span className="text-brand-gold text-[10px] font-bold uppercase tracking-wider bg-brand-gold/10 px-2 py-0.5 rounded-full border border-brand-gold/30 whitespace-nowrap">
+                    POA
+                  </span>
+                ) : (
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-2 h-2 rounded-full bg-green-400 shadow-sm shadow-green-400/50" />
+                    <span className="text-gray-400 text-[10px] uppercase tracking-wider hidden sm:block">
+                      Active
+                    </span>
+                  </div>
+                )}
+              </div>
+            </motion.div>
           ))}
         </motion.div>
 
-        {/* View All Routes Button */}
-        <div className="flex justify-center mt-10">
+        {/* Single CTA */}
+        <motion.div
+          variants={fadeUpVariant}
+          initial="hidden"
+          animate={isInView ? 'visible' : 'hidden'}
+          className="flex flex-col items-center gap-3"
+        >
           <Link
             href="/routes"
-            className="inline-flex items-center gap-2 
-            bg-brand-gold text-brand-dark font-bold 
-            text-sm px-8 py-4 rounded-lg 
-            hover:bg-brand-goldHover transition-colors 
-            uppercase tracking-wider shadow-md
-            hover:shadow-lg hover:scale-105 
-            transition-all duration-200"
+            className="inline-flex items-center gap-3 bg-brand-gold text-brand-dark font-bold text-sm px-10 py-4 rounded-xl hover:bg-brand-goldHover transition-all duration-200 uppercase tracking-widest shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
           >
-            View All Routes
-            <svg 
-              className="w-4 h-4" 
-              fill="none" 
-              stroke="currentColor" 
+            View Details
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
               viewBox="0 0 24 24"
             >
-              <path 
-                strokeLinecap="round" 
-                strokeLinejoin="round" 
-                strokeWidth={2} 
-                d="M17 8l4 4m0 0l-4 4m4-4H3" 
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M17 8l4 4m0 0l-4 4m4-4H3"
               />
             </svg>
           </Link>
-        </div>
+          <p className="text-gray-400 text-xs text-center">
+            Full route details, pickup cities and scheduling available on the routes page
+          </p>
+        </motion.div>
+
       </div>
     </section>
   )

@@ -12,14 +12,13 @@ import RoutesSection from '@/components/home/RoutesSection'
 import ManifestoSection from '@/components/home/ManifestoSection'
 import VehicleSection from '@/components/home/VehicleSection'
 import CtaStrip from '@/components/home/CtaStrip'
-import { ROUTES } from '@/lib/routesData'
 
 export default function HomePage() {
   return (
     <>
       <HeroSection />
       <TrustBar />
-      <RoutesSection routes={ROUTES} />
+      <RoutesSection />
 
       {/* UPCOMING DEPARTURES SECTION */}
       <section className="bg-white py-20">
