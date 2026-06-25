@@ -26,24 +26,24 @@ export default function RouteCard({ route, index }: RouteCardProps) {
         y: -8,
         transition: springGentle,
       }}
-      className="flex h-full flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-[0_16px_40px_rgba(10,22,40,0.08)]"
+      className="bg-white rounded-2xl border border-gray-200 shadow-sm hover:shadow-lg hover:border-brand-gold transition-all duration-300 overflow-hidden flex flex-col w-full"
     >
-      <div className="relative flex flex-col items-center justify-center gap-2 py-6 px-4 overflow-hidden bg-gradient-to-br from-navy via-navy-light to-[#15253f]">
+      <div className="bg-brand-dark p-5 md:p-6 relative flex flex-col items-center justify-center gap-2 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(201,168,76,0.18),transparent_55%)]" />
         <div className="relative z-10 flex items-center gap-4">
           <CountryFlag countryCode={route.originCode} className="w-12 h-auto rounded shadow-lg ring-1 ring-white/15" />
           <ArrowRight className="w-5 h-5 text-brand-gold" />
           <CountryFlag countryCode={route.destinationCode} className="w-12 h-auto rounded shadow-lg ring-1 ring-white/15" />
         </div>
-        <h3 className="relative z-10 font-display text-xl font-bold text-white text-center mt-1 leading-tight">
+        <h3 className="relative z-10 font-display text-base md:text-lg font-bold text-white text-center mt-1 leading-tight">
           {route.name}
         </h3>
-        <p className="relative z-10 text-[11px] font-semibold uppercase tracking-[0.2em] text-brand-gold">
+        <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold">
           {route.departureFrequency}
         </p>
       </div>
 
-      <div className="flex flex-1 flex-col p-6">
+      <div className="p-5 md:p-6 flex flex-col flex-1">
         <p className="text-sm leading-relaxed text-gray-600">
           {route.shortDescription}
         </p>
@@ -59,7 +59,7 @@ export default function RouteCard({ route, index }: RouteCardProps) {
           </div>
           <div className="flex flex-wrap gap-2">
             {route.pickupCities.map((city) => (
-              <span key={city} className="rounded-full border border-gray-200 bg-[#F8F6F1] px-2.5 py-1 text-[11px] text-gray-600">
+              <span key={city} className="rounded-full border border-gray-200 bg-[#F8F6F1] px-2.5 py-1 text-xs md:text-sm text-gray-600">
                 {city}
               </span>
             ))}
@@ -81,7 +81,7 @@ export default function RouteCard({ route, index }: RouteCardProps) {
           <Link
             href={`/contact?route=${route.slug}`}
             data-cursor="hover"
-            className="block w-full rounded bg-navy py-3 text-center text-sm font-semibold tracking-wide text-white transition-all hover:bg-gold hover:text-navy"
+            className="block w-full rounded bg-navy py-3 text-center text-xs font-semibold uppercase tracking-wider text-white transition-all hover:bg-gold hover:text-navy"
           >
             Request Quote
           </Link>

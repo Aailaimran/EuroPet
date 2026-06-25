@@ -56,10 +56,10 @@ export default function HeroSection() {
 
       {/* Layer 6: All hero content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-[80vh] py-24 pt-32">
+        <div className="flex flex-col-reverse lg:grid lg:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh] py-24 pt-32">
 
           {/* Left Content */}
-          <div className="max-w-xl">
+          <div className="w-full max-w-xl">
             <motion.span
               initial={{ opacity: 0, y: 20, scale: 0.9 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
@@ -153,11 +153,11 @@ export default function HeroSection() {
             initial="hidden"
             animate="visible"
             transition={{ delay: 0.5 }}
-            className="hidden lg:block"
+            className="w-full relative"
           >
             <motion.div
               style={{ y: imageY }}
-              className="relative w-full h-auto aspect-[837/601] rounded-2xl border-2 border-gold/20 overflow-hidden bg-navy-light gpu"
+              className="relative w-full h-64 sm:h-80 md:h-96 lg:h-full min-h-[250px] lg:min-h-[500px] rounded-2xl border-2 border-gold/20 overflow-hidden bg-navy-light gpu"
               whileHover={{ scale: 1.02 }}
               transition={{ duration: 0.6, ease: easeOutExpo }}
               data-cursor="view"
@@ -171,10 +171,21 @@ export default function HeroSection() {
                 alt="Happy golden retriever travelling safely with Euro Pet Express"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
-                priority
+                className="object-cover object-center"
+                priority={true}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-navy/40 via-transparent to-transparent" />
+
+              {/* Floating glassmorphism badge */}
+              <div
+                className="absolute bottom-4 left-4 z-20 bg-brand-dark/80 backdrop-blur-sm rounded-xl px-3 py-2 md:px-4 md:py-3 border border-brand-gold/20 flex items-center gap-2 md:gap-3"
+              >
+                <PawPrint className="w-4 h-4 md:w-5 md:h-5 text-brand-gold shrink-0" />
+                <div>
+                  <p className="text-white text-xs md:text-sm font-semibold">Safe &amp; Comfortable</p>
+                  <p className="text-gray-300 text-[10px] md:text-xs">Climate-controlled • Individual crates</p>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         </div>

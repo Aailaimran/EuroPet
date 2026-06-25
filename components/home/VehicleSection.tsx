@@ -3,12 +3,11 @@
 'use client'
 
 import { CheckCircle2, PawPrint } from 'lucide-react'
-import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
-import SplitText from '@/components/ui/SplitText'
 import MagneticButton from '@/components/ui/MagneticButton'
+import VanCarousel from '@/components/home/VanCarousel'
 import {
   slideInLeftVariant,
   slideInRightVariant,
@@ -53,9 +52,6 @@ export default function VehicleSection() {
             animate={isInView ? 'visible' : 'hidden'}
             className="lg:col-span-4"
           >
-            <h2 className="font-display text-white text-2xl font-bold mb-4">
-              <SplitText text="Purpose-Built for Long Journeys" />
-            </h2>
             <motion.p
               variants={fadeUpVariant}
               initial="hidden"
@@ -103,31 +99,14 @@ export default function VehicleSection() {
             </div>
           </motion.div>
 
-          {/* Centre — Van placeholder */}
+          {/* Centre — Van Carousel */}
           <motion.div
             variants={fadeUpVariant}
             initial="hidden"
             animate={isInView ? 'visible' : 'hidden'}
-            className="lg:col-span-4 flex items-center justify-center"
+            className="lg:col-span-4 flex items-center justify-center w-full"
           >
-            {/* TODO: Replace with actual Euro Pet Express van photograph when provided by client */}
-            <motion.div
-              whileHover={{ scale: 1.03, transition: springSnappy }}
-              className="relative rounded-2xl w-full overflow-hidden border border-brand-gold/20 shadow-2xl"
-            >
-              <Image
-                src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80"
-                alt="Professional pet transport vehicle"
-                width={600}
-                height={400}
-                className="w-full h-auto object-cover"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-brand-dark/80 to-transparent p-4">
-                <p className="text-gray-300 text-xs text-center italic">
-                  Our purpose-built pet transport vehicle
-                </p>
-              </div>
-            </motion.div>
+            <VanCarousel />
           </motion.div>
 
           {/* Right — Welfare Box */}
