@@ -27,6 +27,7 @@ export default function Navbar() {
     { label: 'Home', href: '/' },
     { label: 'Routes & Schedule', href: '/routes' },
     { label: 'Our Services', href: '/services' },
+    { label: 'Rescue a Dog', href: '/rescue' },
     { label: 'About Us', href: '/about' },
     { label: 'Licensing & Compliance', href: '/compliance' },
   ]

@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { CheckCircle2, Clock, ArrowRight } from 'lucide-react'
+import { CheckCircle2, Clock, ArrowLeftRight } from 'lucide-react'
 import CountryFlag from '@/components/CountryFlag'
 import MagneticButton from '@/components/ui/MagneticButton'
 import { cardVariant, springGentle } from '@/lib/motion'
@@ -32,13 +32,17 @@ export default function RouteCard({ route, index }: RouteCardProps) {
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(201,168,76,0.18),transparent_55%)]" />
         <div className="relative z-10 flex items-center gap-4">
           <CountryFlag countryCode={route.originCode} className="w-12 h-auto rounded shadow-lg ring-1 ring-white/15" />
-          <ArrowRight className="w-5 h-5 text-brand-gold" />
+          <ArrowLeftRight className="w-5 h-5 text-brand-gold" />
           <CountryFlag countryCode={route.destinationCode} className="w-12 h-auto rounded shadow-lg ring-1 ring-white/15" />
         </div>
         <h3 className="relative z-10 font-display text-base md:text-lg font-bold text-white text-center mt-1 leading-tight">
           {route.name}
         </h3>
-        <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold">
+        <span className="relative z-10 inline-flex items-center gap-1 text-[10px] text-brand-gold uppercase tracking-wider font-semibold bg-brand-gold/10 px-2 py-0.5 rounded-full border border-brand-gold/20 mt-1">
+          <ArrowLeftRight className="w-3 h-3" />
+          Both directions available
+        </span>
+        <p className="relative z-10 text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold mt-1">
           {route.departureFrequency}
         </p>
       </div>

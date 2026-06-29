@@ -30,7 +30,7 @@ export default function Compliance() {
                 <div className="flex items-center gap-3 mt-5">
                   <div className="w-8 h-0.5 bg-brand-gold" />
                   <p className="text-brand-gold text-sm font-semibold uppercase tracking-wider">
-                    Tarik, Founder
+                    David, Founder
                   </p>
                 </div>
               </div>

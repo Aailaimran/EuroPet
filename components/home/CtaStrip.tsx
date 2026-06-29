@@ -63,12 +63,12 @@ export default function CtaStrip() {
             <motion.div variants={fadeUpFastVariant}>
               <MagneticButton>
                 <a
-                  href="tel:+447853147342"
+                  href="tel:+441524959304"
                   data-cursor="hover"
                   className="border border-white/30 text-white px-6 py-3.5 rounded hover:bg-white/10 transition-colors uppercase tracking-wider text-xs flex items-center gap-2"
                 >
                   <Phone className="w-4 h-4" />
-                  +44 7853 147342
+                  +44 1524 959304
                 </a>
               </MagneticButton>
             </motion.div>

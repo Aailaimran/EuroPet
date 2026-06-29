@@ -17,12 +17,12 @@ import PhotoCarousel from '@/components/ui/PhotoCarousel'
 import Script from 'next/script'
 
 export const metadata: Metadata = {
-  title: 'About Euro Pet Express | DEFRA Authorised Pet Transport Founded by Tarik',
-  description: 'Euro Pet Express was founded by Tarik, a 20-year dog transport professional who decided the industry had to be done better. DEFRA authorised pet transport between the UK and Europe. Welfare first. Paperwork right. No corners cut.',
+  title: 'About Euro Pet Express | DEFRA Authorised Pet Transport Founded by David',
+  description: 'Euro Pet Express was founded by David, a 20-year dog transport professional who decided the industry had to be done better. DEFRA authorised pet transport between the UK and Europe. Welfare first. Paperwork right. No corners cut.',
   keywords: 'Euro Pet Express about, DEFRA authorised pet transport, pet transport UK Europe, dog transport founder, trusted pet courier UK, animal welfare transport, pet transport Romania UK Serbia Germany France',
   openGraph: {
     title: 'About Euro Pet Express | DEFRA Authorised Pet Transport',
-    description: 'Founded by Tarik — 20 years of professional dog transport experience. We built Euro Pet Express to prove there is a better way. DEFRA authorised. Welfare first.',
+    description: 'Founded by David — 20 years of professional dog transport experience. We built Euro Pet Express to prove there is a better way. DEFRA authorised. Welfare first.',
     url: 'https://europetexpress.co.uk/about',
     siteName: 'Euro Pet Express',
     images: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: 'https://europetexpress.co.uk/images/about/owner.png',
         width: 1200,
         height: 630,
-        alt: 'Tarik — Founder of Euro Pet Express, DEFRA Authorised Pet Transport',
+        alt: 'David — Founder of Euro Pet Express, DEFRA Authorised Pet Transport',
       },
     ],
     locale: 'en_GB',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'About Euro Pet Express | DEFRA Authorised Pet Transport',
-    description: 'Founded by Tarik — 20 years of professional dog transport experience. Welfare first. Paperwork right. No corners cut.',
+    description: 'Founded by David — 20 years of professional dog transport experience. Welfare first. Paperwork right. No corners cut.',
     images: [
       'https://europetexpress.co.uk/images/about/owner.png'
     ],
@@ -78,7 +78,7 @@ export default function About() {
               "foundingDate": "2023",
               "founder": {
                 "@type": "Person",
-                "name": "Tarik",
+                "name": "David",
                 "jobTitle": "Founder",
                 "description": "20-year dog transport industry professional who founded Euro Pet Express to provide welfare-first pet transport between the UK and Europe."
               },
@@ -146,7 +146,7 @@ export default function About() {
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "Person",
-              "name": "Tarik",
+              "name": "David",
               "jobTitle": "Founder",
               "worksFor": {
                 "@type": "Organization",
@@ -276,7 +276,7 @@ export default function About() {
                 <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border border-brand-gold/20">
                   <Image
                     src="/images/about/owner.png"
-                    alt="Tarik, Founder of Euro Pet Express — DEFRA authorised pet transport UK Europe"
+                    alt="David, Founder of Euro Pet Express — DEFRA authorised pet transport UK Europe"
                     fill
                     className="object-cover object-top"
                     sizes="(max-width: 1024px) 100vw, 33vw"
@@ -292,7 +292,7 @@ export default function About() {
                 {/* Founder name badge overlaid at bottom */}
                 <div className="absolute bottom-4 left-4 right-4 bg-brand-dark/85 backdrop-blur-sm rounded-xl p-4 border border-brand-gold/20">
                   <p className="font-playfair text-white font-bold text-lg">
-                    Tarik
+                    David
                   </p>
                   <p className="text-brand-gold text-xs font-semibold uppercase tracking-wider mt-0.5">
                     Founder, Euro Pet Express
@@ -329,7 +329,7 @@ export default function About() {
                 itemType="https://schema.org/Article"
                 className="space-y-6"
               >
-                <meta itemProp="author" content="Tarik" />
+                <meta itemProp="author" content="David" />
                 <meta itemProp="publisher" content="Euro Pet Express" />
 
                 <p className="text-gray-600 text-lg leading-relaxed font-medium">
@@ -361,7 +361,7 @@ export default function About() {
                 className="mt-10 pt-8 border-t border-gray-200"
               >
                 <span itemProp="name" className="sr-only">
-                  Tarik
+                  David
                 </span>
                 <span itemProp="jobTitle" className="sr-only">
                   Founder, Euro Pet Express
@@ -369,7 +369,7 @@ export default function About() {
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-0.5 bg-brand-gold" />
                   <p className="text-gray-400 text-sm italic">
-                    Tarik, Founder
+                    David, Founder
                   </p>
                 </div>
               </div>

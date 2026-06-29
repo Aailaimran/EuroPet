@@ -22,7 +22,7 @@ export interface Route {
 export const ROUTES: Route[] = [
   {
     id: "uk-serbia",
-    name: "UK → Serbia",
+    name: "UK ↔ Serbia",
     originCountry: "United Kingdom",
     destinationCountry: "Serbia",
     originCode: "GB",
@@ -44,7 +44,7 @@ export const ROUTES: Route[] = [
   },
   {
     id: "uk-romania",
-    name: "UK → Romania",
+    name: "UK ↔ Romania",
     originCountry: "United Kingdom",
     destinationCountry: "Romania",
     originCode: "GB",
@@ -66,7 +66,7 @@ export const ROUTES: Route[] = [
   },
   {
     id: "uk-hungary",
-    name: "UK → Hungary",
+    name: "UK ↔ Hungary",
     originCountry: "United Kingdom",
     destinationCountry: "Hungary",
     originCode: "GB",
@@ -88,7 +88,7 @@ export const ROUTES: Route[] = [
   },
   {
     id: "uk-croatia",
-    name: "UK → Croatia",
+    name: "UK ↔ Croatia",
     originCountry: "United Kingdom",
     destinationCountry: "Croatia",
     originCode: "GB",
@@ -110,7 +110,7 @@ export const ROUTES: Route[] = [
   },
   {
     id: "uk-france",
-    name: "UK → France",
+    name: "UK ↔ France",
     originCountry: "United Kingdom",
     destinationCountry: "France",
     originCode: "GB",
@@ -132,7 +132,7 @@ export const ROUTES: Route[] = [
   },
   {
     id: "uk-spain",
-    name: "UK → Spain",
+    name: "UK ↔ Spain",
     originCountry: "United Kingdom",
     destinationCountry: "Spain",
     originCode: "GB",
@@ -154,7 +154,7 @@ export const ROUTES: Route[] = [
   },
   {
     id: "uk-germany",
-    name: "UK → Germany",
+    name: "UK ↔ Germany",
     originCountry: "United Kingdom",
     destinationCountry: "Germany",
     originCode: "GB",
@@ -176,7 +176,7 @@ export const ROUTES: Route[] = [
   },
   {
     id: "uk-netherlands",
-    name: "UK → Netherlands",
+    name: "UK ↔ Netherlands",
     originCountry: "United Kingdom",
     destinationCountry: "Netherlands",
     originCode: "GB",
@@ -198,7 +198,7 @@ export const ROUTES: Route[] = [
   },
   {
     id: "uk-czech-republic",
-    name: "UK → Czech Republic",
+    name: "UK ↔ Czech Republic",
     originCountry: "United Kingdom",
     destinationCountry: "Czech Republic",
     originCode: "GB",

@@ -233,7 +233,9 @@ export default function Footer() {
               {[
                 { label: 'About Us', href: '/about' },
                 { label: 'Our Vehicle', href: '/about#vehicle' },
-                { label: 'Animal Welfare', href: '/about#welfare' },
+                { label: 'Our Services', href: '/services' },
+                { label: 'Rescue a Dog', href: '/rescue' },
+                { label: 'Animal Welfare', href: '/compliance#welfare' },
                 { label: 'Licensing & Compliance', href: '/compliance' },
                 { label: 'Privacy Policy', href: '/privacy' },
               ].map(l => (
@@ -248,10 +250,10 @@ export default function Footer() {
             <ul className="space-y-2">
               {[
                 { label: 'All Routes', href: '/routes' },
-                { label: 'UK → Romania', href: '/routes#uk-romania' },
-                { label: 'UK → Serbia', href: '/routes#uk-serbia' },
-                { label: 'UK → Germany', href: '/routes#uk-germany' },
-                { label: 'UK → France', href: '/routes#uk-france' },
+                { label: 'UK ↔ Romania', href: '/routes#uk-romania' },
+                { label: 'UK ↔ Serbia', href: '/routes#uk-serbia' },
+                { label: 'UK ↔ Germany', href: '/routes#uk-germany' },
+                { label: 'UK ↔ France', href: '/routes#uk-france' },
                 { label: 'More Routes', href: '/routes' },
               ].map(l => (
                 <FooterLink key={l.label} label={l.label} href={l.href} />
@@ -263,9 +265,12 @@ export default function Footer() {
           <motion.div variants={cardVariant} className="flex flex-col">
             <h4 className="text-brand-gold text-xs tracking-widest uppercase font-semibold mb-4">GET IN TOUCH</h4>
             <div className="space-y-2 mb-4">
-              <a href="tel:+447853147342" className="text-gray-400 hover:text-brand-gold transition-colors text-sm flex items-center gap-2">
-                <Phone size={14} className="text-gray-400" />
-                +44 7853 147342
+              <a
+                href="tel:+441524959304"
+                className="text-gray-400 hover:text-brand-gold transition-colors text-sm flex items-center gap-2"
+              >
+                <Phone size={14} className="text-gray-400 shrink-0" />
+                +44 1524 959304
               </a>
               <a href="mailto:info@europetexpress.co.uk" className="text-gray-400 hover:text-brand-gold transition-colors text-sm flex items-center gap-2">
                 <Mail size={14} className="text-gray-400" />

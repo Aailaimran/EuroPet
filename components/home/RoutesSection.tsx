@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { ArrowLeftRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useScrollAnimation } from '@/hooks/useScrollAnimation'
 import { staggerContainerVariant, fadeUpVariant, cardVariant, easeOutExpo } from '@/lib/motion'
@@ -71,7 +72,7 @@ export default function RoutesSection() {
                   countryCode="GB"
                   className="w-7 h-auto rounded-sm shadow-sm"
                 />
-                <span className="text-gray-300 text-sm font-light">→</span>
+                <ArrowLeftRight className="w-4 h-4 text-brand-gold flex-shrink-0" />
                 <CountryFlag
                   countryCode={route.destinationCode}
                   className="w-7 h-auto rounded-sm shadow-sm"

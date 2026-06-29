@@ -101,7 +101,7 @@ export default function Contact() {
                 <h4 className="font-display text-lg font-bold mb-4">Other Ways to Reach Us</h4>
                 <div className="text-gold font-semibold flex items-center gap-2">
                   <Phone className="w-4 h-4 shrink-0" />
-                  <a href="tel:+447853147342" className="hover:underline">+44 7853 147342</a>
+                  <a href="tel:+441524959304" className="hover:underline">+44 1524 959304</a>
                 </div>
                 <div className="text-gray-400 text-sm">Mon–Sat, 8am–8pm UK time</div>
 
