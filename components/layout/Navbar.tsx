@@ -18,7 +18,10 @@ export default function Navbar() {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
     }
-    window.addEventListener('scroll', handleScroll)
+    // passive: true is CRITICAL for iOS performance.
+    // Without it, Safari holds the main thread during scroll,
+    // causing page-wide freezing and unresponsive UI.
+    window.addEventListener('scroll', handleScroll, { passive: true })
     handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
@@ -37,6 +40,25 @@ export default function Navbar() {
     setOpen(false)
   }, [pathname])
 
+  // Prevent background body scroll on iOS when mobile menu is open.
+  // On iOS, position: fixed is the only reliable way to lock scroll.
+  useEffect(() => {
+    if (open) {
+      document.body.style.overflow = 'hidden'
+      document.body.style.position = 'fixed'
+      document.body.style.width = '100%'
+    } else {
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.width = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.width = ''
+    }
+  }, [open])
+
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out transform-gpu ${scrolled
@@ -44,9 +66,14 @@ export default function Navbar() {
         : 'bg-transparent border-b border-transparent'
         }`}
       style={{
+        // Force GPU compositing layer on iOS — prevents the navbar
+        // from jumping/flickering during momentum scroll
         WebkitTransform: 'translateZ(0)',
         transform: 'translateZ(0)',
         willChange: 'transform',
+        // Prevent iOS momentum scroll from affecting the fixed navbar
+        WebkitBackfaceVisibility: 'hidden',
+        backfaceVisibility: 'hidden',
       }}
     >
       <div
@@ -129,23 +156,44 @@ export default function Navbar() {
           </motion.div>
         </motion.nav>
 
-        {/* Mobile Toggle */}
-        <button onClick={() => setOpen(!open)} className="lg:hidden text-white p-2 relative z-50">
+        {/* Mobile Toggle — iOS tap fix: explicit min size, touch-action, no tap highlight */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="lg:hidden text-white p-2 relative z-50"
+          style={{
+            touchAction: 'manipulation',
+            WebkitTapHighlightColor: 'transparent',
+            minWidth: '44px',
+            minHeight: '44px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            cursor: 'pointer',
+          }}
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          type="button"
+        >
           {open ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      {/* mode="wait" prevents overlapping enter/exit animations that can block iOS touch events */}
+      <AnimatePresence mode="wait">
         {open && (
           <motion.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.4, ease: easeOutExpo }}
+            transition={{ duration: 0.3, ease: 'easeOut' }}
             className="lg:hidden bg-brand-dark border-t border-brand-gold/10 overflow-hidden overflow-y-auto absolute top-full left-0 right-0 w-full max-h-[calc(100vh-80px)]"
             style={{
               WebkitOverflowScrolling: 'touch',
+              overflowY: 'auto',
+              maxHeight: '80vh',
+              touchAction: 'pan-y',
+              WebkitTransform: 'translateZ(0)',
+              transform: 'translateZ(0)',
             }}
           >
             <motion.div

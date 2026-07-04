@@ -67,7 +67,7 @@ export default function TransportQuoteForm() {
               placeholder="Your full name"
               value={formData.fullName}
               onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
             />
           </div>
 
@@ -82,7 +82,7 @@ export default function TransportQuoteForm() {
               placeholder="your@email.com"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
             />
           </div>
 
@@ -96,7 +96,7 @@ export default function TransportQuoteForm() {
               placeholder="+44 or international"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
             />
           </div>
         </div>
@@ -117,7 +117,7 @@ export default function TransportQuoteForm() {
               required
               value={formData.petType}
               onChange={(e) => setFormData({ ...formData, petType: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm bg-white"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base bg-white"
             >
               <option value="">Select pet type</option>
               <option value="Dog">Dog</option>
@@ -138,7 +138,7 @@ export default function TransportQuoteForm() {
               placeholder="Your pet's name"
               value={formData.petName}
               onChange={(e) => setFormData({ ...formData, petName: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
             />
           </div>
 
@@ -153,7 +153,7 @@ export default function TransportQuoteForm() {
               placeholder="e.g. Golden Retriever, Persian Cat"
               value={formData.breed}
               onChange={(e) => setFormData({ ...formData, breed: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
             />
           </div>
 
@@ -168,7 +168,7 @@ export default function TransportQuoteForm() {
                 placeholder="e.g. 2 years"
                 value={formData.petAge}
                 onChange={(e) => setFormData({ ...formData, petAge: e.target.value })}
-                className="w-full border border-gray-300 rounded-xl px-3 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+                className="w-full border border-gray-300 rounded-xl px-3 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
               />
             </div>
             <div className="flex flex-col gap-1.5">
@@ -181,7 +181,7 @@ export default function TransportQuoteForm() {
                 placeholder="Weight in kg"
                 value={formData.petWeight}
                 onChange={(e) => setFormData({ ...formData, petWeight: e.target.value })}
-                className="w-full border border-gray-300 rounded-xl px-3 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+                className="w-full border border-gray-300 rounded-xl px-3 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
               />
             </div>
           </div>
@@ -203,7 +203,7 @@ export default function TransportQuoteForm() {
               required
               value={formData.route}
               onChange={(e) => setFormData({ ...formData, route: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm bg-white"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base bg-white"
             >
               <option value="">Select your route</option>
               {ROUTES
@@ -230,7 +230,7 @@ export default function TransportQuoteForm() {
               placeholder="e.g. Bucharest, Romania"
               value={formData.collectionLocation}
               onChange={(e) => setFormData({ ...formData, collectionLocation: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
             />
           </div>
 
@@ -245,7 +245,7 @@ export default function TransportQuoteForm() {
               placeholder="e.g. Manchester, England"
               value={formData.deliveryAddress}
               onChange={(e) => setFormData({ ...formData, deliveryAddress: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
             />
           </div>
 
@@ -258,7 +258,7 @@ export default function TransportQuoteForm() {
               type="date"
               value={formData.preferredDate}
               onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
             />
           </div>
         </div>
@@ -279,7 +279,7 @@ export default function TransportQuoteForm() {
             placeholder="Any additional details, special requirements, questions, or information about your pet or journey..."
             value={formData.message}
             onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-            className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm resize-none"
+            className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base resize-none"
           />
         </div>
       </div>
@@ -307,3 +307,4 @@ export default function TransportQuoteForm() {
     </form>
   )
 }
+

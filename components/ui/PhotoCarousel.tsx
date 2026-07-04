@@ -130,11 +130,11 @@ export default function PhotoCarousel() {
             exit="exit"
             transition={{
               x: { 
-                type: 'spring', 
-                stiffness: 300, 
-                damping: 35 
+                type: 'tween',
+                duration: 0.35,
+                ease: 'easeOut',
               },
-              opacity: { duration: 0.3 },
+              opacity: { duration: 0.25 },
             }}
             className="absolute inset-0"
           >
@@ -161,8 +161,10 @@ export default function PhotoCarousel() {
         {/* Left arrow */}
         <button
           onClick={goToPrev}
+          type="button"
           aria-label="Previous photo"
           className="absolute left-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-brand-dark/70 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-brand-gold hover:text-brand-dark hover:border-brand-gold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+          style={{ touchAction: 'manipulation', minWidth: '44px', minHeight: '44px' }}
         >
           <ChevronLeft className="w-5 h-5" />
         </button>
@@ -170,8 +172,10 @@ export default function PhotoCarousel() {
         {/* Right arrow */}
         <button
           onClick={goToNext}
+          type="button"
           aria-label="Next photo"
           className="absolute right-4 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full bg-brand-dark/70 backdrop-blur-sm border border-white/10 flex items-center justify-center text-white hover:bg-brand-gold hover:text-brand-dark hover:border-brand-gold transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-gold"
+          style={{ touchAction: 'manipulation', minWidth: '44px', minHeight: '44px' }}
         >
           <ChevronRight className="w-5 h-5" />
         </button>

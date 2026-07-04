@@ -69,7 +69,7 @@ export default function RescueAdoptionForm() {
               placeholder="Your full name"
               value={formData.fullName}
               onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
             />
           </div>
 
@@ -84,7 +84,7 @@ export default function RescueAdoptionForm() {
               placeholder="your@email.com"
               value={formData.email}
               onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
             />
           </div>
 
@@ -98,7 +98,7 @@ export default function RescueAdoptionForm() {
               placeholder="+44 or international"
               value={formData.phone}
               onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
             />
           </div>
 
@@ -113,7 +113,7 @@ export default function RescueAdoptionForm() {
               placeholder="e.g. Manchester, UK"
               value={formData.location}
               onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
             />
           </div>
         </div>
@@ -134,7 +134,7 @@ export default function RescueAdoptionForm() {
               required
               value={formData.propertyType}
               onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm bg-white"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base bg-white"
             >
               <option value="">Select property type</option>
               <option value="House with garden">House with garden</option>
@@ -153,7 +153,7 @@ export default function RescueAdoptionForm() {
               required
               value={formData.children}
               onChange={(e) => setFormData({ ...formData, children: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm bg-white"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base bg-white"
             >
               <option value="">Please select</option>
               <option value="No children">No children</option>
@@ -173,7 +173,7 @@ export default function RescueAdoptionForm() {
               required
               value={formData.otherPets}
               onChange={(e) => setFormData({ ...formData, otherPets: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm bg-white"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base bg-white"
             >
               <option value="">Please select</option>
               <option value="No other pets">No other pets</option>
@@ -193,7 +193,7 @@ export default function RescueAdoptionForm() {
               required
               value={formData.experience}
               onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm bg-white"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base bg-white"
             >
               <option value="">Please select</option>
               <option value="First time dog owner">First time dog owner</option>
@@ -221,7 +221,7 @@ export default function RescueAdoptionForm() {
               placeholder="Which dog are you enquiring about?"
               value={formData.dogName}
               onChange={(e) => setFormData({ ...formData, dogName: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
             />
           </div>
 
@@ -235,7 +235,7 @@ export default function RescueAdoptionForm() {
               readOnly={!!dogBreed}
               value={formData.dogBreed}
               onChange={(e) => setFormData({ ...formData, dogBreed: e.target.value })}
-              className={`w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm ${
+              className={`w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base ${
                 dogBreed ? 'bg-gray-50 text-gray-500 cursor-not-allowed' : ''
               }`}
             />
@@ -250,7 +250,7 @@ export default function RescueAdoptionForm() {
               type="text"
               value={formData.dogLocation}
               onChange={(e) => setFormData({ ...formData, dogLocation: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
             />
           </div>
 
@@ -265,7 +265,7 @@ export default function RescueAdoptionForm() {
               placeholder="Tell us what drew you to rescue adoption and why you think you would be a great match for this dog..."
               value={formData.whyAdopt}
               onChange={(e) => setFormData({ ...formData, whyAdopt: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm resize-none"
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base resize-none"
             />
           </div>
         </div>
@@ -286,7 +286,7 @@ export default function RescueAdoptionForm() {
             placeholder="Anything else you'd like us to know — your daily routine, how much time you have for a dog, your garden size, experience with the specific breed, or any questions you have for us..."
             value={formData.additionalInfo}
             onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
-            className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm resize-none"
+            className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base resize-none"
           />
         </div>
       </div>
@@ -314,3 +314,4 @@ export default function RescueAdoptionForm() {
     </form>
   )
 }
+

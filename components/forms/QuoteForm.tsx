@@ -86,7 +86,7 @@ function QuoteFormContent() {
             required
             name="pet_type"
             defaultValue={type === 'rescue-adoption' || dogName ? 'dog' : ''}
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm bg-white"
+            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base bg-white"
           >
             <option value="">Select pet type</option>
             <option value="dog">Dog</option>
@@ -177,3 +177,4 @@ export default function QuoteForm() {
     </Suspense>
   )
 }
+
