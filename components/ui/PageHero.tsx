@@ -8,14 +8,11 @@ interface PageHeroProps {
   title: string
   subtitle: string
   breadcrumb?: string
-  compact?: boolean
 }
 
-export default function PageHero({ title, subtitle, breadcrumb, compact }: PageHeroProps) {
+export default function PageHero({ title, subtitle, breadcrumb }: PageHeroProps) {
   return (
-    <section className={`bg-[#0a0e1a] pt-32 md:pt-36 relative overflow-hidden ${
-      compact ? 'py-12 md:py-16' : 'py-20 md:py-28'
-    }`}>
+    <section className="bg-[#0a0e1a] py-20 md:py-28 pt-32 md:pt-36 relative overflow-hidden">
       {/* Subtle radial gradient */}
       <div
         className="absolute inset-0 pointer-events-none"

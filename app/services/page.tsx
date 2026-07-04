@@ -11,6 +11,7 @@
 import Image from 'next/image'
 import type { Metadata } from 'next'
 import PageHero from '@/components/ui/PageHero'
+import Link from 'next/link'
 import { Heart, Shield, Award, FileText, Star } from 'lucide-react'
 import { PET_IMAGES } from '@/lib/petImages'
 
@@ -136,9 +137,9 @@ export default function Services() {
                 <p className="text-navy text-sm leading-relaxed">
                   Would you like to travel with your pet? Euro Pet Express offers owner accompanied travel options on selected routes, allowing you to stay with your pet throughout the journey for complete peace of mind. Contact us to discuss availability and pricing for your route.
                 </p>
-                <a href="/contact" className="inline-block mt-4 text-brand-gold text-sm font-semibold hover:underline">
+                <Link href="/contact" className="inline-block mt-4 text-brand-gold text-sm font-semibold hover:underline">
                   Enquire about accompanied travel →
-                </a>
+                </Link>
               </div>
             </div>
           </div>

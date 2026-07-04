@@ -39,15 +39,15 @@ export default function Navbar() {
 
   return (
     <motion.header
-      style={{ 
-        WebkitTransform: 'translateZ(0)',
-        transform: 'translateZ(0)',
-        willChange: 'transform',
-      }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out transform-gpu ${scrolled
           ? 'bg-brand-dark/95 backdrop-blur-md shadow-lg border-b border-white/10'
           : 'bg-transparent border-b border-transparent'
         }`}
+      style={{
+        WebkitTransform: 'translateZ(0)',
+        transform: 'translateZ(0)',
+        willChange: 'transform',
+      }}
     >
       <div
         className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full transition-all duration-500 ease-in-out ${scrolled
@@ -56,33 +56,21 @@ export default function Navbar() {
           }`}
       >
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0 flex items-center relative z-50" data-cursor="hover">
-          <div className="relative flex items-center">
-            {/* Absolute container that allows the logo to scale and breathe (and potentially hang slightly below the navbar) */}
-            <div
-              className={`absolute left-0 transition-all duration-500 ease-in-out ${scrolled
-                  ? 'w-[125px] md:w-[160px] lg:w-[190px] xl:w-[210px] h-[75px] md:h-[96px] lg:h-[114px] xl:h-[126px]'
-                  : 'w-[145px] md:w-[200px] lg:w-[245px] xl:w-[275px] h-[87px] md:h-[120px] lg:h-[147px] xl:h-[165px]'
-                }`}
-            >
-              <Image
-                src="/logo.png"
-                alt="Euro Pet Express"
-                fill
-                priority={true}
-                quality={100}
-                className="object-contain object-left"
-                sizes="(max-width: 640px) 145px, (max-width: 768px) 200px, (max-width: 1024px) 245px, 275px"
-              />
-            </div>
-            {/* Layout Spacer: keeps the width reserved in the flex layout */}
-            <div
-              className={`transition-all duration-500 ease-in-out h-px ${scrolled
-                  ? 'w-[125px] md:w-[160px] lg:w-[190px] xl:w-[210px]'
-                  : 'w-[145px] md:w-[200px] lg:w-[245px] xl:w-[275px]'
-                }`}
-            />
-          </div>
+        <Link href="/" className="flex-shrink-0 flex items-center" data-cursor="hover">
+          <Image
+            src="/Logo.png"
+            alt="Euro Pet Express"
+            width={300}
+            height={200}
+            priority={true}
+            quality={100}
+            className="object-contain block"
+            style={{
+              height: '90px',
+              width: '160px',
+              display: 'block',
+            }}
+          />
         </Link>
 
         {/* Desktop Nav */}
@@ -143,7 +131,7 @@ export default function Navbar() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: easeOutExpo }}
-            className="lg:hidden bg-brand-dark border-t border-brand-gold/10 overflow-hidden overflow-y-auto absolute top-full left-0 right-0 w-full max-h-[calc(100vh-80px)] -webkit-overflow-scrolling-touch"
+            className="lg:hidden bg-brand-dark border-t border-brand-gold/10 overflow-hidden overflow-y-auto absolute top-full left-0 right-0 w-full max-h-[calc(100vh-80px)]"
             style={{
               WebkitOverflowScrolling: 'touch',
             }}

@@ -1,0 +1,309 @@
+'use client'
+
+import { useState } from 'react'
+import { CheckCircle } from 'lucide-react'
+import { ROUTES } from '@/lib/routesData'
+
+export default function TransportQuoteForm() {
+  const [submitted, setSubmitted] = useState(false)
+  const [formData, setFormData] = useState({
+    fullName: '',
+    email: '',
+    phone: '',
+    petType: '',
+    petName: '',
+    breed: '',
+    petAge: '',
+    petWeight: '',
+    route: '',
+    collectionLocation: '',
+    deliveryAddress: '',
+    preferredDate: '',
+    message: '',
+    agree: false,
+  })
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    // In production, this would connect to Zoho CRM API
+    setSubmitted(true)
+  }
+
+  if (submitted) {
+    return (
+      <div className="bg-white border border-gray-200 rounded-2xl p-8 md:p-12 shadow-sm text-center">
+        <div className="flex justify-center mb-6">
+          <CheckCircle className="w-16 h-16 text-green-500" />
+        </div>
+        <h3 className="font-playfair text-2xl font-bold text-brand-dark mb-2">
+          Thank you!
+        </h3>
+        <p className="text-gray-600 font-medium">
+          Your quote request has been received.
+        </p>
+        <p className="text-gray-500 text-sm mt-1">
+          We will contact you within 12–24 hours.
+        </p>
+      </div>
+    )
+  }
+
+  return (
+    <form onSubmit={handleSubmit} className="space-y-8 bg-white border border-gray-100 rounded-2xl p-6 md:p-8 shadow-sm">
+      {/* Section: Your Details */}
+      <div>
+        <h3 className="font-playfair text-lg font-bold text-brand-dark mb-4 pb-2 border-b border-gray-100">
+          Your Details
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="fullName" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+              Full Name *
+            </label>
+            <input
+              id="fullName"
+              required
+              type="text"
+              placeholder="Your full name"
+              value={formData.fullName}
+              onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+            />
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="email" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+              Email Address *
+            </label>
+            <input
+              id="email"
+              required
+              type="email"
+              placeholder="your@email.com"
+              value={formData.email}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+            />
+          </div>
+
+          <div className="flex flex-col gap-1.5 md:col-span-2">
+            <label htmlFor="phone" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+              Phone Number
+            </label>
+            <input
+              id="phone"
+              type="tel"
+              placeholder="+44 or international"
+              value={formData.phone}
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Section: Your Pet */}
+      <div>
+        <h3 className="font-playfair text-lg font-bold text-brand-dark mb-4 pb-2 border-b border-gray-100">
+          Your Pet
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="petType" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+              Pet Type *
+            </label>
+            <select
+              id="petType"
+              required
+              value={formData.petType}
+              onChange={(e) => setFormData({ ...formData, petType: e.target.value })}
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm bg-white"
+            >
+              <option value="">Select pet type</option>
+              <option value="Dog">Dog</option>
+              <option value="Cat">Cat</option>
+              <option value="Ferret">Ferret</option>
+              <option value="Other">Other (please specify in notes)</option>
+            </select>
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="petName" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+              Pet Name *
+            </label>
+            <input
+              id="petName"
+              required
+              type="text"
+              placeholder="Your pet's name"
+              value={formData.petName}
+              onChange={(e) => setFormData({ ...formData, petName: e.target.value })}
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+            />
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="breed" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+              Breed / Species *
+            </label>
+            <input
+              id="breed"
+              required
+              type="text"
+              placeholder="e.g. Golden Retriever, Persian Cat"
+              value={formData.breed}
+              onChange={(e) => setFormData({ ...formData, breed: e.target.value })}
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+            />
+          </div>
+
+          <div className="grid grid-cols-2 gap-2">
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="petAge" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                Pet Age
+              </label>
+              <input
+                id="petAge"
+                type="text"
+                placeholder="e.g. 2 years"
+                value={formData.petAge}
+                onChange={(e) => setFormData({ ...formData, petAge: e.target.value })}
+                className="w-full border border-gray-300 rounded-xl px-3 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+              />
+            </div>
+            <div className="flex flex-col gap-1.5">
+              <label htmlFor="petWeight" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+                Weight (kg)
+              </label>
+              <input
+                id="petWeight"
+                type="number"
+                placeholder="Weight in kg"
+                value={formData.petWeight}
+                onChange={(e) => setFormData({ ...formData, petWeight: e.target.value })}
+                className="w-full border border-gray-300 rounded-xl px-3 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Section: Your Journey */}
+      <div>
+        <h3 className="font-playfair text-lg font-bold text-brand-dark mb-4 pb-2 border-b border-gray-100">
+          Your Journey
+        </h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1.5 md:col-span-2">
+            <label htmlFor="route" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+              Route *
+            </label>
+            <select
+              id="route"
+              required
+              value={formData.route}
+              onChange={(e) => setFormData({ ...formData, route: e.target.value })}
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm bg-white"
+            >
+              <option value="">Select your route</option>
+              {ROUTES
+                .filter(r => r.isActive)
+                .sort((a, b) => a.displayOrder - b.displayOrder)
+                .map(route => (
+                  <option key={route.slug} value={route.slug}>
+                    {route.name}
+                  </option>
+                ))
+              }
+              <option value="other">Other / Not Listed</option>
+            </select>
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="collectionLocation" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+              Collection City & Country *
+            </label>
+            <input
+              id="collectionLocation"
+              required
+              type="text"
+              placeholder="e.g. Bucharest, Romania"
+              value={formData.collectionLocation}
+              onChange={(e) => setFormData({ ...formData, collectionLocation: e.target.value })}
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+            />
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="deliveryAddress" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+              Delivery Address in UK *
+            </label>
+            <input
+              id="deliveryAddress"
+              required
+              type="text"
+              placeholder="e.g. Manchester, England"
+              value={formData.deliveryAddress}
+              onChange={(e) => setFormData({ ...formData, deliveryAddress: e.target.value })}
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+            />
+          </div>
+
+          <div className="flex flex-col gap-1.5">
+            <label htmlFor="preferredDate" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+              Preferred Travel Date
+            </label>
+            <input
+              id="preferredDate"
+              type="date"
+              value={formData.preferredDate}
+              onChange={(e) => setFormData({ ...formData, preferredDate: e.target.value })}
+              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm"
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Section: Additional Information */}
+      <div>
+        <h3 className="font-playfair text-lg font-bold text-brand-dark mb-4 pb-2 border-b border-gray-100">
+          Additional Information
+        </h3>
+        <div className="flex flex-col gap-1.5">
+          <label htmlFor="message" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
+            Your Message
+          </label>
+          <textarea
+            id="message"
+            rows={5}
+            placeholder="Any additional details, special requirements, questions, or information about your pet or journey..."
+            value={formData.message}
+            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+            className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-sm resize-none"
+          />
+        </div>
+      </div>
+
+      <div className="flex items-start gap-3">
+        <input
+          required
+          type="checkbox"
+          id="agree"
+          checked={formData.agree}
+          onChange={(e) => setFormData({ ...formData, agree: e.target.checked })}
+          className="w-4 h-4 rounded border-gray-300 text-brand-gold focus:ring-brand-gold mt-1"
+        />
+        <label htmlFor="agree" className="text-gray-500 text-xs leading-normal">
+          I agree to be contacted by Euro Pet Express regarding my quote request
+        </label>
+      </div>
+
+      <button
+        type="submit"
+        className="w-full bg-brand-gold text-brand-dark font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-brand-goldHover transition-colors duration-200 text-sm flex items-center justify-center gap-2"
+      >
+        SUBMIT TRANSPORT QUOTE REQUEST
+      </button>
+    </form>
+  )
+}

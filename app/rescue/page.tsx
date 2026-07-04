@@ -224,7 +224,7 @@ function DogProfileCard({ dog }: { dog: typeof RESCUE_DOGS[0] }) {
 
         {/* CTA Button */}
         <Link
-          href={`/contact?type=rescue-adoption&dog=${encodeURIComponent(dog.name)}&breed=${encodeURIComponent(dog.breed)}&location=${encodeURIComponent(dog.location)}`}
+          href={`/contact/rescue?dog=${encodeURIComponent(dog.name)}&breed=${encodeURIComponent(dog.breed)}&location=${encodeURIComponent(dog.location)}`}
           className={`block w-full text-center font-bold text-sm px-4 py-3.5 rounded-xl uppercase tracking-wider transition-all duration-200 ${
             dog.status === 'Available'
               ? 'bg-brand-gold text-brand-dark hover:bg-brand-goldHover shadow-md hover:shadow-lg hover:scale-[1.01]'
@@ -252,7 +252,6 @@ export default function RescuePage() {
         title="Rescue a Dog"
         subtitle="Meet dogs across Europe looking for their forever home. Give a rescued dog the life they deserve."
         breadcrumb="Home / Rescue a Dog"
-        compact={true}
       />
 
       {/* SECTION 2: MISSION STATEMENT BANNER */}
@@ -330,7 +329,7 @@ export default function RescuePage() {
               The dogs shown here are just a selection. We work with multiple rescue organisations across Europe. If you are looking for a specific breed, age, or temperament, get in touch and we will do our best to help match you with the right dog.
             </p>
             <Link
-              href="/contact?type=rescue-enquiry"
+              href="/contact"
               className="inline-flex items-center gap-2 bg-brand-gold text-brand-dark font-bold text-sm px-8 py-4 rounded-xl hover:bg-brand-goldHover transition-all duration-200 uppercase tracking-wider shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
             >
               Request a Quote
@@ -489,7 +488,7 @@ export default function RescuePage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/contact?type=rescue-enquiry"
+              href="/contact/rescue?type=rescue-organisation"
               className="inline-flex items-center gap-2 bg-brand-gold text-brand-dark font-bold text-sm px-10 py-4 rounded-xl hover:bg-brand-goldHover transition-all duration-200 uppercase tracking-wider shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
             >
               Request a Quote

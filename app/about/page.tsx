@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: 'https://europetexpress.co.uk/images/about/owner.png',
         width: 1200,
         height: 630,
-        alt: 'David — Managing Director of Euro Pet Express, DEFRA Authorised Pet Transport',
+        alt: 'David — Founder of Euro Pet Express, DEFRA Authorised Pet Transport',
       },
     ],
     locale: 'en_GB',
@@ -73,7 +73,7 @@ export default function About() {
               "@type": "Organization",
               "name": "Euro Pet Express",
               "url": "https://europetexpress.co.uk",
-              "logo": "https://europetexpress.co.uk/logo.png",
+              "logo": "https://europetexpress.co.uk/Logo.png",
               "description": "DEFRA authorised premium pet transport service operating between the UK and Europe. Safe, compliant, scheduled departures for dogs, cats and small animals.",
               "foundingDate": "2023",
               "founder": {

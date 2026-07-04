@@ -209,88 +209,48 @@ img {
 .min-h-screen {
   min-height: 100vh;
   min-height: -webkit-fill-available;
-  min-height: 100dvh; /* dynamic viewport height */
 }
 
-/* ===================================
+/* ============================================
    iOS SAFARI SPECIFIC FIXES
-   =================================== */
+   ============================================ */
 
-/* Fix iOS Safari flexbox gap bug */
-.flex {
-  gap: inherit;
+/* Dynamic viewport height for iOS */
+@supports (min-height: 100dvh) {
+  .min-h-screen {
+    min-height: 100dvh;
+  }
 }
 
-/* Prevent iOS Safari text size adjustment */
-html {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-}
-
-/* Fix iOS Safari input styling */
-input,
-textarea,
-select {
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  border-radius: 0;
-}
-
-/* Fix iOS Safari button tap highlight */
-* {
-  -webkit-tap-highlight-color: transparent;
-}
-
-/* Fix iOS Safari position fixed navbar */
-.navbar-fixed {
-  position: -webkit-sticky;
-  position: fixed;
-}
-
-/* Fix iOS Safari smooth scroll */
-html {
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Fix iOS Safari overflow hidden on body */
-body {
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-}
-
-/* Fix backdrop-filter for iOS Safari */
-.backdrop-blur-md {
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-}
-
-.backdrop-blur-sm {
-  -webkit-backdrop-filter: blur(4px);
-  backdrop-filter: blur(4px);
-}
-
-.backdrop-blur-xl {
-  -webkit-backdrop-filter: blur(24px);
-  backdrop-filter: blur(24px);
-}
-
-/* Fix iOS Safari object-fit */
-img {
+/* GPU-accelerate blur filters on iOS */
+.backdrop-blur-sm,
+.backdrop-blur-md,
+.backdrop-blur-lg {
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
-/* Font rendering fixes specifically for WebKit */
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
+/* Fix object-fit on iOS Safari */
+img, video {
+  -webkit-object-fit: cover;
+  object-fit: cover;
 }
 
-/* iOS safe area support */
+/* Safe area inset support */
 body {
   padding-left: env(safe-area-inset-left);
   padding-right: env(safe-area-inset-right);
+}
+
+/* iOS momentum scrolling */
+.overflow-y-auto,
+.overflow-auto {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Bottom safe area utility */
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
 }

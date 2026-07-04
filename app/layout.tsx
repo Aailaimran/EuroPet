@@ -1,5 +1,5 @@
-import type { Viewport } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
+import type { Viewport } from 'next'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
@@ -26,12 +26,12 @@ export const metadata = {
   keywords: 'premium pet transport UK Europe, pet transport Romania UK, DEFRA authorised pet transport, cat transport Europe, dog transport Europe, pet courier UK, bespoke pet transport',
   icons: {
     icon: [
-      { url: '/icon.png', type: 'image/png' },
+      { url: '/Logo.png', type: 'image/png' },
     ],
     apple: [
-      { url: '/apple-icon.png', type: 'image/png' },
+      { url: '/Logo.png', type: 'image/png' },
     ],
-    shortcut: '/icon.png',
+    shortcut: '/Logo.png',
   },
 }
 
@@ -46,9 +46,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <head>
-        <link rel="icon" href="/icon.png" type="image/png" />
-        <link rel="apple-touch-icon" href="/apple-icon.png" />
-        <link rel="shortcut icon" href="/icon.png" />
+        <link rel="icon" href="/Logo.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/Logo.png" />
+        <link rel="shortcut icon" href="/Logo.png" />
       </head>
       <body className="font-sans antialiased bg-off-white text-navy flex flex-col min-h-screen">
         <SmoothScrollProvider>

@@ -10,6 +10,7 @@ import SplitText from '@/components/ui/SplitText'
 import { ROUTES } from '@/lib/routesData'
 
 
+
 export default function RoutesSection() {
   const { ref, isInView } = useScrollAnimation()
 
