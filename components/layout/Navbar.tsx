@@ -61,25 +61,25 @@ export default function Navbar() {
             {/* Absolute container that allows the logo to scale and breathe (and potentially hang slightly below the navbar) */}
             <div
               className={`absolute left-0 transition-all duration-500 ease-in-out ${scrolled
-                ? 'w-[125px] md:w-[160px] lg:w-[190px] xl:w-[210px] h-[75px] md:h-[96px] lg:h-[114px] xl:h-[126px]'
-                : 'w-[145px] md:w-[200px] lg:w-[245px] xl:w-[275px] h-[87px] md:h-[120px] lg:h-[147px] xl:h-[165px]'
+                ? 'w-[75px] md:w-[96px] lg:w-[114px] xl:w-[126px] h-[75px] md:h-[96px] lg:h-[114px] xl:h-[126px]'
+                : 'w-[87px] md:w-[120px] lg:w-[147px] xl:w-[165px] h-[87px] md:h-[120px] lg:h-[147px] xl:h-[165px]'
                 }`}
             >
               <Image
-                src="/Logo.png"
+                src="/UpdatedLogo.png"
                 alt="Euro Pet Express"
                 fill
                 priority={true}
                 quality={100}
                 className="object-contain object-left"
-                sizes="(max-width: 640px) 145px, (max-width: 768px) 200px, (max-width: 1024px) 245px, 275px"
+                sizes="(max-width: 640px) 87px, (max-width: 768px) 120px, (max-width: 1024px) 147px, 165px"
               />
             </div>
             {/* Layout Spacer: keeps the width reserved in the flex layout */}
             <div
               className={`transition-all duration-500 ease-in-out h-px ${scrolled
-                ? 'w-[125px] md:w-[160px] lg:w-[190px] xl:w-[210px]'
-                : 'w-[145px] md:w-[200px] lg:w-[245px] xl:w-[275px]'
+                ? 'w-[75px] md:w-[96px] lg:w-[114px] xl:w-[126px]'
+                : 'w-[87px] md:w-[120px] lg:w-[147px] xl:w-[165px]'
                 }`}
             />
           </div>

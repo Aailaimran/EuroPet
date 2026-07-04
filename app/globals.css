@@ -192,10 +192,9 @@ input, textarea, select {
   border-radius: 3px;
 }
 
-/* Prevent horizontal scroll on mobile */
+/* Prevent horizontal scroll on mobile (applied via layout wrapper in layout.tsx) */
 body {
-  overflow-x: hidden;
-  max-width: 100vw;
+  /* Removed overflow-x and max-width to allow smooth inertial scrolling on iOS Safari */
 }
 
 /* Image rendering consistency */
@@ -222,10 +221,28 @@ img {
   }
 }
 
-/* GPU-accelerate blur filters on iOS */
-.backdrop-blur-sm,
-.backdrop-blur-md,
+/* GPU-accelerate blur filters on iOS & add vendor prefixes for Safari support */
+.backdrop-blur-sm {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.backdrop-blur-md {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
 .backdrop-blur-lg {
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
   -webkit-transform: translateZ(0);

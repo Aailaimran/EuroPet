@@ -51,18 +51,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="shortcut icon" href="/icon.png" />
       </head>
       <body className="font-sans antialiased bg-off-white text-navy flex flex-col min-h-screen">
-        <SmoothScrollProvider>
-          <ScrollProgress />
-          <Navbar />
-          <main className="flex-1">
-            <PageTransition>
-              {children}
-            </PageTransition>
-          </main>
-          <Footer />
-          <FloatingWhatsApp />
-          <BackToTop />
-        </SmoothScrollProvider>
+        <div className="overflow-x-hidden w-full min-h-screen flex flex-col">
+          <SmoothScrollProvider>
+            <ScrollProgress />
+            <Navbar />
+            <main className="flex-1">
+              <PageTransition>
+                {children}
+              </PageTransition>
+            </main>
+            <Footer />
+            <FloatingWhatsApp />
+            <BackToTop />
+          </SmoothScrollProvider>
+        </div>
       </body>
     </html>
   )

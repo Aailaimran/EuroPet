@@ -197,12 +197,12 @@ export default function Footer() {
           <motion.div variants={cardVariant} className="flex flex-col">
             <Link href="/" className="inline-block" data-cursor="hover">
               <Image
-                src="/Logo.png"
+                src="/UpdatedLogo.png"
                 alt="Euro Pet Express"
-                width={200}
-                height={75}
+                width={100}
+                height={100}
                 priority={false}
-                className="object-contain h-16 w-auto"
+                className="object-contain h-20 w-auto"
               />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mt-3 max-w-xs">

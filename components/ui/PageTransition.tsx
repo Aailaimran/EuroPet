@@ -14,8 +14,20 @@ export default function PageTransition({ children }: { children: React.ReactNode
     setPrefersReducedMotion(mediaQuery.matches)
     
     const listener = (e: MediaQueryListEvent) => setPrefersReducedMotion(e.matches)
-    mediaQuery.addEventListener('change', listener)
-    return () => mediaQuery.removeEventListener('change', listener)
+    
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener('change', listener)
+    } else {
+      mediaQuery.addListener(listener)
+    }
+    
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener('change', listener)
+      } else {
+        mediaQuery.removeListener(listener)
+      }
+    }
   }, [])
 
   if (prefersReducedMotion) {
