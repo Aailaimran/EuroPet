@@ -40,8 +40,8 @@ export default function Navbar() {
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out transform-gpu ${scrolled
-          ? 'bg-brand-dark/95 backdrop-blur-md shadow-lg border-b border-white/10'
-          : 'bg-transparent border-b border-transparent'
+        ? 'bg-brand-dark/95 backdrop-blur-md shadow-lg border-b border-white/10'
+        : 'bg-transparent border-b border-transparent'
         }`}
       style={{
         WebkitTransform: 'translateZ(0)',
@@ -51,8 +51,8 @@ export default function Navbar() {
     >
       <div
         className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full transition-all duration-500 ease-in-out ${scrolled
-            ? 'h-16 md:h-20 lg:h-[90px]'
-            : 'h-20 md:h-28 lg:h-[125px]'
+          ? 'h-16 md:h-20 lg:h-[90px]'
+          : 'h-20 md:h-28 lg:h-[125px]'
           }`}
       >
         {/* Logo */}
@@ -61,12 +61,12 @@ export default function Navbar() {
             {/* Absolute container that allows the logo to scale and breathe (and potentially hang slightly below the navbar) */}
             <div
               className={`absolute left-0 transition-all duration-500 ease-in-out ${scrolled
-                  ? 'w-[125px] md:w-[160px] lg:w-[190px] xl:w-[210px] h-[75px] md:h-[96px] lg:h-[114px] xl:h-[126px]'
-                  : 'w-[145px] md:w-[200px] lg:w-[245px] xl:w-[275px] h-[87px] md:h-[120px] lg:h-[147px] xl:h-[165px]'
+                ? 'w-[125px] md:w-[160px] lg:w-[190px] xl:w-[210px] h-[75px] md:h-[96px] lg:h-[114px] xl:h-[126px]'
+                : 'w-[145px] md:w-[200px] lg:w-[245px] xl:w-[275px] h-[87px] md:h-[120px] lg:h-[147px] xl:h-[165px]'
                 }`}
             >
               <Image
-                src="/logo.png"
+                src="/Logo.png"
                 alt="Euro Pet Express"
                 fill
                 priority={true}
@@ -78,8 +78,8 @@ export default function Navbar() {
             {/* Layout Spacer: keeps the width reserved in the flex layout */}
             <div
               className={`transition-all duration-500 ease-in-out h-px ${scrolled
-                  ? 'w-[125px] md:w-[160px] lg:w-[190px] xl:w-[210px]'
-                  : 'w-[145px] md:w-[200px] lg:w-[245px] xl:w-[275px]'
+                ? 'w-[125px] md:w-[160px] lg:w-[190px] xl:w-[210px]'
+                : 'w-[145px] md:w-[200px] lg:w-[245px] xl:w-[275px]'
                 }`}
             />
           </div>

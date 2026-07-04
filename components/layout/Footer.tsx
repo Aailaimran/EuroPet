@@ -197,7 +197,7 @@ export default function Footer() {
           <motion.div variants={cardVariant} className="flex flex-col">
             <Link href="/" className="inline-block" data-cursor="hover">
               <Image
-                src="/logo.png"
+                src="/Logo.png"
                 alt="Euro Pet Express"
                 width={200}
                 height={75}
