@@ -73,7 +73,7 @@ export default function About() {
               "@type": "Organization",
               "name": "Euro Pet Express",
               "url": "https://europetexpress.co.uk",
-              "logo": "https://europetexpress.co.uk/Logo.png",
+              "logo": "https://europetexpress.co.uk/logo.png",
               "description": "DEFRA authorised premium pet transport service operating between the UK and Europe. Safe, compliant, scheduled departures for dogs, cats and small animals.",
               "foundingDate": "2023",
               "founder": {

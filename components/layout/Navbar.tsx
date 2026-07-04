@@ -56,21 +56,33 @@ export default function Navbar() {
           }`}
       >
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0 flex items-center" data-cursor="hover">
-          <Image
-            src="/Logo.png"
-            alt="Euro Pet Express"
-            width={300}
-            height={200}
-            priority={true}
-            quality={100}
-            className="object-contain block"
-            style={{
-              height: '90px',
-              width: '160px',
-              display: 'block',
-            }}
-          />
+        <Link href="/" className="flex-shrink-0 flex items-center relative z-50" data-cursor="hover">
+          <div className="relative flex items-center">
+            {/* Absolute container that allows the logo to scale and breathe (and potentially hang slightly below the navbar) */}
+            <div
+              className={`absolute left-0 transition-all duration-500 ease-in-out ${scrolled
+                  ? 'w-[125px] md:w-[160px] lg:w-[190px] xl:w-[210px] h-[75px] md:h-[96px] lg:h-[114px] xl:h-[126px]'
+                  : 'w-[145px] md:w-[200px] lg:w-[245px] xl:w-[275px] h-[87px] md:h-[120px] lg:h-[147px] xl:h-[165px]'
+                }`}
+            >
+              <Image
+                src="/logo.png"
+                alt="Euro Pet Express"
+                fill
+                priority={true}
+                quality={100}
+                className="object-contain object-left"
+                sizes="(max-width: 640px) 145px, (max-width: 768px) 200px, (max-width: 1024px) 245px, 275px"
+              />
+            </div>
+            {/* Layout Spacer: keeps the width reserved in the flex layout */}
+            <div
+              className={`transition-all duration-500 ease-in-out h-px ${scrolled
+                  ? 'w-[125px] md:w-[160px] lg:w-[190px] xl:w-[210px]'
+                  : 'w-[145px] md:w-[200px] lg:w-[245px] xl:w-[275px]'
+                }`}
+            />
+          </div>
         </Link>
 
         {/* Desktop Nav */}
