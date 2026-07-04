@@ -209,4 +209,88 @@ img {
 .min-h-screen {
   min-height: 100vh;
   min-height: -webkit-fill-available;
+  min-height: 100dvh; /* dynamic viewport height */
+}
+
+/* ===================================
+   iOS SAFARI SPECIFIC FIXES
+   =================================== */
+
+/* Fix iOS Safari flexbox gap bug */
+.flex {
+  gap: inherit;
+}
+
+/* Prevent iOS Safari text size adjustment */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Fix iOS Safari input styling */
+input,
+textarea,
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
+
+/* Fix iOS Safari button tap highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Fix iOS Safari position fixed navbar */
+.navbar-fixed {
+  position: -webkit-sticky;
+  position: fixed;
+}
+
+/* Fix iOS Safari smooth scroll */
+html {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fix iOS Safari overflow hidden on body */
+body {
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Fix backdrop-filter for iOS Safari */
+.backdrop-blur-md {
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+.backdrop-blur-sm {
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+}
+
+.backdrop-blur-xl {
+  -webkit-backdrop-filter: blur(24px);
+  backdrop-filter: blur(24px);
+}
+
+/* Fix iOS Safari object-fit */
+img {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Font rendering fixes specifically for WebKit */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+/* iOS safe area support */
+body {
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
 }

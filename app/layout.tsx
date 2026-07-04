@@ -1,3 +1,4 @@
+import type { Viewport } from 'next'
 import { Inter, Playfair_Display } from 'next/font/google'
 import './globals.css'
 import Navbar from '@/components/layout/Navbar'
@@ -34,10 +35,11 @@ export const metadata = {
   },
 }
 
-export const viewport = {
+export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   maximumScale: 5,
+  themeColor: '#0a0e1a',
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

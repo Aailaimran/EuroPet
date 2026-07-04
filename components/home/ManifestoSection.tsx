@@ -75,16 +75,16 @@ export default function ManifestoSection() {
           variants={staggerContainerVariant}
           initial="hidden"
           animate={isInView ? 'visible' : 'hidden'}
-          className="space-y-4"
+          className="space-y-4 md:space-y-5"
         >
           {MANIFESTO_ITEMS.map((item, index) => (
             <motion.div
               key={item.id}
               variants={cardVariant}
-              className="group flex items-start gap-6 p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-brand-gold/30 transition-all duration-300"
+              className="group flex items-start gap-5 p-5 md:p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] hover:border-brand-gold/30 transition-all duration-300"
             >
               {/* Number */}
-              <div className="flex-shrink-0 w-10 h-10 rounded-full border border-brand-gold/30 flex items-center justify-center bg-brand-gold/10 group-hover:bg-brand-gold/20 group-hover:border-brand-gold/60 transition-all duration-300">
+              <div className="flex-shrink-0 w-10 h-10 rounded-full border border-brand-gold/30 flex items-center justify-center bg-brand-gold/10 mt-0.5 group-hover:bg-brand-gold/20 group-hover:border-brand-gold/60 transition-all duration-300">
                 <span className="text-brand-gold font-playfair font-bold text-sm">
                   {index + 1}
                 </span>
@@ -92,7 +92,7 @@ export default function ManifestoSection() {
 
               {/* Content */}
               <div className="flex-1 pt-1">
-                <p className="text-white text-base md:text-lg font-semibold leading-snug mb-1">
+                <p className="text-white text-base md:text-lg font-semibold leading-snug mb-2">
                   {item.promise}
                 </p>
                 <p className="text-gray-400 text-sm leading-relaxed">

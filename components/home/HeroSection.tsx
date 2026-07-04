@@ -25,7 +25,7 @@ export default function HeroSection() {
   const imageY = useTransform(scrollYProgress, [0, 1], [0, -80])
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen flex items-center bg-[#0a0e1a] overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-screen [min-height:100dvh] md:min-h-screen flex items-center bg-[#0a0e1a] overflow-hidden">
       {/* Layer 1: Base color is set by bg class */}
 
       {/* Layer 2: Animated mesh gradient */}
@@ -89,7 +89,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 1.0, ease: easeOutExpo }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 mt-8 mb-2"
             >
               <MagneticButton>
                 <Link
@@ -117,7 +117,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 15 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 1.2, ease: easeOutExpo }}
-              className="flex items-center gap-2 text-gray-400 text-sm mt-6"
+              className="flex items-center gap-2 text-gray-400 text-sm mt-4"
             >
               <Clock className="w-4 h-4" />
               Typical response time: within 12–24 hours

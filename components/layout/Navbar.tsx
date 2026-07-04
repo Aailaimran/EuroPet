@@ -39,6 +39,11 @@ export default function Navbar() {
 
   return (
     <motion.header
+      style={{ 
+        WebkitTransform: 'translateZ(0)',
+        transform: 'translateZ(0)',
+        willChange: 'transform',
+      }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out transform-gpu ${scrolled
           ? 'bg-brand-dark/95 backdrop-blur-md shadow-lg border-b border-white/10'
           : 'bg-transparent border-b border-transparent'
@@ -138,7 +143,10 @@ export default function Navbar() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.4, ease: easeOutExpo }}
-            className="lg:hidden bg-brand-dark border-t border-brand-gold/10 overflow-hidden absolute top-full left-0 right-0 w-full"
+            className="lg:hidden bg-brand-dark border-t border-brand-gold/10 overflow-hidden overflow-y-auto absolute top-full left-0 right-0 w-full max-h-[calc(100vh-80px)] -webkit-overflow-scrolling-touch"
+            style={{
+              WebkitOverflowScrolling: 'touch',
+            }}
           >
             <motion.div
               variants={staggerContainerVariant}

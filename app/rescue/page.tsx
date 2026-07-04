@@ -252,6 +252,7 @@ export default function RescuePage() {
         title="Rescue a Dog"
         subtitle="Meet dogs across Europe looking for their forever home. Give a rescued dog the life they deserve."
         breadcrumb="Home / Rescue a Dog"
+        compact={true}
       />
 
       {/* SECTION 2: MISSION STATEMENT BANNER */}
@@ -465,7 +466,7 @@ export default function RescuePage() {
               <div className="absolute bottom-6 left-6 right-6">
                 <div className="bg-brand-dark/80 backdrop-blur-sm rounded-xl p-4 border border-brand-gold/20">
                   <p className="text-brand-gold text-xs font-semibold uppercase tracking-wider mb-1">
-                    David, Founder
+                    David, Managing Director
                   </p>
                   <p className="text-white text-sm italic leading-relaxed">
                     "Every dog that finds their forever home through us represents everything we built this company for."

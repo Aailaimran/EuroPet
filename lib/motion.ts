@@ -9,21 +9,19 @@ export const springMagnetic = { type: 'spring', stiffness: 200, damping: 20 }
 
 // Animation Variants
 export const fadeUpVariant = {
-  hidden: { opacity: 0, y: 60, filter: 'blur(8px)' },
+  hidden: { opacity: 0, y: 40 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
-    transition: { duration: 0.8, ease: easeOutExpo },
+    transition: { duration: 0.6, ease: easeOutExpo },
   },
 }
 
 export const fadeUpFastVariant = {
-  hidden: { opacity: 0, y: 30, filter: 'blur(4px)' },
+  hidden: { opacity: 0, y: 30 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
     transition: { duration: 0.5, ease: easeOutQuart },
   },
 }

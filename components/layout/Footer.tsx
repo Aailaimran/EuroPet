@@ -158,7 +158,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-brand-dark border-t border-brand-gold/10 text-white py-16 md:py-24">
+    <footer className="bg-brand-dark border-t border-brand-gold/10 text-white py-16 md:py-24 pb-safe pb-[env(safe-area-inset-bottom)]">
       {/* Newsletter Signup — full width above footer columns */}
       <div className="border-b border-brand-gold/10 pb-12 mb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

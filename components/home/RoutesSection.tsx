@@ -9,7 +9,6 @@ import CountryFlag from '@/components/CountryFlag'
 import SplitText from '@/components/ui/SplitText'
 import { ROUTES } from '@/lib/routesData'
 
-const POA_SLUGS = ['transatlantic', 'uk-uk']
 
 export default function RoutesSection() {
   const { ref, isInView } = useScrollAnimation()
@@ -91,18 +90,12 @@ export default function RoutesSection() {
 
               {/* Status indicator */}
               <div className="flex-shrink-0">
-                {POA_SLUGS.includes(route.slug) ? (
-                  <span className="text-brand-gold text-[10px] font-bold uppercase tracking-wider bg-brand-gold/10 px-2 py-0.5 rounded-full border border-brand-gold/30 whitespace-nowrap">
-                    POA
+                <div className="flex items-center gap-1.5">
+                  <div className="w-2 h-2 rounded-full bg-green-400 shadow-sm shadow-green-400/50" />
+                  <span className="text-gray-400 text-[10px] uppercase tracking-wider hidden sm:block">
+                    Active
                   </span>
-                ) : (
-                  <div className="flex items-center gap-1.5">
-                    <div className="w-2 h-2 rounded-full bg-green-400 shadow-sm shadow-green-400/50" />
-                    <span className="text-gray-400 text-[10px] uppercase tracking-wider hidden sm:block">
-                      Active
-                    </span>
-                  </div>
-                )}
+                </div>
               </div>
             </motion.div>
           ))}

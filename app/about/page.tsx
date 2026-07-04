@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: 'https://europetexpress.co.uk/images/about/owner.png',
         width: 1200,
         height: 630,
-        alt: 'David — Founder of Euro Pet Express, DEFRA Authorised Pet Transport',
+        alt: 'David — Managing Director of Euro Pet Express, DEFRA Authorised Pet Transport',
       },
     ],
     locale: 'en_GB',
@@ -79,7 +79,7 @@ export default function About() {
               "founder": {
                 "@type": "Person",
                 "name": "David",
-                "jobTitle": "Founder",
+                "jobTitle": "Managing Director",
                 "description": "20-year dog transport industry professional who founded Euro Pet Express to provide welfare-first pet transport between the UK and Europe."
               },
               "contactPoint": {
@@ -147,13 +147,13 @@ export default function About() {
               "@context": "https://schema.org",
               "@type": "Person",
               "name": "David",
-              "jobTitle": "Founder",
+              "jobTitle": "Managing Director",
               "worksFor": {
                 "@type": "Organization",
                 "name": "Euro Pet Express",
                 "url": "https://europetexpress.co.uk"
               },
-              "description": "Founder of Euro Pet Express. Professional with two decades of experience in dog and pet transport across Europe and the UK. Founded Euro Pet Express to establish welfare-first standards in the pet transport industry.",
+              "description": "Managing Director of Euro Pet Express. Professional with two decades of experience in dog and pet transport across Europe and the UK. Founded Euro Pet Express to establish welfare-first standards in the pet transport industry.",
               "knowsAbout": [
                 "Pet Transport",
                 "DEFRA Regulations",
@@ -276,7 +276,7 @@ export default function About() {
                 <div className="relative w-full aspect-[3/4] rounded-2xl overflow-hidden shadow-2xl border border-brand-gold/20">
                   <Image
                     src="/images/about/owner.png"
-                    alt="David, Founder of Euro Pet Express — DEFRA authorised pet transport UK Europe"
+                    alt="David, Managing Director of Euro Pet Express — DEFRA authorised pet transport UK Europe"
                     fill
                     className="object-cover object-top"
                     sizes="(max-width: 1024px) 100vw, 33vw"
@@ -295,7 +295,7 @@ export default function About() {
                     David
                   </p>
                   <p className="text-brand-gold text-xs font-semibold uppercase tracking-wider mt-0.5">
-                    Founder, Euro Pet Express
+                    Managing Director, Euro Pet Express
                   </p>
                 </div>
 
@@ -364,12 +364,12 @@ export default function About() {
                   David
                 </span>
                 <span itemProp="jobTitle" className="sr-only">
-                  Founder, Euro Pet Express
+                  Managing Director, Euro Pet Express
                 </span>
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-0.5 bg-brand-gold" />
                   <p className="text-gray-400 text-sm italic">
-                    David, Founder
+                    David, Managing Director
                   </p>
                 </div>
               </div>
