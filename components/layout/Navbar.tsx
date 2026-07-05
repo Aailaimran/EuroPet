@@ -68,8 +68,8 @@ export default function Navbar() {
   return (
     <motion.header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 transform-gpu ${scrolled
-        ? 'bg-brand-dark/95 backdrop-blur-md shadow-lg border-b border-white/10'
-        : 'bg-transparent border-b border-transparent'
+        ? 'bg-brand-dark/95 backdrop-blur-md shadow-lg border-b border-brand-gold/20'
+        : 'bg-brand-dark border-b border-brand-gold/10'
         }`}
       style={{
         // Force GPU compositing layer on iOS — prevents the navbar
