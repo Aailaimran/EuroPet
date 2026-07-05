@@ -12,7 +12,7 @@ interface PageHeroProps {
 
 export default function PageHero({ title, subtitle, breadcrumb }: PageHeroProps) {
   return (
-    <section className="bg-[#0a0e1a] py-20 md:py-28 pt-32 md:pt-36 relative overflow-hidden">
+    <section className="bg-[#0a0e1a] py-14 md:py-20 relative overflow-hidden">
       {/* Subtle radial gradient */}
       <div
         className="absolute inset-0 pointer-events-none"
