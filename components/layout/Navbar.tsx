@@ -82,27 +82,36 @@ export default function Navbar() {
         backfaceVisibility: 'hidden',
       }}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full py-2 md:py-3">
-        {/* LOGO — Reduced size, object-contain, no cropping */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full py-2">
+        {/* LOGO — Scaled to show full circular illustration and tagline clearly */}
         <Link
           href="/"
           className="flex-shrink-0 flex items-center"
           data-cursor="hover"
         >
-          <Image
-            src="/UpdatedLogo.png"
-            alt="Euro Pet Express"
-            width={200}
-            height={140}
-            priority={true}
-            quality={100}
-            className="object-contain block"
+          <div 
+            className="relative flex-shrink-0"
             style={{
-              height: '70px',
-              width: 'auto',
-              display: 'block',
+              width: '130px',
+              height: '90px',
+              position: 'relative',
+              overflow: 'visible',
             }}
-          />
+          >
+            <Image
+              src="/UpdatedLogo.png"
+              alt="Euro Pet Express"
+              fill
+              priority={true}
+              quality={100}
+              className="object-contain"
+              style={{
+                objectFit: 'contain',
+                objectPosition: 'left center',
+              }}
+              sizes="130px"
+            />
+          </div>
         </Link>
 
         {/* DESKTOP NAV — hidden on mobile (below lg: 1024px) */}
