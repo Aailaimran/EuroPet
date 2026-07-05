@@ -56,7 +56,7 @@ export default function HeroSection() {
 
       {/* Layer 6: All hero content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh] py-24 pt-32">
+        <div className="flex flex-col-reverse md:grid md:grid-cols-2 gap-8 lg:gap-12 items-center min-h-[80vh] py-12 md:py-16">
 
           {/* Left Content */}
           <div className="w-full max-w-xl">

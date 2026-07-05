@@ -97,7 +97,7 @@ const sections = [
 export default function PrivacyPage() {
   return (
     <div>
-      <section className="bg-navy py-20 pt-32">
+      <section className="bg-navy py-14 md:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <span className="text-brand-gold text-xs font-semibold uppercase tracking-[0.2em] mb-3 block">LEGAL</span>
           <h1 className="font-display text-white text-3xl md:text-5xl font-bold uppercase tracking-wider mb-4">Privacy Policy</h1>
