@@ -40,28 +40,34 @@ export default function Navbar() {
     setOpen(false)
   }, [pathname])
 
-  // Prevent background body scroll on iOS when mobile menu is open.
-  // On iOS, position: fixed is the only reliable way to lock scroll.
+  // Prevent background body scroll on Safari when mobile menu is open
   useEffect(() => {
     if (open) {
       document.body.style.overflow = 'hidden'
       document.body.style.position = 'fixed'
+      document.body.style.top = `-${window.scrollY}px`
       document.body.style.width = '100%'
     } else {
+      const scrollY = document.body.style.top
       document.body.style.overflow = ''
       document.body.style.position = ''
+      document.body.style.top = ''
       document.body.style.width = ''
+      if (scrollY) {
+        window.scrollTo(0, parseInt(scrollY || '0') * -1)
+      }
     }
     return () => {
       document.body.style.overflow = ''
       document.body.style.position = ''
+      document.body.style.top = ''
       document.body.style.width = ''
     }
   }, [open])
 
   return (
     <motion.header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out transform-gpu ${scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 transform-gpu ${scrolled
         ? 'bg-brand-dark/95 backdrop-blur-md shadow-lg border-b border-white/10'
         : 'bg-transparent border-b border-transparent'
         }`}
@@ -76,48 +82,35 @@ export default function Navbar() {
         backfaceVisibility: 'hidden',
       }}
     >
-      <div
-        className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full transition-all duration-500 ease-in-out ${scrolled
-          ? 'h-16 md:h-20 lg:h-[90px]'
-          : 'h-20 md:h-28 lg:h-[125px]'
-          }`}
-      >
-        {/* Logo */}
-        <Link href="/" className="flex-shrink-0 flex items-center relative z-50" data-cursor="hover">
-          <div className="relative flex items-center">
-            {/* Absolute container that allows the logo to scale and breathe (and potentially hang slightly below the navbar) */}
-            <div
-              className={`absolute left-0 transition-all duration-500 ease-in-out ${scrolled
-                ? 'w-[75px] md:w-[96px] lg:w-[114px] xl:w-[126px] h-[75px] md:h-[96px] lg:h-[114px] xl:h-[126px]'
-                : 'w-[87px] md:w-[120px] lg:w-[147px] xl:w-[165px] h-[87px] md:h-[120px] lg:h-[147px] xl:h-[165px]'
-                }`}
-            >
-              <Image
-                src="/UpdatedLogo.png"
-                alt="Euro Pet Express"
-                fill
-                priority={true}
-                quality={100}
-                className="object-contain object-left"
-                sizes="(max-width: 640px) 87px, (max-width: 768px) 120px, (max-width: 1024px) 147px, 165px"
-              />
-            </div>
-            {/* Layout Spacer: keeps the width reserved in the flex layout */}
-            <div
-              className={`transition-all duration-500 ease-in-out h-px ${scrolled
-                ? 'w-[75px] md:w-[96px] lg:w-[114px] xl:w-[126px]'
-                : 'w-[87px] md:w-[120px] lg:w-[147px] xl:w-[165px]'
-                }`}
-            />
-          </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between w-full py-2 md:py-3">
+        {/* LOGO — Reduced size, object-contain, no cropping */}
+        <Link
+          href="/"
+          className="flex-shrink-0 flex items-center"
+          data-cursor="hover"
+        >
+          <Image
+            src="/UpdatedLogo.png"
+            alt="Euro Pet Express"
+            width={200}
+            height={140}
+            priority={true}
+            quality={100}
+            className="object-contain block"
+            style={{
+              height: '70px',
+              width: 'auto',
+              display: 'block',
+            }}
+          />
         </Link>
 
-        {/* Desktop Nav */}
+        {/* DESKTOP NAV — hidden on mobile (below lg: 1024px) */}
         <motion.nav
           variants={staggerContainerVariant}
           initial="hidden"
           animate="visible"
-          className="hidden lg:flex items-center gap-1 xl:gap-3"
+          className="hidden lg:flex items-center gap-2"
         >
           {links.map((link) => {
             const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href))
@@ -127,12 +120,12 @@ export default function Navbar() {
                 <Link
                   href={link.href}
                   data-cursor="hover"
-                  className={`relative text-[11px] xl:text-xs font-semibold uppercase tracking-wider px-2 xl:px-3 py-2 rounded transition-colors duration-200 block group ${isActive ? 'text-brand-gold' : 'text-white hover:text-brand-gold'
+                  className={`relative text-xs font-medium uppercase tracking-wider px-3 py-2 rounded transition-colors duration-200 block group ${isActive ? 'text-brand-gold' : 'text-white hover:text-brand-gold'
                     }`}
                 >
                   {link.label}
                   <motion.div
-                    className="absolute bottom-0 left-2 xl:left-3 right-2 xl:right-3 h-[1px] bg-brand-gold origin-left"
+                    className="absolute bottom-0 left-3 right-3 h-[1px] bg-brand-gold origin-left"
                     initial={{ scaleX: isActive ? 1 : 0 }}
                     animate={{ scaleX: isActive ? 1 : 0 }}
                     whileHover={{ scaleX: 1 }}
@@ -143,12 +136,12 @@ export default function Navbar() {
               </motion.div>
             )
           })}
-          <motion.div variants={fadeUpFastVariant} className="ml-1 xl:ml-2">
+          <motion.div variants={fadeUpFastVariant} className="ml-2">
             <MagneticButton>
               <Link
                 href="/contact"
                 data-cursor="hover"
-                className="block bg-brand-gold text-brand-dark font-bold text-[10px] xl:text-xs px-4 xl:px-5 py-2.5 rounded hover:bg-gold-hover transition-colors uppercase tracking-wider shadow-sm"
+                className="block bg-brand-gold text-brand-dark font-bold text-xs px-5 py-2.5 rounded hover:bg-gold-hover transition-colors uppercase tracking-wider shadow-sm"
               >
                 REQUEST QUOTE
               </Link>
@@ -156,42 +149,54 @@ export default function Navbar() {
           </motion.div>
         </motion.nav>
 
-        {/* Mobile Toggle — iOS tap fix: explicit min size, touch-action, no tap highlight */}
+        {/* MOBILE HAMBURGER — hidden on desktop (lg:hidden), flex-shrink-0 keeps target stable */}
         <button
-          onClick={() => setOpen(!open)}
-          className="lg:hidden text-white p-2 relative z-50"
+          onClick={(e) => {
+            e.preventDefault()
+            e.stopPropagation()
+            setOpen(prev => !prev)
+          }}
+          className="lg:hidden flex items-center justify-center text-white flex-shrink-0 z-[60] relative"
           style={{
-            touchAction: 'manipulation',
-            WebkitTapHighlightColor: 'transparent',
             minWidth: '44px',
             minHeight: '44px',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            padding: '10px',
+            touchAction: 'manipulation',
+            WebkitTapHighlightColor: 'transparent',
             cursor: 'pointer',
+            position: 'relative',
+            zIndex: 60,
+            WebkitTransform: 'translateZ(0)',
+            transform: 'translateZ(0)',
           }}
-          aria-label={open ? 'Close menu' : 'Open menu'}
           type="button"
+          aria-label={open ? 'Close menu' : 'Open menu'}
+          aria-expanded={open}
         >
-          {open ? <X size={24} /> : <Menu size={24} />}
+          {open
+            ? <X size={22} strokeWidth={2} />
+            : <Menu size={22} strokeWidth={2} />
+          }
         </button>
       </div>
 
       {/* Mobile Menu */}
-      {/* mode="wait" prevents overlapping enter/exit animations that can block iOS touch events */}
       <AnimatePresence mode="wait">
         {open && (
           <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: 'auto', opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3, ease: 'easeOut' }}
-            className="lg:hidden bg-brand-dark border-t border-brand-gold/10 overflow-hidden overflow-y-auto absolute top-full left-0 right-0 w-full max-h-[calc(100vh-80px)]"
+            key="mobile-menu"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{
+              duration: 0.2,
+              ease: 'easeOut'
+            }}
+            className="lg:hidden bg-brand-dark border-t border-brand-gold/10 absolute top-full left-0 right-0 w-full z-50"
             style={{
               WebkitOverflowScrolling: 'touch',
               overflowY: 'auto',
-              maxHeight: '80vh',
-              touchAction: 'pan-y',
+              maxHeight: '85vh',
               WebkitTransform: 'translateZ(0)',
               transform: 'translateZ(0)',
             }}
