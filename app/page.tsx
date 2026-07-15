@@ -4,7 +4,7 @@ import { CalendarDays } from 'lucide-react'
 
 export const metadata: Metadata = {
   title: 'Euro Pet Express | Premium Pet Transport UK & Europe',
-  description: 'DEFRA authorised premium pet transport between the UK and Europe. Safe, compliant, scheduled departures for dogs, cats and small animals.',
+  description: 'Premium pet transport between the UK and Europe. Safe, compliant, scheduled departures for dogs, cats and small animals.',
 }
 import HeroSection from '@/components/home/HeroSection'
 import TrustBar from '@/components/home/TrustBar'

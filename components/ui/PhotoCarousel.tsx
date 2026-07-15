@@ -24,7 +24,7 @@ const CAROUSEL_IMAGES: CarouselImage[] = [
   },
   {
     src: '/images/about/image3.jpg',
-    alt: 'Euro Pet Express — DEFRA authorised transport vehicle for pet relocation',
+    alt: 'Euro Pet Express — premium transport vehicle for pet relocation',
     exists: true,
   },
   {
