@@ -206,7 +206,7 @@ export default function Footer() {
               />
             </Link>
             <p className="text-gray-400 text-sm leading-relaxed mt-3 max-w-xs">
-              Premium pet transport between the UK and Europe. DEFRA authorised. Fully compliant. Always caring.
+              Premium pet transport between the UK and Europe. Pending DEFRA Type 2 approval. Fully compliant. Always caring.
             </p>
             <div className="flex items-center gap-2 mt-4 flex-wrap">
               {socialLinks.map(({ name, href, color, svg }) => (
@@ -294,8 +294,8 @@ export default function Footer() {
             Using honest interim text until real number 
             is provided. */}
             <div className="bg-brand-darkSecondary rounded-lg p-4 border border-white/5 mt-2 shadow-inner">
-              <div className="text-gray-400 text-xs font-semibold">DEFRA Type 2 Authorised Transporter</div>
-              <div className="text-gray-500 text-[11px] mt-0.5">Authorisation number available on request</div>
+              <div className="text-gray-400 text-xs font-semibold">Pending DEFRA Type 2 Approval</div>
+              <div className="text-gray-500 text-[11px] mt-0.5">Expected end August 2026</div>
               <div className="text-gray-400 text-xs font-semibold mt-2.5">TRACES NT Registered</div>
             </div>
           </motion.div>

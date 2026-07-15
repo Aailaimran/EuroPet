@@ -17,12 +17,12 @@ import PhotoCarousel from '@/components/ui/PhotoCarousel'
 import Script from 'next/script'
 
 export const metadata: Metadata = {
-  title: 'About Euro Pet Express | DEFRA Authorised Pet Transport Founded by David',
-  description: 'Euro Pet Express was founded by David, a 20-year dog transport professional who decided the industry had to be done better. DEFRA authorised pet transport between the UK and Europe. Welfare first. Paperwork right. No corners cut.',
-  keywords: 'Euro Pet Express about, DEFRA authorised pet transport, pet transport UK Europe, dog transport founder, trusted pet courier UK, animal welfare transport, pet transport Romania UK Serbia Germany France',
+  title: 'About Euro Pet Express | Premium Pet Transport Founded by David',
+  description: 'Euro Pet Express was founded by David, a dog transport professional with over a decade of experience who decided the industry had to be done better. Premium pet transport between the UK and Europe. Welfare first. Paperwork right. No corners cut.',
+  keywords: 'Euro Pet Express about, premium pet transport, pet transport UK Europe, dog transport founder, trusted pet courier UK, animal welfare transport, pet transport Romania UK Serbia Germany France',
   openGraph: {
-    title: 'About Euro Pet Express | DEFRA Authorised Pet Transport',
-    description: 'Founded by David — 20 years of professional dog transport experience. We built Euro Pet Express to prove there is a better way. DEFRA authorised. Welfare first.',
+    title: 'About Euro Pet Express | Premium Pet Transport',
+    description: 'Founded by David — over a decade of professional dog transport experience. We built Euro Pet Express to prove there is a better way. Welfare first.',
     url: 'https://europetexpress.co.uk/about',
     siteName: 'Euro Pet Express',
     images: [
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: 'https://europetexpress.co.uk/images/about/owner.png',
         width: 1200,
         height: 630,
-        alt: 'David — Founder of Euro Pet Express, DEFRA Authorised Pet Transport',
+        alt: 'David — Founder of Euro Pet Express, Premium Pet Transport',
       },
     ],
     locale: 'en_GB',
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'About Euro Pet Express | DEFRA Authorised Pet Transport',
-    description: 'Founded by David — 20 years of professional dog transport experience. Welfare first. Paperwork right. No corners cut.',
+    title: 'About Euro Pet Express | Premium Pet Transport',
+    description: 'Founded by David — over a decade of professional dog transport experience. Welfare first. Paperwork right. No corners cut.',
     images: [
       'https://europetexpress.co.uk/images/about/owner.png'
     ],
@@ -74,13 +74,13 @@ export default function About() {
               "name": "Euro Pet Express",
               "url": "https://europetexpress.co.uk",
               "logo": "https://europetexpress.co.uk/UpdatedLogo.png",
-              "description": "DEFRA authorised premium pet transport service operating between the UK and Europe. Safe, compliant, scheduled departures for dogs, cats and small animals.",
+              "description": "Premium pet transport service operating between the UK and Europe. Safe, compliant, scheduled departures for dogs, cats and small animals. Pending DEFRA Type 2 approval.",
               "foundingDate": "2023",
               "founder": {
                 "@type": "Person",
                 "name": "David",
                 "jobTitle": "Managing Director",
-                "description": "20-year dog transport industry professional who founded Euro Pet Express to provide welfare-first pet transport between the UK and Europe."
+                "description": "Dog transport industry professional with over a decade of experience who founded Euro Pet Express to provide welfare-first pet transport between the UK and Europe."
               },
               "contactPoint": {
                 "@type": "ContactPoint",
@@ -113,7 +113,7 @@ export default function About() {
               "hasCredential": [
                 {
                   "@type": "EducationalOccupationalCredential",
-                  "name": "DEFRA Type 2 Authorised Transporter",
+                  "name": "Pending DEFRA Type 2 Approval",
                   "credentialCategory": "licence",
                   "recognizedBy": {
                     "@type": "GovernmentOrganization",
@@ -131,7 +131,7 @@ export default function About() {
                 "Pet Transport",
                 "Dog Transport",
                 "Cat Transport",
-                "DEFRA Authorised Transport",
+                "Premium Pet Transport",
                 "International Pet Relocation",
                 "Rescue Transport",
                 "Breeder Transport"
@@ -256,7 +256,7 @@ export default function About() {
 
       <PageHero
         title="About Euro Pet Express"
-        subtitle="DEFRA authorised pet transport between the UK and Europe — founded by a 20-year industry professional who decided it had to be done better."
+        subtitle="Premium pet transport between the UK and Europe — founded by an industry professional with over a decade of experience who decided it had to be done better."
         breadcrumb="Home / About Euro Pet Express"
       />
 
@@ -307,7 +307,7 @@ export default function About() {
             <div className="lg:col-span-2">
 
               <p className="text-brand-gold text-sm font-medium leading-relaxed mb-6 border-l-2 border-brand-gold/30 pl-4">
-                Euro Pet Express is a DEFRA Type 2 authorised pet transport service operating scheduled routes between the United Kingdom and destinations across Europe. We transport dogs, cats, ferrets, and small animals with welfare, documentation, and transparency at the centre of everything we do.
+                Euro Pet Express is a premium pet transport service (pending DEFRA Type 2 approval) operating scheduled routes between the United Kingdom and destinations across Europe. We transport dogs, cats, ferrets, and small animals with welfare, documentation, and transparency at the centre of everything we do.
               </p>
 
               {/* Section label */}
@@ -333,7 +333,7 @@ export default function About() {
                 <meta itemProp="publisher" content="Euro Pet Express" />
 
                 <p className="text-gray-600 text-lg leading-relaxed font-medium">
-                  I&apos;ve been around dogs my whole life, and for the last 20 years I&apos;ve been moving them across Europe and into the UK.
+                  I&apos;ve been around dogs my whole life, and for over a decade I&apos;ve been moving them across Europe and into the UK.
                 </p>
 
                 <p className="text-gray-600 text-base leading-relaxed">
@@ -349,7 +349,7 @@ export default function About() {
                 </p>
 
                 <p className="text-gray-600 text-base leading-relaxed">
-                  When you hand us your dog, you&apos;re handing it to someone who spent 20 years learning what not to do, and built a company to prove there&apos;s a better way.
+                  When you hand us your dog, you&apos;re handing it to someone who spent over a decade learning what not to do, and built a company to prove there&apos;s a better way.
                 </p>
 
               </article>

@@ -57,19 +57,6 @@ export default function RouteCard({ route, index }: RouteCardProps) {
           <span>Journey duration varies — contact us for current estimates</span>
         </div>
 
-        <div className="mt-4">
-          <div className="mb-2 text-xs font-semibold uppercase tracking-[0.18em] text-gray-400">
-            Pickup Cities
-          </div>
-          <div className="flex flex-wrap gap-2">
-            {route.pickupCities.map((city) => (
-              <span key={city} className="rounded-full border border-gray-200 bg-[#F8F6F1] px-2.5 py-1 text-xs md:text-sm text-gray-600">
-                {city}
-              </span>
-            ))}
-          </div>
-        </div>
-
         <div className="mt-5 border-t border-gray-200 pt-4">
           <ul className="space-y-2">
             {route.routeHighlights.slice(0, 4).map((highlight) => (

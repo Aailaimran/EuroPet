@@ -24,8 +24,8 @@ const playfair = Playfair_Display({
 
 export const metadata = {
   title: 'Euro Pet Express | Premium Pet Transport UK & Europe',
-  description: 'DEFRA authorised premium pet transport between the UK and Europe. Safe, compliant, scheduled departures for dogs, cats and small animals across Romania, Serbia, Germany, France and 9+ destinations. Owner accompanied travel available.',
-  keywords: 'premium pet transport UK Europe, pet transport Romania UK, DEFRA authorised pet transport, cat transport Europe, dog transport Europe, pet courier UK, bespoke pet transport',
+  description: 'Premium pet transport between the UK and Europe. Safe, compliant, scheduled departures for dogs, cats and small animals across Romania, Serbia, Germany, France and 9+ destinations. Owner accompanied travel available.',
+  keywords: 'premium pet transport UK Europe, pet transport Romania UK, pet transport, cat transport Europe, dog transport Europe, pet courier UK, bespoke pet transport',
   icons: {
     icon: [
       { url: '/icon.png', type: 'image/png' },

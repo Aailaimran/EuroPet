@@ -25,6 +25,10 @@ export default function TransportQuoteForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
+    if (!formData.agree) {
+      alert('Please agree to be contacted before submitting.')
+      return
+    }
     // In production, this would connect to Zoho CRM API
     setSubmitted(true)
   }
@@ -178,10 +182,11 @@ export default function TransportQuoteForm() {
               <input
                 id="petWeight"
                 type="number"
-                placeholder="Weight in kg"
+                placeholder="Weight in kg (e.g. 25)"
                 value={formData.petWeight}
                 onChange={(e) => setFormData({ ...formData, petWeight: e.target.value })}
                 className="w-full border border-gray-300 rounded-xl px-3 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
+                style={{ appearance: 'textfield' }}
               />
             </div>
           </div>
@@ -198,25 +203,31 @@ export default function TransportQuoteForm() {
             <label htmlFor="route" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
               Route *
             </label>
-            <select
-              id="route"
-              required
-              value={formData.route}
-              onChange={(e) => setFormData({ ...formData, route: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base bg-white"
-            >
-              <option value="">Select your route</option>
-              {ROUTES
-                .filter(r => r.isActive)
-                .sort((a, b) => a.displayOrder - b.displayOrder)
-                .map(route => (
-                  <option key={route.slug} value={route.slug}>
-                    {route.name}
-                  </option>
-                ))
-              }
-              <option value="other">Other / Not Listed</option>
-            </select>
+            <div className="relative">
+              <select
+                id="route"
+                required
+                value={formData.route}
+                onChange={(e) => setFormData({ ...formData, route: e.target.value })}
+                className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base bg-white appearance-none pr-10 cursor-pointer"
+              >
+                <option value="">Select your route</option>
+                {ROUTES
+                  .filter(r => r.isActive)
+                  .sort((a, b) => a.displayOrder - b.displayOrder)
+                  .map(route => (
+                    <option key={route.slug} value={route.slug}>
+                      {route.name}
+                    </option>
+                  ))
+                }
+                <option value="other">Other / Not Listed</option>
+              </select>
+              {/* Custom double arrow indicator — routes are bidirectional */}
+              <div className="absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none text-gray-500 font-bold text-sm" aria-hidden="true">
+                {'\u2194'}
+              </div>
+            </div>
           </div>
 
           <div className="flex flex-col gap-1.5">
@@ -236,13 +247,13 @@ export default function TransportQuoteForm() {
 
           <div className="flex flex-col gap-1.5">
             <label htmlFor="deliveryAddress" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-              Delivery Address in UK *
+              Delivery City &amp; Country *
             </label>
             <input
               id="deliveryAddress"
               required
               type="text"
-              placeholder="e.g. Manchester, England"
+              placeholder="e.g. Manchester, United Kingdom"
               value={formData.deliveryAddress}
               onChange={(e) => setFormData({ ...formData, deliveryAddress: e.target.value })}
               className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base"
@@ -284,25 +295,39 @@ export default function TransportQuoteForm() {
         </div>
       </div>
 
-      <div className="flex items-start gap-3">
+      <div className="flex items-start gap-3 mt-4 mb-2">
         <input
           required
           type="checkbox"
           id="agree"
+          name="consent"
           checked={formData.agree}
           onChange={(e) => setFormData({ ...formData, agree: e.target.checked })}
-          className="w-4 h-4 rounded border-gray-300 text-brand-gold focus:ring-brand-gold mt-1"
+          className="mt-1 w-4 h-4 rounded border-gray-300 text-brand-gold focus:ring-brand-gold cursor-pointer flex-shrink-0"
+          style={{ accentColor: '#C9A84C' }}
         />
-        <label htmlFor="agree" className="text-gray-500 text-xs leading-normal">
-          I agree to be contacted by Euro Pet Express regarding my quote request
+        <label htmlFor="agree" className="text-sm text-gray-600 leading-relaxed cursor-pointer">
+          I agree to be contacted by Euro Pet Express regarding my transport enquiry. I understand my data will be used to process this request in accordance with the{' '}
+          <a
+            href="/privacy"
+            className="text-brand-gold hover:underline font-medium"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Privacy Policy
+          </a>
+          .
         </label>
       </div>
 
       <button
         type="submit"
-        className="w-full bg-brand-gold text-brand-dark font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-brand-goldHover transition-colors duration-200 text-sm flex items-center justify-center gap-2"
+        className="w-full bg-brand-gold text-brand-dark font-bold text-sm px-6 py-4 rounded-xl hover:bg-brand-goldHover transition-all duration-200 uppercase tracking-wider shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 mt-2"
       >
-        SUBMIT TRANSPORT QUOTE REQUEST
+        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+        </svg>
+        Submit Transport Quote Request
       </button>
     </form>
   )

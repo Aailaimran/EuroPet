@@ -10,7 +10,7 @@ import PageHero from '@/components/ui/PageHero'
 
 export const metadata: Metadata = {
   title: 'Our Services | Euro Pet Express',
-  description: 'Premium pet transport services including scheduled European routes, rescue and breeder transport, family relocation, owner accompanied travel, and bespoke transport options. DEFRA authorised.',
+  description: 'Premium pet transport services including scheduled European routes, rescue and breeder transport, family relocation, owner accompanied travel, and bespoke transport options.',
 }
 
 const SERVICES = [
@@ -227,8 +227,8 @@ export default function ServicesPage() {
                 desc: 'All drivers certified in animal first aid and welfare response',
               },
               {
-                title: 'DEFRA Authorised',
-                desc: 'Fully authorised Type 2 long-journey pet transporter',
+                title: 'Pending DEFRA Type 2 Approval',
+                desc: 'Type 2 long-journey pet transporter authorisation pending — expected end August 2026',
               },
               {
                 title: 'Regular Photo Updates',
