@@ -161,10 +161,19 @@ button, [type='button'], [type='reset'],
   background-image: none;
 }
 
-/* Remove iOS input styling */
-input, textarea, select {
+/* Remove iOS input styling (exclude checkboxes & radios) */
+input:not([type="checkbox"]):not([type="radio"]),
+textarea, select {
   -webkit-appearance: none;
   appearance: none;
+  border-radius: 0;
+}
+
+/* Restore native checkbox & radio appearance */
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-appearance: checkbox;
+  appearance: checkbox;
   border-radius: 0;
 }
 
