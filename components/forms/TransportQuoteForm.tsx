@@ -322,7 +322,7 @@ export default function TransportQuoteForm() {
 
       <button
         type="submit"
-        className="w-full bg-brand-gold text-brand-dark font-bold text-sm px-6 py-4 rounded-xl hover:bg-brand-goldHover transition-all duration-200 uppercase tracking-wider shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 mt-2"
+        className="w-full bg-gold text-navy font-bold text-sm px-6 py-4 rounded-xl hover:bg-gold-light transition-all duration-200 uppercase tracking-wider shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 mt-2"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />

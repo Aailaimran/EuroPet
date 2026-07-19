@@ -307,7 +307,7 @@ export default function RescueAdoptionForm() {
 
       <button
         type="submit"
-        className="w-full bg-brand-gold text-brand-dark font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-brand-goldHover transition-colors duration-200 text-sm flex items-center justify-center gap-2"
+        className="w-full bg-gold text-navy font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-gold-light transition-colors duration-200 text-sm flex items-center justify-center gap-2"
       >
         SUBMIT ADOPTION ENQUIRY
       </button>

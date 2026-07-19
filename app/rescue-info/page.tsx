@@ -205,7 +205,7 @@ function RescueInfoForm() {
           {/* Submit button */}
           <button
             type="submit"
-            className="w-full bg-brand-gold text-brand-dark font-bold text-sm px-6 py-4 rounded-xl hover:bg-brand-goldHover transition-all duration-200 uppercase tracking-wider shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] mt-2"
+            className="w-full bg-gold text-navy font-bold text-sm px-6 py-4 rounded-xl hover:bg-gold-light transition-all duration-200 uppercase tracking-wider shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] mt-2"
           >
             Send My Request
           </button>
