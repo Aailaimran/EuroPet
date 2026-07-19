@@ -79,7 +79,7 @@ const SERVICES = [
     icon: Star,
     title: 'Bespoke Pet Transport',
     subtitle: 'Price on Application',
-    image: 'https://images.unsplash.com/photo-1583511655826-05700442b31b?w=600&q=80',
+    image: 'https://images.unsplash.com/photo-1530281700549-e82e7bf110d6?w=600&q=80',
     alt: 'Premium bespoke pet transport service',
     isPOA: true,
     description: 'For unique or complex transport requirements, we offer fully bespoke pet transport solutions tailored to your specific needs. Whether transporting multiple pets or requiring specialist handling, we can accommodate.',
