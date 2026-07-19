@@ -92,7 +92,8 @@ export default function About() {
               "sameAs": [
                 "https://www.facebook.com/share/18HAUnUYuM/?mibextid=wwXIfr",
                 "https://www.instagram.com/europet26",
-                "https://www.tiktok.com/@europet.express"
+                "https://www.tiktok.com/@europet.express",
+                "https://youtube.com/@europetexpress-z1v?si=o_sn0SLEsUIdX2Fi"
               ],
               "address": {
                 "@type": "PostalAddress",
