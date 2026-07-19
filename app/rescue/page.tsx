@@ -224,14 +224,14 @@ function DogProfileCard({ dog }: { dog: typeof RESCUE_DOGS[0] }) {
 
         {/* CTA Button */}
         <Link
-          href={`/contact/rescue?dog=${encodeURIComponent(dog.name)}&breed=${encodeURIComponent(dog.breed)}&location=${encodeURIComponent(dog.location)}`}
+          href={`/rescue-info?dog=${encodeURIComponent(dog.name)}&breed=${encodeURIComponent(dog.breed)}&location=${encodeURIComponent(dog.location)}`}
           className={`block w-full text-center font-bold text-sm px-4 py-3.5 rounded-xl uppercase tracking-wider transition-all duration-200 ${
             dog.status === 'Available'
               ? 'bg-brand-gold text-brand-dark hover:bg-brand-goldHover shadow-md hover:shadow-lg hover:scale-[1.01]'
               : 'bg-gray-100 text-gray-400 cursor-not-allowed pointer-events-none'
           }`}
         >
-          {dog.status === 'Available' ? `Enquire About ${dog.name}` : 'Currently Reserved'}
+          {dog.status === 'Available' ? 'Request More Information' : 'Currently Reserved'}
         </Link>
 
         {dog.status === 'Available' && (
@@ -277,20 +277,30 @@ export default function RescuePage() {
 
             {/* Right — 3 stat boxes */}
             <div className="grid grid-cols-1 gap-4">
-              {[
-                { number: '50+', label: 'Dogs rehomed' },
-                { number: '8+', label: 'Rescue partners' },
-                { number: '100%', label: 'DEFRA compliant transport' },
-              ].map((stat) => (
-                <div key={stat.label} className="bg-white/5 border border-white/10 rounded-xl p-5 text-center">
-                  <p className="font-playfair text-3xl font-bold text-brand-gold mb-1">
-                    {stat.number}
-                  </p>
-                  <p className="text-gray-400 text-sm">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
+              <div className="bg-white/5 border border-white/10 rounded-xl p-5 text-center">
+                <p className="font-playfair text-3xl font-bold text-brand-gold mb-1">
+                  50+
+                </p>
+                <p className="text-gray-400 text-sm">
+                  Dogs rehomed
+                </p>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-xl p-5 text-center">
+                <p className="font-playfair text-2xl md:text-3xl font-bold text-brand-gold mb-1">
+                  Multiple
+                </p>
+                <p className="text-gray-400 text-sm">
+                  Rescue Centres
+                </p>
+              </div>
+              <div className="bg-white/5 border border-white/10 rounded-xl p-5 text-center">
+                <p className="font-playfair text-2xl font-bold text-brand-gold mb-2">
+                  ✓
+                </p>
+                <p className="text-gray-400 text-sm">
+                  DEFRA Compliant Transport
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -329,10 +339,10 @@ export default function RescuePage() {
               The dogs shown here are just a selection. We work with multiple rescue organisations across Europe. If you are looking for a specific breed, age, or temperament, get in touch and we will do our best to help match you with the right dog.
             </p>
             <Link
-              href="/contact"
+              href="/rescue-info"
               className="inline-flex items-center gap-2 bg-brand-gold text-brand-dark font-bold text-sm px-8 py-4 rounded-xl hover:bg-brand-goldHover transition-all duration-200 uppercase tracking-wider shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
             >
-              Request a Quote
+              Request More Information
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -367,7 +377,7 @@ export default function RescuePage() {
                 step: '02',
                 icon: '📋',
                 title: 'Submit an Enquiry',
-                desc: 'Click "Request a Quote" and tell us about yourself, your home, and which dog you are interested in. Include a message about why you would be a great match.',
+                desc: 'Click "Request More Information" and tell us about yourself, your home, and which dog you are interested in. Include a message about why you would be a great match.',
               },
               {
                 step: '03',
@@ -488,10 +498,10 @@ export default function RescuePage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/contact/rescue?type=rescue-organisation"
+              href="/rescue-info?type=rescue-organisation"
               className="inline-flex items-center gap-2 bg-brand-gold text-brand-dark font-bold text-sm px-10 py-4 rounded-xl hover:bg-brand-goldHover transition-all duration-200 uppercase tracking-wider shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
             >
-              Request a Quote
+              Request More Information
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link

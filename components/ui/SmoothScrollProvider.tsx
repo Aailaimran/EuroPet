@@ -38,15 +38,19 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
         const Lenis = LenisModule.default
 
         lenis = new Lenis({
-          duration: 1.4,
+          // Scroll duration — higher = slower and more luxurious feeling
+          duration: 1.2,
+          // Smooth easing curve — exponential ease-out for premium feel
           easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          // Smooth wheel scrolling on desktop
           smoothWheel: true,
-          wheelMultiplier: 0.8,
-          // touchMultiplier: 0 disables touch-based smooth scroll on non-iOS
-          // touch devices (e.g. Android tablets with desktop UA) for safety
+          // Wheel scroll speed multiplier — natural speed
+          wheelMultiplier: 1.0,
+          // Disable touch scroll on mobile (let native handle it)
           touchMultiplier: 0,
         })
 
+        // Connect Lenis to requestAnimationFrame
         function raf(time: number) {
           lenis.raf(time)
           rafId = requestAnimationFrame(raf)
@@ -54,6 +58,7 @@ export default function SmoothScrollProvider({ children }: { children: React.Rea
         rafId = requestAnimationFrame(raf)
       } catch (error) {
         console.warn('[SmoothScrollProvider] Failed to initialise Lenis:', error)
+        // Fail silently — native scroll will be used as fallback
       }
     }
 

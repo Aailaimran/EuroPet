@@ -82,12 +82,12 @@ const SERVICES = [
     image: 'https://images.unsplash.com/photo-1583511655826-05700442b31b?w=600&q=80',
     alt: 'Premium bespoke pet transport service',
     isPOA: true,
-    description: 'For unique or complex transport requirements, we offer fully bespoke pet transport solutions tailored to your specific needs. Whether transporting multiple pets, exotic animals, or requiring specialist handling, we can accommodate.',
+    description: 'For unique or complex transport requirements, we offer fully bespoke pet transport solutions tailored to your specific needs. Whether transporting multiple pets or requiring specialist handling, we can accommodate.',
     features: [
       'Fully tailored transport solution',
       'Specialist handling available',
       'Flexible scheduling and routing',
-      'Multi-pet and exotic animal transport',
+      'Multi-pet transport solutions',
       'Price on application — contact us to discuss',
     ],
   },
@@ -235,8 +235,8 @@ export default function ServicesPage() {
                 desc: 'Photos and videos sent via WhatsApp throughout the journey',
               },
               {
-                title: '30+ Years Experience',
-                desc: 'Professional pet handling experience across Europe and beyond',
+                title: 'Years of Experience',
+                desc: 'Decades of professional pet handling and transport experience across Europe and beyond',
               },
             ].map((item) => (
               <div 

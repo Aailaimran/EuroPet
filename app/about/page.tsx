@@ -153,7 +153,7 @@ export default function About() {
                 "name": "Euro Pet Express",
                 "url": "https://europetexpress.co.uk"
               },
-              "description": "Managing Director of Euro Pet Express. Professional with two decades of experience in dog and pet transport across Europe and the UK. Founded Euro Pet Express to establish welfare-first standards in the pet transport industry.",
+              "description": "Managing Director of Euro Pet Express. Professional with over a decade of experience in dog and pet transport across Europe and the UK. Founded Euro Pet Express to establish welfare-first standards in the pet transport industry.",
               "knowsAbout": [
                 "Pet Transport",
                 "DEFRA Regulations",
