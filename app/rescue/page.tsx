@@ -127,11 +127,10 @@ function DogProfileCard({ dog }: { dog: typeof RESCUE_DOGS[0] }) {
 
         {/* Status badge — top left */}
         <div className="absolute top-4 left-4">
-          <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full ${
-            dog.status === 'Available' 
-              ? 'bg-green-400 text-green-900' 
+          <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full ${dog.status === 'Available'
+              ? 'bg-green-400 text-green-900'
               : 'bg-amber-400 text-amber-900'
-          }`}>
+            }`}>
             {dog.status === 'Available' ? 'Available for Adoption' : 'Reserved'}
           </span>
         </div>
@@ -225,11 +224,10 @@ function DogProfileCard({ dog }: { dog: typeof RESCUE_DOGS[0] }) {
         {/* CTA Button */}
         <Link
           href={`/rescue-info?dog=${encodeURIComponent(dog.name)}&breed=${encodeURIComponent(dog.breed)}&location=${encodeURIComponent(dog.location)}`}
-          className={`block w-full text-center font-bold text-sm px-4 py-3.5 rounded-xl uppercase tracking-wider transition-all duration-200 ${
-            dog.status === 'Available'
+          className={`block w-full text-center font-bold text-sm px-4 py-3.5 rounded-xl uppercase tracking-wider transition-all duration-200 ${dog.status === 'Available'
               ? 'bg-brand-gold text-brand-dark hover:bg-brand-goldHover shadow-md hover:shadow-lg hover:scale-[1.01]'
               : 'bg-gray-100 text-gray-400 cursor-not-allowed pointer-events-none'
-          }`}
+            }`}
         >
           {dog.status === 'Available' ? 'Request More Information' : 'Currently Reserved'}
         </Link>
@@ -369,25 +367,24 @@ export default function RescuePage() {
             {[
               {
                 step: '01',
-                icon: '🐾',
                 title: 'Choose a Dog',
                 desc: 'Browse our rescue dogs and find one that feels right for your home and lifestyle. Not sure? Tell us what you are looking for and we will help match you.',
               },
               {
                 step: '02',
-                icon: '📋',
+
                 title: 'Submit an Enquiry',
                 desc: 'Click "Request More Information" and tell us about yourself, your home, and which dog you are interested in. Include a message about why you would be a great match.',
               },
               {
                 step: '03',
-                icon: '✅',
+
                 title: 'Adoption Approval',
                 desc: 'We connect you with the rescue organisation. They will assess your application. Once approved, we arrange all the transport documentation.',
               },
               {
                 step: '04',
-                icon: '🏠',
+
                 title: 'Welcome Home',
                 desc: 'Your dog travels safely with Euro Pet Express. You receive regular photo updates throughout the journey until your new companion arrives at your door.',
               },
