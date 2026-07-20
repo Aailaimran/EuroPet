@@ -27,11 +27,11 @@ export default function PassiveEventFix() {
       // These event types MUST be passive on iOS to prevent scroll blocking.
       // If they are not passive, Safari holds the main thread until the handler
       // returns, which causes visible freezing.
+      // Force passive: true for touchstart/touchmove to prevent scroll blocking on iOS.
+      // Do NOT force passive: true for wheel/mousewheel, so Lenis can intercept and smooth scrolling on desktop.
       if (
         type === 'touchstart' ||
-        type === 'touchmove' ||
-        type === 'wheel' ||
-        type === 'mousewheel'
+        type === 'touchmove'
       ) {
         if (typeof opts === 'object' && opts !== null) {
           // Preserve all other options, just force passive: true

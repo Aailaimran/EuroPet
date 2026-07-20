@@ -79,7 +79,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             any other component mounts, ensuring all touch/wheel listeners
             created by Framer Motion, Lenis, or custom code are passive */}
         <PassiveEventFix />
-        <div className="overflow-x-hidden w-full min-h-screen flex flex-col">
+        <div className="relative overflow-x-hidden w-full min-h-screen flex flex-col">
           <SmoothScrollProvider>
             <ScrollProgress />
             <Navbar />
