@@ -128,8 +128,8 @@ function DogProfileCard({ dog }: { dog: typeof RESCUE_DOGS[0] }) {
         {/* Status badge — top left */}
         <div className="absolute top-4 left-4">
           <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full ${dog.status === 'Available'
-              ? 'bg-green-400 text-green-900'
-              : 'bg-amber-400 text-amber-900'
+            ? 'bg-green-400 text-green-900'
+            : 'bg-amber-400 text-amber-900'
             }`}>
             {dog.status === 'Available' ? 'Available for Adoption' : 'Reserved'}
           </span>
@@ -225,8 +225,8 @@ function DogProfileCard({ dog }: { dog: typeof RESCUE_DOGS[0] }) {
         <Link
           href={`/rescue-info?dog=${encodeURIComponent(dog.name)}&breed=${encodeURIComponent(dog.breed)}&location=${encodeURIComponent(dog.location)}`}
           className={`block w-full text-center font-bold text-sm px-4 py-3.5 rounded-xl uppercase tracking-wider transition-all duration-200 ${dog.status === 'Available'
-              ? 'bg-brand-gold text-brand-dark hover:bg-brand-goldHover shadow-md hover:shadow-lg hover:scale-[1.01]'
-              : 'bg-gray-100 text-gray-400 cursor-not-allowed pointer-events-none'
+            ? 'bg-brand-gold text-brand-dark hover:bg-brand-goldHover shadow-md hover:shadow-lg hover:scale-[1.01]'
+            : 'bg-gray-100 text-gray-400 cursor-not-allowed pointer-events-none'
             }`}
         >
           {dog.status === 'Available' ? 'Request More Information' : 'Currently Reserved'}
@@ -394,7 +394,7 @@ export default function RescuePage() {
                   <span className="font-playfair text-3xl font-bold text-brand-gold/30">
                     {item.step}
                   </span>
-                  <span className="text-2xl">{item.icon}</span>
+                  <span className="text-2xl"></span>
                 </div>
                 <h3 className="font-playfair text-lg font-bold text-white mb-2">
                   {item.title}
