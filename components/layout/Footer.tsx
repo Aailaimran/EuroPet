@@ -102,10 +102,11 @@ function NewsletterSignupInline() {
 export default function Footer() {
   const { ref, isInView } = useScrollAnimation()
 
+  // TODO: Replace # with TikTok URL when provided by client
+  // TODO: Replace # with YouTube URL when provided by client
   const socialLinks = [
     {
       name: 'Facebook',
-      isActive: true,
       href: 'https://www.facebook.com/share/18HAUnUYuM/?mibextid=wwXIfr',
       color: '#1877F2',
       svg: (
@@ -116,8 +117,7 @@ export default function Footer() {
     },
     {
       name: 'Instagram',
-      isActive: true,
-      href: 'https://www.instagram.com/europet26?utm_source=qr',
+      href: 'https://www.instagram.com/europetexpress26?igsh=ajF3NGtrZnZseHpi',
       color: '#E4405F',
       svg: (
         <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
@@ -127,7 +127,6 @@ export default function Footer() {
     },
     {
       name: 'TikTok',
-      isActive: true,
       href: 'https://www.tiktok.com/@europet.express?_r=1&_t=ZN-97GWJ9B2E6N',
       color: '#000000',
       svg: (
@@ -138,7 +137,6 @@ export default function Footer() {
     },
     {
       name: 'WhatsApp',
-      isActive: true,
       href: 'https://wa.me/447853147342',
       color: '#25D366',
       svg: (
@@ -149,8 +147,7 @@ export default function Footer() {
     },
     {
       name: 'YouTube',
-      isActive: true,
-      href: 'https://youtube.com/@europetexpress-z1v?si=o_sn0SLEsUIdX2Fi',
+      href: '#',
       color: '#FF0000',
       svg: (
         <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
@@ -212,22 +209,20 @@ export default function Footer() {
               Premium pet transport between the UK and Europe. Pending DEFRA Type 2 approval. Fully compliant. Always caring.
             </p>
             <div className="flex items-center gap-2 mt-4 flex-wrap">
-              {socialLinks
-                .filter(link => link.isActive)
-                .map(({ name, href, svg }) => (
-                  <a
-                    key={name}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={name}
-                    title={name}
-                    className="w-9 h-9 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-brand-gold hover:bg-brand-gold/20 transition-all duration-200"
-                  >
-                    {svg}
-                  </a>
-                ))
-              }
+              {socialLinks.map(({ name, href, color, svg }) => (
+                <a
+                  key={name}
+                  href={href}
+                  target={href !== '#' ? '_blank' : undefined}
+                  rel={href !== '#' ? 'noopener noreferrer' : undefined}
+                  aria-label={name}
+                  title={name}
+                  style={{ '--brand-color': color } as React.CSSProperties}
+                  className="w-9 h-9 rounded-full border border-gray-700 flex items-center justify-center text-gray-400 hover:text-white hover:border-[var(--brand-color)] hover:bg-[var(--brand-color)] transition-all duration-200"
+                >
+                  {svg}
+                </a>
+              ))}
             </div>
           </motion.div>
 
@@ -237,6 +232,7 @@ export default function Footer() {
             <ul className="space-y-2">
               {[
                 { label: 'About Us', href: '/about' },
+                { label: 'Our Vehicle', href: '/about#vehicle' },
                 { label: 'Our Services', href: '/services' },
                 { label: 'Rescue a Dog', href: '/rescue' },
                 { label: 'Animal Welfare', href: '/compliance#welfare' },
