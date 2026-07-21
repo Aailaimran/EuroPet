@@ -117,7 +117,8 @@ export default function Footer() {
     },
     {
       name: 'Instagram',
-      href: 'https://www.instagram.com/europetexpress26?igsh=ajF3NGtrZnZseHpi',
+      isActive: true,
+      href: 'https://www.instagram.com/europet26?utm_source=qr',
       color: '#E4405F',
       svg: (
         <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
