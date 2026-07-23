@@ -289,9 +289,9 @@ export default function Footer() {
                 <Phone size={14} className="text-gray-400 shrink-0" />
                 +44 1524 959304
               </a>
-              <a href="mailto:info@europetexpress.co.uk" className="text-gray-400 hover:text-brand-gold transition-colors text-sm flex items-center gap-2">
+              <a href="mailto:Info@europetexpress.co.uk" className="text-gray-400 hover:text-brand-gold transition-colors text-sm flex items-center gap-2">
                 <Mail size={14} className="text-gray-400" />
-                info@europetexpress.co.uk
+                Info@europetexpress.co.uk
               </a>
               <a
                 href="https://wa.me/447853147342"

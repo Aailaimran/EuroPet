@@ -48,9 +48,9 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <a href="mailto:info@europetexpress.co.uk" className="text-brand-gold font-semibold flex items-center gap-2 hover:underline">
+                    <a href="mailto:Info@europetexpress.co.uk" className="text-brand-gold font-semibold flex items-center gap-2 hover:underline">
                       <Mail className="w-4 h-4 shrink-0" />
-                      info@europetexpress.co.uk
+                      Info@europetexpress.co.uk
                     </a>
                   </div>
                 </div>

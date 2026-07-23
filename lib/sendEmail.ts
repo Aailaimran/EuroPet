@@ -8,7 +8,7 @@ const FROM = process.env.FROM_EMAIL ||
   'noreply@europetexpress.co.uk'
 
 const TO = process.env.RECIPIENT_EMAIL || 
-  'contact@europetexpress.co.uk'
+  'Info@europetexpress.co.uk'
 
 // ============================================
 // QUOTE REQUEST EMAIL
