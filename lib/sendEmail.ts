@@ -5,7 +5,7 @@ const resend = new Resend(
 )
 
 const FROM = process.env.FROM_EMAIL || 
-  'noreply@europetexpress.co.uk'
+  'onboarding@resend.dev'
 
 const TO = process.env.RECIPIENT_EMAIL || 
   'Info@europetexpress.co.uk'
@@ -32,17 +32,27 @@ export async function sendQuoteRequestEmail(
     message?: string
   }
 ): Promise<void> {
+  console.log('[sendEmail] sendQuoteRequestEmail called')
+  console.log('[sendEmail] FROM_EMAIL env:', !!process.env.FROM_EMAIL)
+  console.log('[sendEmail] RECIPIENT_EMAIL env:', !!process.env.RECIPIENT_EMAIL)
+  console.log('[sendEmail] Using FROM:', FROM)
+  console.log('[sendEmail] Using TO:', TO)
+  
   // Skip sending if API key is not configured
   if (!process.env.RESEND_API_KEY) {
     console.warn('[sendEmail] RESEND_API_KEY not configured. Skipping email send.')
     return
   }
   
-  await resend.emails.send({
-    from: FROM,
-    to: TO,
-    replyTo: data.email,
-    subject: `New Transport Quote Request — ${data.petName} (${data.petType}) — ${data.fullName}`,
+  console.log('[sendEmail] RESEND_API_KEY is configured. Proceeding with send...')
+  
+  try {
+    console.log('[sendEmail] Calling resend.emails.send()...')
+    const result = await resend.emails.send({
+      from: FROM,
+      to: [TO],
+      replyTo: data.email,
+      subject: `New Transport Quote Request — ${data.petName} (${data.petType}) — ${data.fullName}`,
     html: `
       <!DOCTYPE html>
       <html>
@@ -220,7 +230,22 @@ export async function sendQuoteRequestEmail(
       </body>
       </html>
     `,
-  })
+    })
+    
+    console.log('[sendEmail] resend.emails.send() succeeded. Response:', result)
+    
+    if (result.error) {
+      console.error('[sendEmail] Resend API error:', result.error)
+      throw new Error(`Resend API error: ${result.error.message}`)
+    }
+    
+  } catch (error) {
+    console.error('[sendEmail] Error in sendQuoteRequestEmail:', error)
+    if (error instanceof Error) {
+      console.error('[sendEmail] Error details:', error.message)
+    }
+    throw error
+  }
 }
 
 // ============================================
@@ -240,17 +265,21 @@ export async function sendRescueInfoEmail(
     howDidTheyHear?: string
   }
 ): Promise<void> {
+  console.log('[sendEmail] sendRescueInfoEmail called')
+  
   // Skip sending if API key is not configured
   if (!process.env.RESEND_API_KEY) {
     console.warn('[sendEmail] RESEND_API_KEY not configured. Skipping email send.')
     return
   }
   
-  await resend.emails.send({
-    from: FROM,
-    to: TO,
-    replyTo: data.email,
-    subject: `New Rescue Enquiry — ${data.dogName || 'Dog not specified'} — ${data.fullName}`,
+  try {
+    console.log('[sendEmail] Calling resend.emails.send() for rescue info...')
+    const result = await resend.emails.send({
+      from: FROM,
+      to: [TO],
+      replyTo: data.email,
+      subject: `New Rescue Enquiry — ${data.dogName || 'Dog not specified'} — ${data.fullName}`,
     html: `
       <!DOCTYPE html>
       <html>
@@ -400,7 +429,19 @@ export async function sendRescueInfoEmail(
       </body>
       </html>
     `,
-  })
+    })
+    
+    console.log('[sendEmail] Rescue email send succeeded')
+    
+    if (result.error) {
+      console.error('[sendEmail] Rescue email Resend API error:', result.error)
+      throw new Error(`Resend API error: ${result.error.message}`)
+    }
+    
+  } catch (error) {
+    console.error('[sendEmail] Error in sendRescueInfoEmail:', error)
+    throw error
+  }
 }
 
 // ============================================
@@ -410,17 +451,21 @@ export async function sendRescueInfoEmail(
 export async function sendNewsletterNotification(
   email: string
 ): Promise<void> {
+  console.log('[sendEmail] sendNewsletterNotification called for:', email)
+  
   // Skip sending if API key is not configured
   if (!process.env.RESEND_API_KEY) {
     console.warn('[sendEmail] RESEND_API_KEY not configured. Skipping email send.')
     return
   }
   
-  await resend.emails.send({
-    from: FROM,
-    to: TO,
-    subject: `New Newsletter Subscriber — ${email}`,
-    html: `
+  try {
+    console.log('[sendEmail] Calling resend.emails.send() for newsletter...')
+    const result = await resend.emails.send({
+      from: FROM,
+      to: [TO],
+      subject: `New Newsletter Subscriber — ${email}`,
+      html: `
       <div style="font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 24px; background: #f8f7f4;">
         <div style="background: #0a0e1a; color: #C9A84C; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
           <h2 style="margin: 0; font-size: 16px;">
@@ -437,5 +482,17 @@ export async function sendNewsletterNotification(
         </div>
       </div>
     `,
-  })
+    })
+    
+    console.log('[sendEmail] Newsletter email send succeeded')
+    
+    if (result.error) {
+      console.error('[sendEmail] Newsletter Resend API error:', result.error)
+      throw new Error(`Resend API error: ${result.error.message}`)
+    }
+    
+  } catch (error) {
+    console.error('[sendEmail] Error in sendNewsletterNotification:', error)
+    throw error
+  }
 }
