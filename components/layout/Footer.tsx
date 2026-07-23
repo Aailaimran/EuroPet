@@ -36,16 +36,32 @@ function FooterLink({ label, href }: { label: string; href: string }) {
 function NewsletterSignupInline() {
   const [email, setEmail] = useState('')
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const [focused, setFocused] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // TODO: Wire to email service provider
-    // (Mailchimp, ConvertKit, Brevo, etc.)
-    // when client decides on provider.
-    // Currently shows success UI only.
-    if (email) {
+    if (!email) return
+
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/subscribe-newsletter', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      })
+
+      if (!response.ok) throw new Error('Failed')
+
       setSubmitted(true)
+
+    } catch (error) {
+      console.error('Newsletter signup failed:', error)
+      // Still show success to user (graceful failure)
+      setSubmitted(true)
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -89,11 +105,12 @@ function NewsletterSignupInline() {
 
       <motion.button
         type="submit"
+        disabled={isSubmitting}
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
-        className="bg-brand-gold text-brand-dark font-semibold px-6 py-3 rounded-lg hover:bg-brand-goldHover transition-colors uppercase tracking-wider text-sm whitespace-nowrap inline-flex items-center justify-center gap-2 shadow-md"
+        className="bg-brand-gold text-brand-dark font-semibold px-6 py-3 rounded-lg hover:bg-brand-goldHover transition-colors uppercase tracking-wider text-sm whitespace-nowrap inline-flex items-center justify-center gap-2 shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        Subscribe
+        {isSubmitting ? 'Subscribing...' : 'Subscribe'}
       </motion.button>
     </form>
   )

@@ -6,6 +6,7 @@ import { CheckCircle } from 'lucide-react'
 
 export default function RescueAdoptionForm() {
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const searchParams = useSearchParams()
   const dogName = searchParams.get('dog') || ''
   const dogBreed = searchParams.get('breed') || ''
@@ -28,10 +29,45 @@ export default function RescueAdoptionForm() {
     agree: false,
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In production, this connects to the rescue organisation partner notification system
-    setSubmitted(true)
+    
+    if (!formData.agree) {
+      alert('Please agree to be contacted.')
+      return
+    }
+
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/submit-rescue', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          bestTimeToCall: '',
+          dogName: formData.dogName,
+          dogBreed: formData.dogBreed,
+          dogLocation: formData.dogLocation,
+          questions: formData.whyAdopt,
+          howDidTheyHear: '',
+          consent: formData.agree,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Submission failed')
+      }
+
+      setSubmitted(true)
+
+    } catch (error) {
+      alert('Something went wrong. Please try again or contact us directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (submitted) {
@@ -307,9 +343,10 @@ export default function RescueAdoptionForm() {
 
       <button
         type="submit"
-        className="w-full bg-brand-gold text-brand-dark font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-brand-goldHover transition-colors duration-200 text-sm flex items-center justify-center gap-2"
+        disabled={isSubmitting}
+        className="w-full bg-brand-gold text-brand-dark font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-brand-goldHover transition-colors duration-200 text-sm flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        SUBMIT ADOPTION ENQUIRY
+        {isSubmitting ? 'Sending...' : 'SUBMIT ADOPTION ENQUIRY'}
       </button>
     </form>
   )
