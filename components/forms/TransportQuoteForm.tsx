@@ -28,6 +28,11 @@ export default function TransportQuoteForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     
+    if (!formData.route) {
+      setSubmitError('Please select a route before submitting.')
+      return
+    }
+    
     if (!formData.agree) {
       setSubmitError('Please agree to be contacted before submitting.')
       return
@@ -61,9 +66,10 @@ export default function TransportQuoteForm() {
         body: JSON.stringify(payload),
       })
 
+      const responseData = await response.json()
+
       if (!response.ok) {
-        const error = await response.json()
-        throw new Error(error.error || 'Submission failed')
+        throw new Error(responseData.error || 'Submission failed')
       }
 
       setSubmitted(true)
