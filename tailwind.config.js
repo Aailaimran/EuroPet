@@ -17,6 +17,8 @@ module.exports = {
         'gold-hover': '#b8960c',
         'off-white': '#F8F6F1',
         'brand-gold': '#C9A84C',
+        'brand-goldHover': '#b8960c',
+        'brand-goldLight': '#f0d080',
         'brand-dark': '#0a0e1a',
         'brand-darkSecondary': '#111827',
         'brand-cream': '#f8f7f4',
