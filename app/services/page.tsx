@@ -12,7 +12,7 @@ import Image from 'next/image'
 import type { Metadata } from 'next'
 import PageHero from '@/components/ui/PageHero'
 import Link from 'next/link'
-import { Heart, Shield, Award, FileText, Star } from 'lucide-react'
+import { Heart, Shield, Award, FileText, Star, Users } from 'lucide-react'
 import { PET_IMAGES } from '@/lib/petImages'
 
 export const metadata: Metadata = {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 const SERVICES = [
   {
     id: 1,
-    icon: Heart,
+    icon: <Heart className="w-5 h-5 text-brand-gold" />,
     title: 'Private Owner Transport',
     image: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&q=80',
     alt: 'Happy dog ready for private owner transport',
@@ -38,7 +38,7 @@ const SERVICES = [
   },
   {
     id: 2,
-    icon: Shield,
+    icon: <Shield className="w-5 h-5 text-brand-gold" />,
     title: 'Rescue & Shelter Transport',
     image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&q=80',
     alt: 'Rescue dogs being cared for at shelter',
@@ -53,7 +53,7 @@ const SERVICES = [
   },
   {
     id: 3,
-    icon: Award,
+    icon: <Award className="w-5 h-5 text-brand-gold" />,
     title: 'Breeder Transport',
     image: 'https://images.unsplash.com/photo-1552053831-71594a27632d?w=600&q=80',
     alt: 'Pedigree dog for breeder transport service',
@@ -68,7 +68,7 @@ const SERVICES = [
   },
   {
     id: 4,
-    icon: FileText,
+    icon: <FileText className="w-5 h-5 text-brand-gold" />,
     title: 'Documentation Assistance',
     image: 'https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=600&q=80', // Unsplash fallback as public/images/assistancedoc.png is not present
     alt: 'Pet transport documentation assistance',
@@ -83,7 +83,7 @@ const SERVICES = [
   },
   {
     id: 5,
-    icon: Star,
+    icon: <Star className="w-5 h-5 text-brand-gold" />,
     title: 'Bespoke Pet Transport',
     subtitle: 'Price on Application',
     image: 'https://images.unsplash.com/photo-1583511655826-05700442b31b?w=600&q=80',
@@ -100,7 +100,7 @@ const SERVICES = [
   },
   {
     id: 6,
-    icon: Users,
+    icon: <Users className="w-5 h-5 text-brand-gold" />,
     title: 'Owner Accompanied Travel',
     image: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80',
     alt: 'Owner travelling with their pet',
@@ -115,6 +115,7 @@ const SERVICES = [
   },
 ]
 
+export default function ServicesPage() {
   return (
     <div>
       <PageHero title="Our Services" subtitle="Tailored pet transport for rescues, breeders, shelters and private owners." />
@@ -122,7 +123,7 @@ const SERVICES = [
       <section className="py-16 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((s) => (
+            {SERVICES.map((s) => (
               <div key={s.title} className="bg-white border border-gray-200 rounded-xl overflow-hidden hover:shadow-lg transition-shadow group flex flex-col h-full">
                 {/* Service image banner */}
                 <div className="relative w-full h-48 overflow-hidden flex-shrink-0">
@@ -142,13 +143,13 @@ const SERVICES = [
                 <div className="p-8 flex-1 flex flex-col">
                   <h4 className="font-display text-xl font-bold text-navy mb-2">{s.title}</h4>
                   
-                  {s.poa && (
+                  {s.isPOA && (
                     <span className="inline-block bg-brand-gold text-brand-dark text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-3 w-max">
                       Price on Application
                     </span>
                   )}
                   
-                  <p className="text-gray-700 text-sm mb-4 leading-relaxed flex-1">{s.desc}</p>
+                  <p className="text-gray-700 text-sm mb-4 leading-relaxed flex-1">{s.description}</p>
                   <ul className="list-disc pl-5 text-sm text-gray-600 space-y-1 mt-auto">
                     {s.features.map((f) => (<li key={f}>{f}</li>))}
                   </ul>
@@ -219,14 +220,14 @@ const SERVICES = [
             </p>
             <div className="max-w-2xl mx-auto">
               <ul className="space-y-2">
-                {servicesList.map((service) => (
-                  <li key={service} className="flex items-center gap-3 text-sm text-gray-300">
+                {SERVICES.map((service) => (
+                  <li key={service.id} className="flex items-center gap-3 text-sm text-gray-300">
                     <div className="w-5 h-5 rounded-full bg-brand-gold/20 border border-brand-gold/40 flex items-center justify-center shrink-0">
                       <svg className="w-3 h-3 text-brand-gold" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7"/>
                       </svg>
                     </div>
-                    {service}
+                    {service.title}
                   </li>
                 ))}
               </ul>
