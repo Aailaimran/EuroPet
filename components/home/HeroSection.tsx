@@ -25,7 +25,7 @@ export default function HeroSection() {
   const imageY = useTransform(scrollYProgress, [0, 1], [0, -80])
 
   return (
-    <section ref={sectionRef} className="relative min-h-screen [min-height:100dvh] flex items-center bg-[#0a0e1a] overflow-hidden">
+    <section ref={sectionRef} className="relative min-h-[calc(100vh-var(--navbar-height,107px))] [min-height:calc(100dvh-var(--navbar-height,107px))] flex items-center bg-[#0a0e1a] overflow-hidden">
       {/* Layer 1: Base color is set by bg class */}
 
       {/* Layer 2: Animated mesh gradient */}

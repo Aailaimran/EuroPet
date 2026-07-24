@@ -103,15 +103,42 @@ function NewsletterSignupInline() {
         />
       </div>
 
-      <motion.button
+      <button
         type="submit"
         disabled={isSubmitting}
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.97 }}
-        className="bg-brand-gold text-brand-dark font-semibold px-6 py-3 rounded-lg hover:bg-brand-goldHover transition-colors uppercase tracking-wider text-sm whitespace-nowrap inline-flex items-center justify-center gap-2 shadow-md disabled:opacity-60 disabled:cursor-not-allowed"
+        style={{
+          backgroundColor: isSubmitting ? '#9ca3af' : '#C9A84C',
+          color: '#0a0e1a',
+          fontWeight: 700,
+          fontSize: '12px',
+          padding: '12px 24px',
+          borderRadius: '8px',
+          border: 'none',
+          cursor: isSubmitting ? 'not-allowed' : 'pointer',
+          textTransform: 'uppercase',
+          letterSpacing: '0.1em',
+          whiteSpace: 'nowrap',
+          display: 'inline-flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          gap: '8px',
+          flexShrink: 0,
+          minWidth: '110px',
+          transition: 'background-color 0.2s',
+        }}
+        onMouseEnter={(e) => {
+          if (!isSubmitting) {
+            (e.target as HTMLButtonElement).style.backgroundColor = '#b8960c'
+          }
+        }}
+        onMouseLeave={(e) => {
+          if (!isSubmitting) {
+            (e.target as HTMLButtonElement).style.backgroundColor = '#C9A84C'
+          }
+        }}
       >
         {isSubmitting ? 'Subscribing...' : 'Subscribe'}
-      </motion.button>
+      </button>
     </form>
   )
 }

@@ -6,6 +6,9 @@
   --navy: #0A1628;
   --gold: #C9A84C;
 
+  /* Fixed navbar height: 90px logo + py-2 (16px) + 1px border */
+  --navbar-height: 107px;
+
   --shadow-sm:
     0 1px 2px rgba(0, 0, 0, 0.05),
     0 1px 4px rgba(0, 0, 0, 0.04);
@@ -224,14 +227,19 @@ html {
   text-size-adjust: 100%;
 }
 
-/* Consistent button rendering */
-button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
-  -webkit-appearance: button;
-  background-color: transparent;
-  background-image: none;
+/* Consistent button rendering — wrapped in @layer base so Tailwind
+   utility classes (bg-brand-gold etc.) always override this reset.
+   Previously this plain rule came AFTER @tailwind utilities in the
+   compiled CSS and made [type='submit'] buttons transparent. */
+@layer base {
+  button,
+  [type='button'],
+  [type='reset'],
+  [type='submit'] {
+    -webkit-appearance: button;
+    background-color: transparent;
+    background-image: none;
+  }
 }
 
 /* Remove iOS input styling (exclude checkboxes & radios) */
@@ -513,4 +521,72 @@ html.lenis {
 
 .lenis.lenis-scrolling iframe {
   pointer-events: none;
+}
+
+/* ===================================
+   BUTTON VISIBILITY FIXES
+   Emergency fallbacks to prevent
+   transparent buttons in production
+   =================================== */
+
+/* Primary gold button — NEVER transparent */
+.btn-primary,
+a.btn-primary,
+button.btn-primary {
+  background-color: #C9A84C !important;
+  color: #0a0e1a !important;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #b8960c !important;
+}
+
+/* Dark button */
+.btn-dark,
+a.btn-dark,
+button.btn-dark {
+  background-color: #0a0e1a !important;
+  color: #ffffff !important;
+}
+
+.btn-dark:hover {
+  background-color: #C9A84C !important;
+  color: #0a0e1a !important;
+}
+
+/* Fix for Tailwind bg-brand-gold
+   in case CSS variable fails */
+.bg-brand-gold {
+  background-color: #C9A84C !important;
+}
+
+.bg-brand-dark {
+  background-color: #0a0e1a !important;
+}
+
+.text-brand-gold {
+  color: #C9A84C !important;
+}
+
+.text-brand-dark {
+  color: #0a0e1a !important;
+}
+
+.hover\:bg-brand-gold:hover {
+  background-color: #C9A84C !important;
+}
+
+.hover\:bg-brand-goldHover:hover {
+  background-color: #b8960c !important;
+}
+
+.border-brand-gold {
+  border-color: #C9A84C !important;
+}
+
+/* Ensure all submit buttons are visible */
+button[type="submit"] {
+  opacity: 1 !important;
+  visibility: visible !important;
 }

@@ -54,7 +54,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SmoothScrollProvider>
           <ScrollProgress />
           <Navbar />
-          <main className="flex-1">
+          <main
+            className="flex-1"
+            style={{ paddingTop: 'var(--navbar-height, 107px)' }}
+          >
             <PageTransition>
               {children}
             </PageTransition>
