@@ -127,11 +127,10 @@ function DogProfileCard({ dog }: { dog: typeof RESCUE_DOGS[0] }) {
 
         {/* Status badge — top left */}
         <div className="absolute top-4 left-4">
-          <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full ${
-            dog.status === 'Available' 
-              ? 'bg-green-400 text-green-900' 
-              : 'bg-amber-400 text-amber-900'
-          }`}>
+          <span className={`text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full ${dog.status === 'Available'
+            ? 'bg-green-400 text-green-900'
+            : 'bg-amber-400 text-amber-900'
+            }`}>
             {dog.status === 'Available' ? 'Available for Adoption' : 'Reserved'}
           </span>
         </div>
@@ -224,14 +223,13 @@ function DogProfileCard({ dog }: { dog: typeof RESCUE_DOGS[0] }) {
 
         {/* CTA Button */}
         <Link
-          href={`/contact/rescue?dog=${encodeURIComponent(dog.name)}&breed=${encodeURIComponent(dog.breed)}&location=${encodeURIComponent(dog.location)}`}
-          className={`block w-full text-center font-bold text-sm px-4 py-3.5 rounded-xl uppercase tracking-wider transition-all duration-200 ${
-            dog.status === 'Available'
-              ? 'bg-brand-gold text-brand-dark hover:bg-brand-goldHover shadow-md hover:shadow-lg hover:scale-[1.01]'
-              : 'bg-gray-100 text-gray-400 cursor-not-allowed pointer-events-none'
-          }`}
+          href={`/rescue-info?dog=${encodeURIComponent(dog.name)}&breed=${encodeURIComponent(dog.breed)}&location=${encodeURIComponent(dog.location)}`}
+          className={`block w-full text-center font-bold text-sm px-4 py-3.5 rounded-xl uppercase tracking-wider transition-all duration-200 ${dog.status === 'Available'
+            ? 'bg-brand-gold text-brand-dark hover:bg-brand-goldHover shadow-md hover:shadow-lg hover:scale-[1.01]'
+            : 'bg-gray-100 text-gray-400 cursor-not-allowed pointer-events-none'
+            }`}
         >
-          {dog.status === 'Available' ? `Enquire About ${dog.name}` : 'Currently Reserved'}
+          {dog.status === 'Available' ? 'Request More Information' : 'Currently Reserved'}
         </Link>
 
         {dog.status === 'Available' && (
@@ -329,10 +327,10 @@ export default function RescuePage() {
               The dogs shown here are just a selection. We work with multiple rescue organisations across Europe. If you are looking for a specific breed, age, or temperament, get in touch and we will do our best to help match you with the right dog.
             </p>
             <Link
-              href="/contact"
+              href="/rescue-info"
               className="inline-flex items-center gap-2 bg-brand-gold text-brand-dark font-bold text-sm px-8 py-4 rounded-xl hover:bg-brand-goldHover transition-all duration-200 uppercase tracking-wider shadow-md hover:shadow-lg hover:scale-[1.02] active:scale-[0.98]"
             >
-              Request a Quote
+              Request More Information
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -359,25 +357,24 @@ export default function RescuePage() {
             {[
               {
                 step: '01',
-                icon: '🐾',
                 title: 'Choose a Dog',
                 desc: 'Browse our rescue dogs and find one that feels right for your home and lifestyle. Not sure? Tell us what you are looking for and we will help match you.',
               },
               {
                 step: '02',
-                icon: '📋',
+
                 title: 'Submit an Enquiry',
-                desc: 'Click "Request a Quote" and tell us about yourself, your home, and which dog you are interested in. Include a message about why you would be a great match.',
+                desc: 'Click "Request More Information" and tell us about yourself, your home, and which dog you are interested in. Include a message about why you would be a great match.',
               },
               {
                 step: '03',
-                icon: '✅',
+
                 title: 'Adoption Approval',
                 desc: 'We connect you with the rescue organisation. They will assess your application. Once approved, we arrange all the transport documentation.',
               },
               {
                 step: '04',
-                icon: '🏠',
+
                 title: 'Welcome Home',
                 desc: 'Your dog travels safely with Euro Pet Express. You receive regular photo updates throughout the journey until your new companion arrives at your door.',
               },
@@ -387,7 +384,7 @@ export default function RescuePage() {
                   <span className="font-playfair text-3xl font-bold text-brand-gold/30">
                     {item.step}
                   </span>
-                  <span className="text-2xl">{item.icon}</span>
+                  <span className="text-2xl"></span>
                 </div>
                 <h3 className="font-playfair text-lg font-bold text-white mb-2">
                   {item.title}
@@ -463,14 +460,6 @@ export default function RescuePage() {
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/40 to-transparent" />
               <div className="absolute bottom-6 left-6 right-6">
-                <div className="bg-brand-dark/80 backdrop-blur-sm rounded-xl p-4 border border-brand-gold/20">
-                  <p className="text-brand-gold text-xs font-semibold uppercase tracking-wider mb-1">
-                    David, Managing Director
-                  </p>
-                  <p className="text-white text-sm italic leading-relaxed">
-                    "Every dog that finds their forever home through us represents everything we built this company for."
-                  </p>
-                </div>
               </div>
             </div>
           </div>
@@ -488,10 +477,10 @@ export default function RescuePage() {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
-              href="/contact/rescue?type=rescue-organisation"
+              href="/rescue-info?type=rescue-organisation"
               className="inline-flex items-center gap-2 bg-brand-gold text-brand-dark font-bold text-sm px-10 py-4 rounded-xl hover:bg-brand-goldHover transition-all duration-200 uppercase tracking-wider shadow-lg hover:shadow-xl hover:scale-[1.02] active:scale-[0.98]"
             >
-              Request a Quote
+              Request More Information
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link

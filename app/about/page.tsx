@@ -91,8 +91,9 @@ export default function About() {
               },
               "sameAs": [
                 "https://www.facebook.com/share/18HAUnUYuM/?mibextid=wwXIfr",
-                "https://www.instagram.com/europet26",
-                "https://www.tiktok.com/@europet.express"
+                "https://www.instagram.com/europetexpress26/",
+                "https://www.tiktok.com/@europet.express",
+                "https://youtube.com/@europetexpress-z1v?si=o_sn0SLEsUIdX2Fi"
               ],
               "address": {
                 "@type": "PostalAddress",
@@ -153,7 +154,7 @@ export default function About() {
                 "name": "Euro Pet Express",
                 "url": "https://europetexpress.co.uk"
               },
-              "description": "Managing Director of Euro Pet Express. Professional with two decades of experience in dog and pet transport across Europe and the UK. Founded Euro Pet Express to establish welfare-first standards in the pet transport industry.",
+              "description": "Managing Director of Euro Pet Express. Professional with over a decade of experience in dog and pet transport across Europe and the UK. Founded Euro Pet Express to establish welfare-first standards in the pet transport industry.",
               "knowsAbout": [
                 "Pet Transport",
                 "DEFRA Regulations",

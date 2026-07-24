@@ -5,25 +5,25 @@
 :root {
   --navy: #0A1628;
   --gold: #C9A84C;
-  
-  --shadow-sm: 
-    0 1px 2px rgba(0,0,0,0.05),
-    0 1px 4px rgba(0,0,0,0.04);
+
+  --shadow-sm:
+    0 1px 2px rgba(0, 0, 0, 0.05),
+    0 1px 4px rgba(0, 0, 0, 0.04);
 
   --shadow-md:
-    0 4px 6px rgba(0,0,0,0.04),
-    0 8px 16px rgba(0,0,0,0.06),
-    0 16px 32px rgba(0,0,0,0.04);
+    0 4px 6px rgba(0, 0, 0, 0.04),
+    0 8px 16px rgba(0, 0, 0, 0.06),
+    0 16px 32px rgba(0, 0, 0, 0.04);
 
   --shadow-lg:
-    0 8px 16px rgba(0,0,0,0.06),
-    0 16px 32px rgba(0,0,0,0.08),
-    0 32px 64px rgba(0,0,0,0.06);
+    0 8px 16px rgba(0, 0, 0, 0.06),
+    0 16px 32px rgba(0, 0, 0, 0.08),
+    0 32px 64px rgba(0, 0, 0, 0.06);
 
   --shadow-xl:
-    0 16px 32px rgba(0,0,0,0.08),
-    0 32px 64px rgba(0,0,0,0.12),
-    0 64px 128px rgba(0,0,0,0.08);
+    0 16px 32px rgba(0, 0, 0, 0.08),
+    0 32px 64px rgba(0, 0, 0, 0.12),
+    0 64px 128px rgba(0, 0, 0, 0.08);
 
   --shadow-gold:
     0 0 0 1px rgba(201, 168, 76, 0.2),
@@ -43,8 +43,8 @@
 }
 
 /* Smooth scrollbar hiding */
-html { 
-  scroll-behavior: auto !important; 
+html {
+  scroll-behavior: auto !important;
 }
 
 /* Selection colour */
@@ -79,55 +79,124 @@ body {
 
 /* Gold shimmer keyframe (used on cards) */
 @keyframes shimmer {
-  0% { background-position: -200% center; }
-  100% { background-position: 200% center; }
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
 }
 
 /* Orb float keyframes */
 @keyframes floatOrb1 {
-  0% { transform: translateY(0px) translateX(0px); }
-  100% { transform: translateY(-40px) translateX(20px); }
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+
+  100% {
+    transform: translateY(-40px) translateX(20px);
+  }
 }
+
 @keyframes floatOrb2 {
-  0% { transform: translateY(0px) rotate(0deg); }
-  100% { transform: translateY(30px) rotate(8deg); }
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(30px) rotate(8deg);
+  }
 }
+
 @keyframes floatOrb3 {
-  0% { transform: translateY(0px) translateX(0px) rotate(0deg); }
-  100% { transform: translateY(-30px) translateX(-20px) rotate(-10deg); }
+  0% {
+    transform: translateY(0px) translateX(0px) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(-30px) translateX(-20px) rotate(-10deg);
+  }
 }
+
 @keyframes floatOrb4 {
-  0% { transform: translateY(0px) scale(1); }
-  100% { transform: translateY(20px) scale(1.05); }
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+
+  100% {
+    transform: translateY(20px) scale(1.05);
+  }
 }
+
 @keyframes floatOrb5 {
-  0% { transform: translateX(0px); }
-  100% { transform: translateX(30px); }
+  0% {
+    transform: translateX(0px);
+  }
+
+  100% {
+    transform: translateX(30px);
+  }
 }
+
 @keyframes floatOrb6 {
-  0% { transform: translateY(0px) rotate(0deg); }
-  100% { transform: translateY(-25px) rotate(5deg); }
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  100% {
+    transform: translateY(-25px) rotate(5deg);
+  }
 }
 
 @keyframes floatBlob1 {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(10vw, 10vw); }
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(10vw, 10vw);
+  }
 }
+
 @keyframes floatBlob2 {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(-10vw, 15vw); }
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(-10vw, 15vw);
+  }
 }
+
 @keyframes floatBlob3 {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(15vw, -5vw); }
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(15vw, -5vw);
+  }
 }
+
 @keyframes floatBlob4 {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(-5vw, -15vw); }
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(-5vw, -15vw);
+  }
 }
+
 @keyframes floatBlob5 {
-  0% { transform: translate(0, 0); }
-  100% { transform: translate(10vw, -10vw); }
+  0% {
+    transform: translate(0, 0);
+  }
+
+  100% {
+    transform: translate(10vw, -10vw);
+  }
 }
 
 /* ============================================
@@ -143,7 +212,9 @@ body {
 }
 
 /* Box sizing reset */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -154,17 +225,29 @@ html {
 }
 
 /* Consistent button rendering */
-button, [type='button'], [type='reset'], 
+button,
+[type='button'],
+[type='reset'],
 [type='submit'] {
   -webkit-appearance: button;
   background-color: transparent;
   background-image: none;
 }
 
-/* Remove iOS input styling */
-input, textarea, select {
+/* Remove iOS input styling (exclude checkboxes & radios) */
+input:not([type="checkbox"]):not([type="radio"]),
+textarea,
+select {
   -webkit-appearance: none;
   appearance: none;
+  border-radius: 0;
+}
+
+/* Restore native checkbox & radio appearance */
+input[type="checkbox"],
+input[type="radio"] {
+  -webkit-appearance: checkbox;
+  appearance: checkbox;
   border-radius: 0;
 }
 
@@ -174,6 +257,7 @@ input[type="number"]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
+
 input[type="number"] {
   -moz-appearance: textfield;
   appearance: textfield;
@@ -187,7 +271,7 @@ input[type="number"] {
 }
 
 /* Fix Safari flexbox gap support */
-.flex-gap-fix > * + * {
+.flex-gap-fix>*+* {
   margin-left: var(--gap, 1rem);
 }
 
@@ -195,9 +279,11 @@ input[type="number"] {
 ::-webkit-scrollbar {
   width: 6px;
 }
+
 ::-webkit-scrollbar-track {
   background: #0a0e1a;
 }
+
 ::-webkit-scrollbar-thumb {
   background: #C9A84C;
   border-radius: 3px;
@@ -250,7 +336,9 @@ section.hero-section {
 
 /* Ensure all interactive elements are tappable on iOS
    and meet Apple's 44x44pt minimum tap target guideline */
-a, button, [role="button"],
+a,
+button,
+[role="button"],
 input[type="submit"],
 input[type="button"],
 label {
@@ -279,12 +367,16 @@ label {
 /* CRITICAL: font-size must be 16px+ on all inputs.
    If font-size < 16px, iOS Safari auto-zooms on focus,
    causing layout shift and making the page appear broken. */
-input, textarea, select {
+input,
+textarea,
+select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: 8px; /* must be > 0 to prevent iOS default pill styling */
-  font-size: 16px !important; /* prevents iOS zoom on input focus */
+  border-radius: 8px;
+  /* must be > 0 to prevent iOS default pill styling */
+  font-size: 16px !important;
+  /* prevents iOS zoom on input focus */
 }
 
 /* ===================================
@@ -343,7 +435,8 @@ input, textarea, select {
    =================================== */
 
 /* Fix object-fit on iOS Safari */
-img, video {
+img,
+video {
   -webkit-object-fit: cover;
   object-fit: cover;
 }
@@ -395,4 +488,29 @@ body {
 /* Floating button positioning (above iOS home indicator) */
 .floating-button-safe {
   bottom: max(env(safe-area-inset-bottom) + 16px, 24px);
+}
+
+/* ===================================
+   LENIS SMOOTH SCROLL SUPPORT
+   =================================== */
+
+/* Lenis requires this for proper scroll position tracking */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
 }

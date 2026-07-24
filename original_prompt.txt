@@ -1,0 +1,137 @@
+<USER_REQUEST>
+=============================================================
+ROLE & CONTEXT
+=============================================================
+
+You are an expert senior Next.js 14 developer and UI 
+designer working on an existing live website called 
+"Euro Pet Express" — a premium pet transport service.
+
+GitHub repo: https://github.com/Aailaimran/EuroPet
+Live site:   https://europetexpress.co.uk
+Local path:  E:\EuroPet\euro-pet-express
+
+The site is built with:
+- Next.js 14 (App Router, TypeScript)
+- Tailwind CSS v3
+- Framer Motion
+- Lenis smooth scroll
+- Lucide React icons
+- country-flag-icons
+
+The client has requested 16 specific changes.
+Implement ALL of them in one clean pass.
+Work through them in the exact order listed.
+Do NOT change anything not mentioned below.
+
+=============================================================
+CHANGE 1 — INCREASE LOGO SIZE
+=============================================================
+
+PROBLEM:
+Logo appears too small on both desktop and mobile.
+Lacks visual impact and brand presence.
+
+LOCATE:
+components/layout/Navbar.tsx
+components/layout/Footer.tsx (or Footer.jsx)
+
+FIX IN NAVBAR:
+Find the logo Image component.
+Change sizing classes from current values to:
+
+Desktop: h-16 w-auto (64px height)
+Mobile:  h-12 w-auto (48px height)
+
+Implementation:
+<Image
+  src="/logo.png"
+  alt="Euro Pet Express"
+  width={200}
+  height={70}
+  priority={true}
+  className="object-contain h-12 md:h-16 w-auto"
+/>
+
+Also increase the navbar height to accommodate 
+the larger logo:
+Change navbar height from h-16 md:h-20 to:
+h-20 md:h-24
+
+Adjust the padding inside the navbar accordingly:
+py-3 md:py-4
+
+FIX IN FOOTER:
+Find the footer logo Image component.
+Change to:
+<Image
+  src="/logo.png"
+  alt="Euro Pet Express"
+  width={180}
+  height={65}
+  priority={true}
+  className="object-contain h-14 w-auto"
+/>
+
+=============================================================
+CHANGE 2 — FIX DEFRA WORDING ACROSS ENTIRE WEBSITE
+=============================================================
+
+PROBLEM:
+Some pag
+<truncated 35323 bytes>
+ Chrome, 
+             Safari, Firefox. No horizontal scroll 
+             on mobile.
+
+  Change 16: Page title in browser tab reads 
+             "Premium Pet Transport UK & Europe".
+
+=============================================================
+FINAL STEP — BUILD AND PUSH
+=============================================================
+
+Run build:
+  npm run build
+
+Zero errors required before pushing.
+
+Commit and push:
+  git add .
+  git commit -m "feat: client revisions — logo size, 
+  DEFRA wording, floating WhatsApp, pet transport 
+  rebranding, services update, social logos, 
+  bespoke service, cross-browser fixes"
+  git push origin main
+
+=============================================================
+CRITICAL RULES
+=============================================================
+
+1. Complete changes in the exact order listed.
+2. Do not change any colours, fonts, or animations 
+   beyond what is specified above.
+3. Never use Lucide icons for social media — 
+   use the SVG brand logos provided above.
+4. Every Next.js Image must have src, alt, 
+   width/height or fill prop.
+5. Test on mobile viewport before pushing.
+6. Run npm run build before every push.
+7. Do not break any existing working functionality.
+
+Begin now. Start with Change 1 — Logo Size.
+=============================================================
+</USER_REQUEST>
+<ADDITIONAL_METADATA>
+The current local time is: 2026-06-09T00:06:14+05:00.
+
+The user's current state is as follows:
+Active Document: e:\EuroPet\euro-pet-express\app\routes\page.tsx (LANGUAGE_TSX)
+Cursor is on line: 26
+Other open documents:
+- e:\EuroPet\euro-pet-express\app\routes\page.tsx (LANGUAGE_TSX)
+- e:\EuroPet\euro-pet-express\components\home\HeroSection.tsx (LANGUAGE_TSX)
+</ADDITIONAL_METADATA>
+<USER_SETTINGS_CHANGE>
+The user changed setting `Model Selection` from None to Gemini 3.5 Flash (Medium). No need to comment on this change if the user doesn't ask about it. If reporting what model you are, please use a human readable name instead of the exact string.
+</USER_SETTINGS_CHANGE>
