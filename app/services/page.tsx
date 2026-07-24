@@ -20,65 +20,100 @@ export const metadata: Metadata = {
   description: 'Premium pet transport services including scheduled European routes, rescue and breeder transport, family relocation, and bespoke transport options.',
 }
 
-export default function Services() {
-  const services = [
-    {
-      icon: <Heart className="w-5 h-5 text-brand-gold" />,
-      title: 'Private Owner Transport',
-      desc: "You're moving to the UK or reuniting with your pet. We provide door-to-door or collection-point transport for privately owned pets with full welfare documentation support.",
-      features: ['Flexible collection points', 'Welfare updates during journey', 'TRACES documentation support', 'Microchip & vaccination verification'],
-      image: PET_IMAGES.dogHappy,
-    },
-    {
-      icon: <Shield className="w-5 h-5 text-brand-gold" />,
-      title: 'Rescue & Shelter Transport',
-      desc: 'We work directly with registered rescue organisations to transport rehomed pets from European shelters to their UK foster or forever homes.',
-      features: ['Volume discount for registered rescues', 'Coordination with shelter staff', 'Full EU/UK import compliance', 'DEFRA-authorised journey documentation'],
-      image: PET_IMAGES.dogFamily,
-    },
-    {
-      icon: <Award className="w-5 h-5 text-brand-gold" />,
-      title: 'Breeder Transport',
-      desc: 'Trusted by registered breeders across Romania and Poland to transport puppies and adult pets to new owners in the UK safely and in compliance with all regulations.',
-      features: ['Age-verified puppy transport (min. 15 weeks)', 'Health certificate coordination', 'Rabies titre test verification', 'Microchip & passport checking'],
-      image: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80',
-    },
-    {
-      icon: <FileText className="w-5 h-5 text-brand-gold" />,
-      title: 'Documentation Assistance',
-      desc: 'Navigating UK pet import rules post-Brexit is complex. We guide owners and organisations through the required paperwork.',
-      features: ['TRACES NT movement document guidance', 'Health certificate requirements', 'Rabies vaccination timing', 'Tapeworm treatment guidance'],
-      image: PET_IMAGES.assistanceDoc,
-    },
-    {
-      title: 'Bespoke Pet Transport',
-      subtitle: 'Pricing: P.O.A.',
-      icon: <Star className="w-5 h-5 text-brand-gold" />,
-      image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&q=80',
-      alt: 'Bespoke premium pet transport service',
-      desc: 'For unique or complex transport requirements, we offer fully bespoke pet transport solutions tailored to your specific needs. Whether transporting multiple pets, exotic animals, or requiring specialist handling, we can accommodate.',
-      features: [
-        'Fully tailored transport solution',
-        'Specialist handling available',
-        'Flexible scheduling and routing',
-        'Price on application — contact us to discuss',
-      ],
-      poa: true,
-    }
-  ]
-
-  const servicesList = [
-    'Scheduled European Pet Transport',
-    'UK to Europe Pet Transport',
-    'Europe to UK Pet Transport',
-    'Shelter Transport',
-    'Breeder Transport',
-    'Family Pet Relocation',
-    'Owner Accompanied Travel',
-    'Transatlantic Pet Transport',
-    'Bespoke Transport Services (POA)',
-    'Door-to-Door Collection & Delivery'
-  ]
+const SERVICES = [
+  {
+    id: 1,
+    icon: Heart,
+    title: 'Private Owner Transport',
+    image: 'https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=600&q=80',
+    alt: 'Happy dog ready for private owner transport',
+    description: 'You are moving to the UK or reuniting with your pet. We provide door-to-door or collection-point transport for privately owned pets with full welfare documentation support.',
+    features: [
+      'Flexible collection points across Europe',
+      'Welfare updates during journey',
+      'TRACES documentation support',
+      'Microchip and vaccination verification',
+      'Door-to-door delivery in the UK',
+    ],
+  },
+  {
+    id: 2,
+    icon: Shield,
+    title: 'Rescue & Shelter Transport',
+    image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&q=80',
+    alt: 'Rescue dogs being cared for at shelter',
+    description: 'We work directly with registered rescue organisations to transport rehomed pets from European shelters to their UK foster or forever homes.',
+    features: [
+      'Volume discount for registered rescues',
+      'Coordination with shelter staff',
+      'Full EU and UK import compliance',
+      'DEFRA-authorised journey documentation',
+      'Regular welfare photo updates',
+    ],
+  },
+  {
+    id: 3,
+    icon: Award,
+    title: 'Breeder Transport',
+    image: 'https://images.unsplash.com/photo-1552053831-71594a27632d?w=600&q=80',
+    alt: 'Pedigree dog for breeder transport service',
+    description: 'Trusted by registered breeders across Romania and Poland to transport puppies and adult pets to new owners in the UK safely and in compliance with all regulations.',
+    features: [
+      'Age-verified puppy transport (min. 15 weeks)',
+      'Health certificate coordination',
+      'Rabies titre test verification',
+      'Microchip and passport checking',
+      'Breeder to buyer documentation',
+    ],
+  },
+  {
+    id: 4,
+    icon: FileText,
+    title: 'Documentation Assistance',
+    image: 'https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=600&q=80', // Unsplash fallback as public/images/assistancedoc.png is not present
+    alt: 'Pet transport documentation assistance',
+    description: 'Navigating UK pet import rules post-Brexit is complex. We guide owners and organisations through the required paperwork to ensure a smooth and compliant journey.',
+    features: [
+      'TRACES NT movement document guidance',
+      'Health certificate requirements',
+      'Rabies vaccination timing advice',
+      'Tapeworm treatment for Great Britain entry',
+      'Full compliance checklist provided',
+    ],
+  },
+  {
+    id: 5,
+    icon: Star,
+    title: 'Bespoke Pet Transport',
+    subtitle: 'Price on Application',
+    image: 'https://images.unsplash.com/photo-1583511655826-05700442b31b?w=600&q=80',
+    alt: 'Premium bespoke pet transport service',
+    isPOA: true,
+    description: 'For unique or complex transport requirements, we offer fully bespoke pet transport solutions tailored to your specific needs. Whether transporting multiple pets or requiring specialist handling, we can accommodate.',
+    features: [
+      'Fully tailored transport solution',
+      'Specialist handling available',
+      'Flexible scheduling and routing',
+      'Multi-pet transport solutions',
+      'Price on application — contact us to discuss',
+    ],
+  },
+  {
+    id: 6,
+    icon: Users,
+    title: 'Owner Accompanied Travel',
+    image: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80',
+    alt: 'Owner travelling with their pet',
+    description: 'Would you like to travel with your pet? Euro Pet Express offers owner accompanied travel options on selected routes, allowing you to stay with your pet throughout the journey for complete peace of mind.',
+    features: [
+      'Available on selected European routes',
+      'Shared transport with your pet',
+      'Full welfare standards maintained',
+      'Contact us for route availability',
+      'Pricing discussed on enquiry',
+    ],
+  },
+]
 
   return (
     <div>

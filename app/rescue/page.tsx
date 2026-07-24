@@ -275,30 +275,20 @@ export default function RescuePage() {
 
             {/* Right — 3 stat boxes */}
             <div className="grid grid-cols-1 gap-4">
-              <div className="bg-white/5 border border-white/10 rounded-xl p-5 text-center">
-                <p className="font-playfair text-3xl font-bold text-brand-gold mb-1">
-                  50+
-                </p>
-                <p className="text-gray-400 text-sm">
-                  Dogs rehomed
-                </p>
-              </div>
-              <div className="bg-white/5 border border-white/10 rounded-xl p-5 text-center">
-                <p className="font-playfair text-2xl md:text-3xl font-bold text-brand-gold mb-1">
-                  Multiple
-                </p>
-                <p className="text-gray-400 text-sm">
-                  Rescue Centres
-                </p>
-              </div>
-              <div className="bg-white/5 border border-white/10 rounded-xl p-5 text-center">
-                <p className="font-playfair text-2xl font-bold text-brand-gold mb-2">
-                  ✓
-                </p>
-                <p className="text-gray-400 text-sm">
-                  DEFRA Compliant Transport
-                </p>
-              </div>
+              {[
+                { number: '50+', label: 'Dogs rehomed' },
+                { number: 'Multiple', label: 'Rescue Centres' },
+                { number: '✓', label: 'DEFRA Compliant Transport' },
+              ].map((stat) => (
+                <div key={stat.label} className="bg-white/5 border border-white/10 rounded-xl p-5 text-center">
+                  <p className="font-playfair text-3xl font-bold text-brand-gold mb-1">
+                    {stat.number}
+                  </p>
+                  <p className="text-gray-400 text-sm">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>

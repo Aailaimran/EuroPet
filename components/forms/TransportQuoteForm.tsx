@@ -6,6 +6,8 @@ import { ROUTES } from '@/lib/routesData'
 
 export default function TransportQuoteForm() {
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
   const [formData, setFormData] = useState({
     fullName: '',
     email: '',
@@ -23,14 +25,62 @@ export default function TransportQuoteForm() {
     agree: false,
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!formData.agree) {
-      alert('Please agree to be contacted before submitting.')
+    
+    if (!formData.route) {
+      setSubmitError('Please select a route before submitting.')
       return
     }
-    // In production, this would connect to Zoho CRM API
-    setSubmitted(true)
+    
+    if (!formData.agree) {
+      setSubmitError('Please agree to be contacted before submitting.')
+      return
+    }
+
+    setIsSubmitting(true)
+    setSubmitError('')
+
+    try {
+      const payload = {
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        petType: formData.petType,
+        petName: formData.petName,
+        breed: formData.breed,
+        petAge: formData.petAge,
+        petWeight: formData.petWeight,
+        route: formData.route,
+        collectionCity: formData.collectionLocation,
+        deliveryCity: formData.deliveryAddress,
+        preferredDate: formData.preferredDate,
+        serviceType: '',
+        message: formData.message,
+        consent: formData.agree,
+      }
+
+      const response = await fetch('/api/submit-quote', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+
+      const responseData = await response.json()
+
+      if (!response.ok) {
+        throw new Error(responseData.error || 'Submission failed')
+      }
+
+      setSubmitted(true)
+
+    } catch (error: any) {
+      setSubmitError(
+        error.message || 'Something went wrong. Please try again or WhatsApp us directly.'
+      )
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (submitted) {
@@ -322,13 +372,20 @@ export default function TransportQuoteForm() {
 
       <button
         type="submit"
-        className="w-full bg-gold text-navy font-bold text-sm px-6 py-4 rounded-xl hover:bg-gold-light transition-all duration-200 uppercase tracking-wider shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 mt-2"
+        disabled={isSubmitting}
+        className="w-full bg-brand-gold text-brand-dark font-bold text-sm px-6 py-4 rounded-xl hover:bg-brand-goldHover transition-all duration-200 uppercase tracking-wider shadow-md hover:shadow-lg hover:scale-[1.01] active:scale-[0.99] flex items-center justify-center gap-2 mt-2 disabled:opacity-60 disabled:cursor-not-allowed"
       >
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
         </svg>
-        Submit Transport Quote Request
+        {isSubmitting ? 'Sending...' : 'Submit Transport Quote Request'}
       </button>
+
+      {submitError && (
+        <p className="text-red-500 text-sm text-center mt-3">
+          {submitError}
+        </p>
+      )}
     </form>
   )
 }

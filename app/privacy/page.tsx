@@ -18,7 +18,7 @@ const sections = [
     id: 'data-controller',
     title: '2. Data Controller',
     icon: <UserCheck className="w-5 h-5" />,
-    content: `Euro Pet Express is the data controller for the personal data we collect. If you have any questions about how we handle your data, please contact us at info@europetexpress.co.uk or by phone at +44 7853 147342.`,
+    content: `Euro Pet Express is the data controller for the personal data we collect. If you have any questions about how we handle your data, please contact us at Info@europetexpress.co.uk or by phone at +44 7853 147342.`,
   },
   {
     id: 'data-we-collect',
@@ -54,7 +54,7 @@ const sections = [
     id: 'your-rights',
     title: '8. Your Rights',
     icon: <UserCheck className="w-5 h-5" />,
-    content: `Under the UK GDPR, you have the following rights:\n\n• **Right of access**: Request a copy of the personal data we hold about you.\n• **Right to rectification**: Request correction of inaccurate or incomplete data.\n• **Right to erasure**: Request deletion of your data (subject to legal retention requirements).\n• **Right to restrict processing**: Request that we limit how we use your data.\n• **Right to data portability**: Request your data in a machine-readable format.\n• **Right to object**: Object to processing based on legitimate interests.\n• **Right to withdraw consent**: Where processing is based on consent, you can withdraw at any time.\n\nTo exercise any of these rights, please contact us at info@europetexpress.co.uk.`,
+    content: `Under the UK GDPR, you have the following rights:\n\n• **Right of access**: Request a copy of the personal data we hold about you.\n• **Right to rectification**: Request correction of inaccurate or incomplete data.\n• **Right to erasure**: Request deletion of your data (subject to legal retention requirements).\n• **Right to restrict processing**: Request that we limit how we use your data.\n• **Right to data portability**: Request your data in a machine-readable format.\n• **Right to object**: Object to processing based on legitimate interests.\n• **Right to withdraw consent**: Where processing is based on consent, you can withdraw at any time.\n\nTo exercise any of these rights, please contact us at Info@europetexpress.co.uk.`,
   },
   {
     id: 'data-security',
@@ -185,9 +185,9 @@ export default function PrivacyPage() {
                   If you have any questions about this Privacy Policy or wish to exercise your data rights, please get in touch:
                 </p>
                 <div className="space-y-3">
-                  <a href="mailto:info@europetexpress.co.uk" className="flex items-center gap-3 text-gray-300 hover:text-brand-gold transition-colors text-sm">
+                  <a href="mailto:Info@europetexpress.co.uk" className="flex items-center gap-3 text-gray-300 hover:text-brand-gold transition-colors text-sm">
                     <Mail className="w-4 h-4" />
-                    info@europetexpress.co.uk
+                    Info@europetexpress.co.uk
                   </a>
                   <a href="tel:+447853147342" className="flex items-center gap-3 text-gray-300 hover:text-brand-gold transition-colors text-sm">
                     <Phone className="w-4 h-4" />

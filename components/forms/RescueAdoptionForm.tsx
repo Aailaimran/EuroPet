@@ -6,6 +6,7 @@ import { CheckCircle } from 'lucide-react'
 
 export default function RescueAdoptionForm() {
   const [submitted, setSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
   const searchParams = useSearchParams()
   const dogName = searchParams.get('dog') || ''
   const dogBreed = searchParams.get('breed') || ''
@@ -16,22 +17,52 @@ export default function RescueAdoptionForm() {
     email: '',
     phone: '',
     location: '',
-    propertyType: '',
-    children: '',
-    otherPets: '',
-    experience: '',
     dogName: dogName,
     dogBreed: dogBreed,
     dogLocation: dogLocation,
     whyAdopt: '',
-    additionalInfo: '',
     agree: false,
   })
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // In production, this connects to the rescue organisation partner notification system
-    setSubmitted(true)
+    
+    if (!formData.agree) {
+      alert('Please agree to be contacted.')
+      return
+    }
+
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch('/api/submit-rescue', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone,
+          bestTimeToCall: '',
+          dogName: formData.dogName,
+          dogBreed: formData.dogBreed,
+          dogLocation: formData.dogLocation,
+          questions: formData.whyAdopt,
+          howDidTheyHear: '',
+          consent: formData.agree,
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Submission failed')
+      }
+
+      setSubmitted(true)
+
+    } catch (error) {
+      alert('Something went wrong. Please try again or contact us directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   if (submitted) {
@@ -119,93 +150,7 @@ export default function RescueAdoptionForm() {
         </div>
       </div>
 
-      {/* Section: About Your Home */}
-      <div>
-        <h3 className="font-playfair text-lg font-bold text-brand-dark mb-4 pb-2 border-b border-gray-100">
-          About Your Home
-        </h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="propertyType" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-              Property Type *
-            </label>
-            <select
-              id="propertyType"
-              required
-              value={formData.propertyType}
-              onChange={(e) => setFormData({ ...formData, propertyType: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base bg-white"
-            >
-              <option value="">Select property type</option>
-              <option value="House with garden">House with garden</option>
-              <option value="House without garden">House without garden</option>
-              <option value="Flat/apartment">Flat/apartment</option>
-              <option value="Other">Other</option>
-            </select>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="children" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-              Do you have children? *
-            </label>
-            <select
-              id="children"
-              required
-              value={formData.children}
-              onChange={(e) => setFormData({ ...formData, children: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base bg-white"
-            >
-              <option value="">Please select</option>
-              <option value="No children">No children</option>
-              <option value="Children aged 0–4">Children aged 0–4</option>
-              <option value="Children aged 5–11">Children aged 5–11</option>
-              <option value="Children aged 12–17">Children aged 12–17</option>
-              <option value="Children aged 18+">Children aged 18+</option>
-            </select>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="otherPets" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-              Other pets at home?
-            </label>
-            <select
-              id="otherPets"
-              required
-              value={formData.otherPets}
-              onChange={(e) => setFormData({ ...formData, otherPets: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base bg-white"
-            >
-              <option value="">Please select</option>
-              <option value="No other pets">No other pets</option>
-              <option value="Other dogs">Other dogs</option>
-              <option value="Cats">Cats</option>
-              <option value="Both dogs and cats">Both dogs and cats</option>
-              <option value="Other animals">Other animals</option>
-            </select>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <label htmlFor="experience" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-              Previous dog ownership experience *
-            </label>
-            <select
-              id="experience"
-              required
-              value={formData.experience}
-              onChange={(e) => setFormData({ ...formData, experience: e.target.value })}
-              className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base bg-white"
-            >
-              <option value="">Please select</option>
-              <option value="First time dog owner">First time dog owner</option>
-              <option value="Previous dog owner">Previous dog owner</option>
-              <option value="Experienced with rescue dogs">Experienced with rescue dogs</option>
-              <option value="Professional dog handler">Professional dog handler</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      {/* Section: About the Dog You're Interested In */}
+      {/* Section: Dog Information */}
       <div>
         <h3 className="font-playfair text-lg font-bold text-brand-dark mb-4 pb-2 border-b border-gray-100">
           About the Dog You're Interested In
@@ -271,45 +216,27 @@ export default function RescueAdoptionForm() {
         </div>
       </div>
 
-      {/* Section: Your Message */}
-      <div>
-        <h3 className="font-playfair text-lg font-bold text-brand-dark mb-4 pb-2 border-b border-gray-100">
-          Your Message
-        </h3>
-        <div className="flex flex-col gap-1.5">
-          <label htmlFor="additionalInfo" className="text-xs font-semibold uppercase tracking-wider text-gray-500">
-            Additional Information
-          </label>
-          <textarea
-            id="additionalInfo"
-            rows={5}
-            placeholder="Anything else you'd like us to know — your daily routine, how much time you have for a dog, your garden size, experience with the specific breed, or any questions you have for us..."
-            value={formData.additionalInfo}
-            onChange={(e) => setFormData({ ...formData, additionalInfo: e.target.value })}
-            className="w-full border border-gray-300 rounded-xl px-4 py-3 text-gray-700 focus:outline-none focus:border-brand-gold focus:ring-2 focus:ring-brand-gold/20 text-base resize-none"
-          />
-        </div>
-      </div>
-
-      <div className="flex items-start gap-3">
+      <div className="flex items-start gap-3 mt-6 p-4 bg-gray-50 rounded-lg border border-gray-200">
         <input
           required
           type="checkbox"
           id="agree"
           checked={formData.agree}
           onChange={(e) => setFormData({ ...formData, agree: e.target.checked })}
-          className="w-4 h-4 rounded border-gray-300 text-brand-gold focus:ring-brand-gold mt-1"
+          className="w-5 h-5 rounded border-gray-400 text-brand-gold focus:ring-brand-gold mt-0.5 flex-shrink-0 cursor-pointer"
+          style={{ accentColor: '#C9A84C' }}
         />
-        <label htmlFor="agree" className="text-gray-500 text-xs leading-normal">
-          I agree to be contacted by Euro Pet Express regarding my adoption enquiry
+        <label htmlFor="agree" className="text-gray-700 text-sm leading-relaxed cursor-pointer">
+          I agree to be contacted by Euro Pet Express regarding my rescue dog enquiry. I understand my data will be used in accordance with the Privacy Policy.
         </label>
       </div>
 
       <button
         type="submit"
-        className="w-full bg-gold text-navy font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-gold-light transition-colors duration-200 text-sm flex items-center justify-center gap-2"
+        disabled={isSubmitting}
+        className="w-full bg-brand-gold text-brand-dark font-bold uppercase tracking-wider py-4 rounded-xl hover:bg-brand-goldHover transition-colors duration-200 text-sm flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
       >
-        SUBMIT ADOPTION ENQUIRY
+        {isSubmitting ? 'Sending...' : 'SUBMIT ADOPTION ENQUIRY'}
       </button>
     </form>
   )
