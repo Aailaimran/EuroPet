@@ -98,46 +98,30 @@ export async function sendQuoteRequestEmail(
             font-size: 14px; 
           }
           .label { 
+            color: #0a0e1a; 
             font-weight: bold; 
-            color: #666; 
-            min-width: 140px; 
-            display: inline-block; 
+            text-transform: uppercase; 
+            font-size: 12px; 
+            letter-spacing: 0.5px; 
           }
-          .value { color: #333; }
-          .message-box { 
-            background: #f0ede8; 
-            border-radius: 6px; 
-            padding: 12px; 
-            font-size: 14px; 
-            line-height: 1.6; 
-            margin-top: 8px; 
+          .value { 
+            color: #555; 
+            margin-top: 4px; 
           }
           .footer { 
-            background: #0a0e1a; 
-            color: #666; 
+            background: #f8f7f4; 
+            color: #888; 
             padding: 16px; 
             text-align: center; 
             font-size: 12px; 
-          }
-          .reply-btn {
-            display: inline-block;
-            background: #C9A84C;
-            color: #0a0e1a;
-            padding: 10px 24px;
-            border-radius: 6px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            margin: 16px 0;
+            border-top: 1px solid #ddd; 
           }
         </style>
       </head>
       <body>
-        <div class="header">
-          <h1>🐾 EURO PET EXPRESS</h1>
-          <p style="margin:8px 0 0 0; color:#999; font-size:13px;">
-            New Transport Quote Request
-          </p>
+        <div className="header">
+          <h1>EURO PET EXPRESS</h1>
+          <p style="margin: 8px 0 0 0; font-size: 12px; letter-spacing: 1px;">Rescue Dog Enquiry</p>
         </div>
         
         <div class="content">
@@ -469,7 +453,7 @@ export async function sendNewsletterNotification(
       <div style="font-family: Arial, sans-serif; max-width: 500px; margin: 0 auto; padding: 24px; background: #f8f7f4;">
         <div style="background: #0a0e1a; color: #C9A84C; padding: 20px; text-align: center; border-radius: 8px 8px 0 0;">
           <h2 style="margin: 0; font-size: 16px;">
-            🐾 New Newsletter Subscriber
+            New Newsletter Subscriber
           </h2>
         </div>
         <div style="background: white; padding: 20px; border-radius: 0 0 8px 8px; border: 1px solid #eee;">
