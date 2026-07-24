@@ -279,8 +279,8 @@ export default function RescuePage() {
             <div className="grid grid-cols-1 gap-4">
               {[
                 { number: '50+', label: 'Dogs rehomed' },
-                { number: '8+', label: 'Rescue partners' },
-                { number: '100%', label: 'DEFRA compliant transport' },
+                { number: 'Multiple', label: 'Rescue Centres' },
+                { number: '✓', label: 'DEFRA Compliant Transport' },
               ].map((stat) => (
                 <div key={stat.label} className="bg-white/5 border border-white/10 rounded-xl p-5 text-center">
                   <p className="font-playfair text-3xl font-bold text-brand-gold mb-1">
