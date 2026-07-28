@@ -192,7 +192,7 @@ export default function Footer() {
     },
     {
       name: 'YouTube',
-      href: '#',
+      href: 'https://youtube.com/@europetexpress-z1v?si=o_sn0SLEsUIdX2Fi',
       color: '#FF0000',
       svg: (
         <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
