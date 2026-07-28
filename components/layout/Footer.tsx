@@ -192,7 +192,7 @@ export default function Footer() {
     },
     {
       name: 'YouTube',
-      href: '#',
+      href: 'https://youtube.com/@europetexpress-z1v?si=o_sn0SLEsUIdX2Fi',
       color: '#FF0000',
       svg: (
         <svg viewBox="0 0 24 24" className="w-4 h-4 fill-current">
@@ -277,7 +277,6 @@ export default function Footer() {
             <ul className="space-y-2">
               {[
                 { label: 'About Us', href: '/about' },
-                { label: 'Our Vehicle', href: '/about#vehicle' },
                 { label: 'Our Services', href: '/services' },
                 { label: 'Rescue a Dog', href: '/rescue' },
                 { label: 'Animal Welfare', href: '/compliance#welfare' },
