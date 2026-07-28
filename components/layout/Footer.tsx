@@ -277,7 +277,6 @@ export default function Footer() {
             <ul className="space-y-2">
               {[
                 { label: 'About Us', href: '/about' },
-                { label: 'Our Vehicle', href: '/about#vehicle' },
                 { label: 'Our Services', href: '/services' },
                 { label: 'Rescue a Dog', href: '/rescue' },
                 { label: 'Animal Welfare', href: '/compliance#welfare' },
