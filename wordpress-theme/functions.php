@@ -58,6 +58,7 @@ add_action( 'after_setup_theme', 'europet_setup' );
  */
 function europet_enqueue_scripts() {
 	$theme_uri = get_template_directory_uri();
+	$theme_dir = get_template_directory();
 	$version = wp_get_theme()->get( 'Version' );
 
 	// Enqueue main theme stylesheet (style.css)
@@ -92,6 +93,31 @@ function europet_enqueue_scripts() {
 		'ajaxUrl' => admin_url( 'admin-ajax.php' ),
 		'nonce'   => wp_create_nonce( 'europet_nonce' ),
 	) );
+
+	// Add inline critical CSS as fallback for Hostinger
+	if ( file_exists( $theme_dir . '/assets/css/custom.css' ) ) {
+		$inline_css = '
+		* { margin: 0; padding: 0; box-sizing: border-box; }
+		body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: #0a0e1a; }
+		html { background-color: #0a0e1a; }
+		header { background: #0a0e1a; padding: 20px 0; border-bottom: 1px solid #C9A84C; }
+		header nav a { color: white; text-decoration: none; margin: 0 15px; }
+		header nav a:hover { color: #C9A84C; }
+		.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+		main { padding: 40px 0; }
+		h1, h2, h3 { color: #0a0e1a; margin: 20px 0; }
+		button, .button { background-color: #C9A84C; color: #0a0e1a; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
+		button:hover, .button:hover { background-color: #b8960c; }
+		input, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; }
+		footer { background: #0a0e1a; color: white; padding: 40px 0; margin-top: 60px; border-top: 1px solid #C9A84C; }
+		footer a { color: #C9A84C; text-decoration: none; }
+		@media (max-width: 768px) { 
+			header nav { flex-direction: column; } 
+			header nav a { display: block; margin: 10px 0; }
+		}
+		';
+		wp_add_inline_style( 'europet-custom', $inline_css );
+	}
 }
 add_action( 'wp_enqueue_scripts', 'europet_enqueue_scripts' );
 
