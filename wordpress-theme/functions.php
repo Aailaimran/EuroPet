@@ -57,14 +57,35 @@ add_action( 'after_setup_theme', 'europet_setup' );
  * Enqueue scripts and styles
  */
 function europet_enqueue_scripts() {
-	// Enqueue main stylesheet
-	wp_enqueue_style( 'europet-style', get_stylesheet_uri() );
+	$theme_uri = get_template_directory_uri();
+	$version = wp_get_theme()->get( 'Version' );
 
-	// Enqueue custom CSS
-	wp_enqueue_style( 'europet-custom', get_template_directory_uri() . '/assets/css/custom.css' );
+	// Enqueue main theme stylesheet (style.css)
+	wp_enqueue_style( 
+		'europet-style', 
+		$theme_uri . '/style.css',
+		array(),
+		$version,
+		'all'
+	);
 
-	// Enqueue main JS
-	wp_enqueue_script( 'europet-main', get_template_directory_uri() . '/assets/js/main.js', array(), '1.0.0', true );
+	// Enqueue custom CSS (must load after style.css)
+	wp_enqueue_style( 
+		'europet-custom', 
+		$theme_uri . '/assets/css/custom.css',
+		array( 'europet-style' ),
+		$version,
+		'all'
+	);
+
+	// Enqueue main JavaScript
+	wp_enqueue_script( 
+		'europet-main', 
+		$theme_uri . '/assets/js/main.js', 
+		array( 'jquery' ), 
+		$version, 
+		true 
+	);
 
 	// Localize script for AJAX
 	wp_localize_script( 'europet-main', 'europetData', array(
