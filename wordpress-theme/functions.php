@@ -311,4 +311,151 @@ function europet_register_service_taxonomy() {
 }
 add_action( 'init', 'europet_register_service_taxonomy' );
 
+/**
+ * Theme activation hook - create default pages
+ */
+function europet_theme_activation() {
+	// Flush rewrite rules
+	europet_register_services_cpt();
+	europet_register_service_taxonomy();
+	flush_rewrite_rules();
+
+	// Create default pages if they don't exist
+	$pages = array(
+		array(
+			'title'   => 'Home',
+			'slug'    => '',
+			'content' => '<h2>Welcome to EuroPet Express</h2><p>Professional pet transportation and rescue services.</p>',
+		),
+		array(
+			'title'   => 'About Us',
+			'slug'    => 'about',
+			'content' => '<h2>About EuroPet Express</h2><p>We provide professional and compassionate pet transportation services across Europe.</p>',
+		),
+		array(
+			'title'   => 'Services',
+			'slug'    => 'services',
+			'content' => '<h2>Our Services</h2><p>Pet Transport | Rescue Operations | Adoption Support</p>',
+		),
+		array(
+			'title'   => 'Routes',
+			'slug'    => 'routes',
+			'content' => '<h2>Our Routes</h2><p>We operate throughout Europe with dedicated routes for safe pet transportation.</p>',
+		),
+		array(
+			'title'   => 'Rescue a Dog',
+			'slug'    => 'rescue',
+			'content' => '<h2>Rescue a Dog</h2><p>Help us rescue dogs in need. Fill out the form below to get started.</p>',
+		),
+		array(
+			'title'   => 'Contact',
+			'slug'    => 'contact',
+			'content' => '<h2>Contact Us</h2><p>Get in touch with us for quotes or more information.</p>',
+		),
+		array(
+			'title'   => 'Compliance',
+			'slug'    => 'compliance',
+			'content' => '<h2>Licensing & Compliance</h2><p>We comply with all international pet transportation regulations.</p>',
+		),
+		array(
+			'title'   => 'Privacy Policy',
+			'slug'    => 'privacy',
+			'content' => '<h2>Privacy Policy</h2><p>Your privacy is important to us.</p>',
+		),
+	);
+
+	foreach ( $pages as $page_data ) {
+		// Check if page already exists
+		$existing = get_page_by_path( $page_data['slug'] );
+		if ( ! $existing ) {
+			wp_insert_post( array(
+				'post_type'    => 'page',
+				'post_title'   => $page_data['title'],
+				'post_name'    => $page_data['slug'],
+				'post_content' => $page_data['content'],
+				'post_status'  => 'publish',
+			) );
+		}
+	}
+
+	// Set homepage if not already set
+	$home = get_page_by_path( '' );
+	if ( $home ) {
+		update_option( 'page_on_front', $home->ID );
+		update_option( 'show_on_front', 'page' );
+	}
+
+	// Create main menu if not exists
+	if ( ! term_exists( 'Main Navigation', 'nav_menu' ) ) {
+		$menu_id = wp_create_nav_menu( 'Main Navigation' );
+
+		// Get pages to add to menu
+		$menu_pages = get_pages();
+		foreach ( $menu_pages as $page ) {
+			wp_update_nav_menu_item( $menu_id, 0, array(
+				'menu-item-title'   => $page->post_title,
+				'menu-item-url'     => get_page_link( $page->ID ),
+				'menu-item-status'  => 'publish',
+				'menu-item-type'    => 'post_type',
+				'menu-item-object'  => 'page',
+				'menu-item-object-id' => $page->ID,
+			) );
+		}
+
+		// Assign menu to location
+		$locations = get_theme_mod( 'nav_menu_locations' );
+		$locations['primary'] = $menu_id;
+		set_theme_mod( 'nav_menu_locations', $locations );
+	}
+}
+add_action( 'after_switch_theme', 'europet_theme_activation' );
+
+/**
+ * Clear cache helper function
+ */
+function europet_clear_all_caches() {
+	// WordPress cache
+	wp_cache_flush();
+	
+	// W3 Total Cache
+	if ( function_exists( 'w3tc_flush_all' ) ) {
+		w3tc_flush_all();
+	}
+	
+	// WP Super Cache
+	if ( function_exists( 'wp_cache_clear_cache' ) ) {
+		wp_cache_clear_cache();
+	}
+	
+	// LiteSpeed Cache
+	if ( class_exists( '\LiteSpeed\Purge' ) ) {
+		do_action( 'litespeed_purge_all' );
+	}
+}
+
+/**
+ * Add admin notice on theme activation
+ */
+function europet_activation_notice() {
+	if ( get_transient( 'europet_activation_notice' ) ) {
+		?>
+		<div class="notice notice-success is-dismissible">
+			<p><strong><?php esc_html_e( 'EuroPet Express Theme Activated!', 'europet-theme' ); ?></strong></p>
+			<p><?php esc_html_e( 'Default pages have been created. Please check the page editing panel and customize them with your content.', 'europet-theme' ); ?></p>
+			<p><a href="<?php echo esc_url( admin_url( 'edit.php?post_type=page' ) ); ?>" class="button button-primary"><?php esc_html_e( 'View Pages', 'europet-theme' ); ?></a></p>
+		</div>
+		<?php
+		delete_transient( 'europet_activation_notice' );
+	}
+}
+add_action( 'admin_notices', 'europet_activation_notice' );
+
+/**
+ * Set transient on activation
+ */
+function europet_set_activation_transient() {
+	set_transient( 'europet_activation_notice', 1, 10 );
+}
+add_action( 'after_switch_theme', 'europet_set_activation_transient' );
+
 ?>
