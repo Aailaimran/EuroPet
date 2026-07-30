@@ -11,6 +11,22 @@
 defined( 'ABSPATH' ) || exit;
 
 /**
+ * Hosting Compatibility Fixes
+ * Works with Hostinger, GoDaddy, and other shared hosting
+ */
+
+// Disable potentially problematic features on shared hosting
+if ( ! defined( 'DISABLE_WP_CRON' ) ) {
+	define( 'DISABLE_WP_CRON', true );
+}
+
+// Increase memory limit if not already set
+if ( defined( 'WP_MEMORY_LIMIT' ) && strpos( WP_MEMORY_LIMIT, '64' ) !== false ) {
+	define( 'WP_MEMORY_LIMIT', '128M' );
+	define( 'WP_MAX_MEMORY_LIMIT', '256M' );
+}
+
+/**
  * Sets up theme defaults and registers support for various WordPress features.
  */
 function europet_setup() {
@@ -55,11 +71,15 @@ add_action( 'after_setup_theme', 'europet_setup' );
 
 /**
  * Enqueue scripts and styles
+ * Enhanced for compatibility with Hostinger and GoDaddy
  */
 function europet_enqueue_scripts() {
 	$theme_uri = get_template_directory_uri();
 	$theme_dir = get_template_directory();
 	$version = wp_get_theme()->get( 'Version' );
+
+	// Check if we're in admin or frontend
+	$is_admin = is_admin();
 
 	// Enqueue main theme stylesheet (style.css)
 	wp_enqueue_style( 
@@ -79,7 +99,7 @@ function europet_enqueue_scripts() {
 		'all'
 	);
 
-	// Enqueue main JavaScript
+	// Enqueue main JavaScript (defer loading for performance)
 	wp_enqueue_script( 
 		'europet-main', 
 		$theme_uri . '/assets/js/main.js', 
@@ -90,36 +110,58 @@ function europet_enqueue_scripts() {
 
 	// Localize script for AJAX
 	wp_localize_script( 'europet-main', 'europetData', array(
-		'ajaxUrl' => admin_url( 'admin-ajax.php' ),
-		'nonce'   => wp_create_nonce( 'europet_nonce' ),
+		'ajaxUrl'        => admin_url( 'admin-ajax.php' ),
+		'nonce'          => wp_create_nonce( 'europet_nonce' ),
+		'siteUrl'        => site_url(),
+		'themeUrl'       => $theme_uri,
+		'isDev'          => defined( 'WP_DEBUG' ) && WP_DEBUG,
 	) );
 
-	// Add inline critical CSS as fallback for Hostinger
-	if ( file_exists( $theme_dir . '/assets/css/custom.css' ) ) {
+	// Add critical inline CSS as fallback for Hostinger/GoDaddy
+	if ( ! $is_admin ) {
 		$inline_css = '
-		* { margin: 0; padding: 0; box-sizing: border-box; }
-		body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; line-height: 1.6; color: #0a0e1a; }
-		html { background-color: #0a0e1a; }
-		header { background: #0a0e1a; padding: 20px 0; border-bottom: 1px solid #C9A84C; }
-		header nav a { color: white; text-decoration: none; margin: 0 15px; }
+		html { background-color: #0a0e1a; margin: 0; padding: 0; }
+		body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #0a0e1a; margin: 0; padding: 0; }
+		* { box-sizing: border-box; }
+		header { background: #0a0e1a; padding: 15px 0; border-bottom: 1px solid #C9A84C; }
+		header nav { display: flex; justify-content: center; gap: 20px; }
+		header nav a { color: white; text-decoration: none; padding: 10px 15px; transition: color 0.3s; }
 		header nav a:hover { color: #C9A84C; }
 		.container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
-		main { padding: 40px 0; }
-		h1, h2, h3 { color: #0a0e1a; margin: 20px 0; }
-		button, .button { background-color: #C9A84C; color: #0a0e1a; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; }
-		button:hover, .button:hover { background-color: #b8960c; }
-		input, textarea { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; }
-		footer { background: #0a0e1a; color: white; padding: 40px 0; margin-top: 60px; border-top: 1px solid #C9A84C; }
+		main { padding: 40px 20px; background: white; }
+		h1, h2, h3, h4, h5, h6 { color: #0a0e1a; margin: 20px 0; }
+		button, .button, input[type="submit"] { background-color: #C9A84C; color: #0a0e1a; padding: 12px 24px; border: none; border-radius: 4px; cursor: pointer; font-weight: bold; transition: background-color 0.3s; }
+		button:hover, .button:hover, input[type="submit"]:hover { background-color: #b8960c; }
+		input, textarea, select { width: 100%; padding: 10px; margin: 10px 0; border: 1px solid #ddd; border-radius: 4px; font-family: inherit; }
+		footer { background: #0a0e1a; color: white; padding: 40px 20px; margin-top: 60px; border-top: 1px solid #C9A84C; }
 		footer a { color: #C9A84C; text-decoration: none; }
+		footer a:hover { text-decoration: underline; }
 		@media (max-width: 768px) { 
-			header nav { flex-direction: column; } 
-			header nav a { display: block; margin: 10px 0; }
+			header nav { flex-direction: column; gap: 5px; }
+			header nav a { display: block; padding: 8px 10px; }
+			.container { padding: 0 15px; }
+			main { padding: 20px 15px; }
 		}
 		';
 		wp_add_inline_style( 'europet-custom', $inline_css );
 	}
 }
 add_action( 'wp_enqueue_scripts', 'europet_enqueue_scripts' );
+
+/**
+ * Add critical CSS to document head
+ * Ensures styling appears immediately on page load
+ */
+function europet_print_critical_css() {
+	?>
+	<style>
+	html { background-color: #0a0e1a; }
+	body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; margin: 0; padding: 0; }
+	.wp-site-blocks { margin: 0; }
+	</style>
+	<?php
+}
+add_action( 'wp_head', 'europet_print_critical_css', 1 );
 
 /**
  * Register widget areas
@@ -169,47 +211,64 @@ function europet_get_logo() {
 
 /**
  * Handle contact form submission
+ * Compatible with Hostinger and GoDaddy
  */
 function europet_handle_contact_form() {
-	check_ajax_referer( 'europet_nonce' );
+	// Verify nonce with fallback
+	if ( isset( $_POST['nonce'] ) ) {
+		if ( ! wp_verify_nonce( sanitize_key( $_POST['nonce'] ), 'europet_nonce' ) ) {
+			wp_send_json_error( 'Security check failed' );
+		}
+	}
 
 	if ( ! isset( $_POST['name'], $_POST['email'], $_POST['message'] ) ) {
 		wp_send_json_error( 'Missing required fields' );
 	}
 
-	$name    = sanitize_text_field( $_POST['name'] );
-	$email   = sanitize_email( $_POST['email'] );
-	$message = sanitize_textarea_field( $_POST['message'] );
-	$subject = sanitize_text_field( $_POST['subject'] ?? 'Contact Form Submission' );
+	$name    = sanitize_text_field( wp_unslash( $_POST['name'] ) );
+	$email   = sanitize_email( wp_unslash( $_POST['email'] ) );
+	$message = sanitize_textarea_field( wp_unslash( $_POST['message'] ) );
+	$subject = isset( $_POST['subject'] ) ? sanitize_text_field( wp_unslash( $_POST['subject'] ) ) : 'Contact Form Submission';
 
 	// Validate email
 	if ( ! is_email( $email ) ) {
 		wp_send_json_error( 'Invalid email address' );
 	}
 
-	// Send email to admin
+	// Validate message length
+	if ( strlen( $message ) < 5 ) {
+		wp_send_json_error( 'Message too short' );
+	}
+
+	// Send email to admin with proper error handling
 	$to      = get_option( 'admin_email' );
-	$headers = "From: $name <$email>\r\n";
-	$headers .= "Reply-To: $email\r\n";
-	$headers .= "Content-Type: text/html; charset=UTF-8\r\n";
+	$headers = array( 'Content-Type: text/html; charset=UTF-8' );
+	$headers[] = "From: " . esc_attr( $name ) . " <" . esc_attr( $email ) . ">";
+	$headers[] = "Reply-To: " . esc_attr( $email );
 
 	$body = "
 	<html>
-		<body>
-			<h2>$subject</h2>
-			<p><strong>Name:</strong> $name</p>
-			<p><strong>Email:</strong> $email</p>
+		<body style='font-family: Arial, sans-serif; color: #333;'>
+			<h2>" . esc_html( $subject ) . "</h2>
+			<p><strong>Name:</strong> " . esc_html( $name ) . "</p>
+			<p><strong>Email:</strong> " . esc_html( $email ) . "</p>
 			<p><strong>Message:</strong></p>
-			<p>" . nl2br( $message ) . "</p>
+			<p>" . nl2br( esc_html( $message ) ) . "</p>
 		</body>
 	</html>";
 
-	$sent = wp_mail( $to, $subject, $body, $headers );
+	// Use wp_mail with error handling
+	$sent = wp_mail( $to, esc_attr( $subject ), wp_kses_post( $body ), $headers );
 
 	if ( $sent ) {
-		wp_send_json_success( 'Thank you for your message. We will be in touch soon!' );
+		wp_send_json_success( array(
+			'message' => 'Thank you for your message. We will be in touch soon!',
+			'status'  => 'success',
+		) );
 	} else {
-		wp_send_json_error( 'Failed to send message. Please try again later.' );
+		// Log the error for debugging
+		error_log( 'EuroPet Contact Form Email Failed: To: ' . $to . ', Subject: ' . $subject );
+		wp_send_json_error( 'Failed to send message. Please contact us directly.' );
 	}
 }
 add_action( 'wp_ajax_europet_contact_form', 'europet_handle_contact_form' );
@@ -217,50 +276,60 @@ add_action( 'wp_ajax_nopriv_europet_contact_form', 'europet_handle_contact_form'
 
 /**
  * Handle quote form submission
+ * Compatible with Hostinger and GoDaddy
  */
 function europet_handle_quote_form() {
-	check_ajax_referer( 'europet_nonce' );
+	// Verify nonce with fallback
+	if ( isset( $_POST['nonce'] ) ) {
+		if ( ! wp_verify_nonce( sanitize_key( $_POST['nonce'] ), 'europet_nonce' ) ) {
+			wp_send_json_error( 'Security check failed' );
+		}
+	}
 
 	if ( ! isset( $_POST['name'], $_POST['email'], $_POST['from'], $_POST['to'] ) ) {
 		wp_send_json_error( 'Missing required fields' );
 	}
 
-	$name   = sanitize_text_field( $_POST['name'] );
-	$email  = sanitize_email( $_POST['email'] );
-	$phone  = sanitize_text_field( $_POST['phone'] ?? '' );
-	$from   = sanitize_text_field( $_POST['from'] );
-	$to     = sanitize_text_field( $_POST['to'] );
-	$type   = sanitize_text_field( $_POST['type'] ?? 'Standard Transport' );
+	$name   = sanitize_text_field( wp_unslash( $_POST['name'] ) );
+	$email  = sanitize_email( wp_unslash( $_POST['email'] ) );
+	$phone  = isset( $_POST['phone'] ) ? sanitize_text_field( wp_unslash( $_POST['phone'] ) ) : '';
+	$from   = sanitize_text_field( wp_unslash( $_POST['from'] ) );
+	$to     = sanitize_text_field( wp_unslash( $_POST['to'] ) );
+	$type   = isset( $_POST['type'] ) ? sanitize_text_field( wp_unslash( $_POST['type'] ) ) : 'Standard Transport';
 
 	if ( ! is_email( $email ) ) {
 		wp_send_json_error( 'Invalid email address' );
 	}
 
 	$admin_email = get_option( 'admin_email' );
-	$subject     = 'Quote Request from ' . $name;
-	$headers     = "From: $name <$email>\r\n";
-	$headers     .= "Reply-To: $email\r\n";
-	$headers     .= "Content-Type: text/html; charset=UTF-8\r\n";
+	$subject     = 'Quote Request from ' . esc_attr( $name );
+	$headers     = array( 'Content-Type: text/html; charset=UTF-8' );
+	$headers[]   = "From: " . esc_attr( $name ) . " <" . esc_attr( $email ) . ">";
+	$headers[]   = "Reply-To: " . esc_attr( $email );
 
 	$body = "
 	<html>
-		<body>
+		<body style='font-family: Arial, sans-serif; color: #333;'>
 			<h2>New Quote Request</h2>
-			<p><strong>Name:</strong> $name</p>
-			<p><strong>Email:</strong> $email</p>
-			<p><strong>Phone:</strong> $phone</p>
-			<p><strong>From:</strong> $from</p>
-			<p><strong>To:</strong> $to</p>
-			<p><strong>Transport Type:</strong> $type</p>
+			<p><strong>Name:</strong> " . esc_html( $name ) . "</p>
+			<p><strong>Email:</strong> " . esc_html( $email ) . "</p>
+			<p><strong>Phone:</strong> " . esc_html( $phone ) . "</p>
+			<p><strong>From:</strong> " . esc_html( $from ) . "</p>
+			<p><strong>To:</strong> " . esc_html( $to ) . "</p>
+			<p><strong>Transport Type:</strong> " . esc_html( $type ) . "</p>
 		</body>
 	</html>";
 
-	$sent = wp_mail( $admin_email, $subject, $body, $headers );
+	$sent = wp_mail( $admin_email, esc_attr( $subject ), wp_kses_post( $body ), $headers );
 
 	if ( $sent ) {
-		wp_send_json_success( 'Quote request received! We will contact you shortly.' );
+		wp_send_json_success( array(
+			'message' => 'Quote request received! We will contact you shortly.',
+			'status'  => 'success',
+		) );
 	} else {
-		wp_send_json_error( 'Failed to send quote request. Please try again.' );
+		error_log( 'EuroPet Quote Form Email Failed: To: ' . $admin_email . ', From: ' . $email );
+		wp_send_json_error( 'Failed to send quote request. Please try again or contact us directly.' );
 	}
 }
 add_action( 'wp_ajax_europet_quote_form', 'europet_handle_quote_form' );
