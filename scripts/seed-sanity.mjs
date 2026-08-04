@@ -54,7 +54,7 @@ async function upsertDocument(doc) {
 
 async function seedSiteSettings() {
   console.log('\n📋 Seeding Site Settings...')
-  
+
   const siteSettings = {
     _id: 'siteSettings',
     _type: 'siteSettings',
@@ -68,7 +68,7 @@ async function seedSiteSettings() {
     youtubeUrl: 'https://youtube.com/@europetexpress-z1v?si=o_sn0SLEsUIdX2Fi',
     tiktokUrl: 'https://www.tiktok.com/@europet.express',
   }
-  
+
   await upsertDocument(siteSettings)
 }
 
@@ -78,7 +78,7 @@ async function seedSiteSettings() {
 
 async function seedHomePage() {
   console.log('\n🏠 Seeding Home Page...')
-  
+
   const homePage = {
     _id: 'homePage',
     _type: 'homePage',
@@ -100,7 +100,7 @@ async function seedHomePage() {
     seoTitle: 'Euro Pet Express | Premium Pet Transport UK & Europe',
     seoDescription: 'Premium pet transport between the UK and Europe. Safe, compliant, scheduled departures for dogs, cats and small animals. DEFRA-authorised. Welfare first.',
   }
-  
+
   await upsertDocument(homePage)
 }
 
@@ -110,7 +110,7 @@ async function seedHomePage() {
 
 async function seedRoutesPage() {
   console.log('\n🗺️  Seeding Routes Page...')
-  
+
   const routesPage = {
     _id: 'routesPage',
     _type: 'routesPage',
@@ -119,7 +119,7 @@ async function seedRoutesPage() {
     seoTitle: 'Routes & Schedule | Euro Pet Express',
     seoDescription: 'Explore our scheduled pet transport routes connecting the UK with Romania, Serbia, Hungary, Croatia, France, Spain, Germany, Netherlands, Czech Republic, and beyond.',
   }
-  
+
   await upsertDocument(routesPage)
 }
 
@@ -129,7 +129,7 @@ async function seedRoutesPage() {
 
 async function seedRoutes() {
   console.log('\n🚐 Seeding Transport Routes...')
-  
+
   const routes = [
     {
       _id: 'uk-serbia',
@@ -330,7 +330,7 @@ async function seedRoutes() {
       displayOrder: 11,
     },
   ]
-  
+
   for (const route of routes) {
     await upsertDocument(route)
   }
@@ -342,7 +342,7 @@ async function seedRoutes() {
 
 async function seedServicesPage() {
   console.log('\n🐾 Seeding Services Page...')
-  
+
   const servicesPage = {
     _id: 'servicesPage',
     _type: 'servicesPage',
@@ -416,7 +416,7 @@ async function seedServicesPage() {
       },
     ],
   }
-  
+
   await upsertDocument(servicesPage)
 }
 
@@ -426,7 +426,7 @@ async function seedServicesPage() {
 
 async function seedRescuePage() {
   console.log('\n🐕 Seeding Rescue Page...')
-  
+
   const rescuePage = {
     _id: 'rescuePage',
     _type: 'rescuePage',
@@ -437,7 +437,7 @@ async function seedRescuePage() {
     dogsHeading: 'Dogs Available for Adoption',
     dogsSubheading: 'Browse currently available rescue dogs seeking their forever homes.',
   }
-  
+
   await upsertDocument(rescuePage)
 }
 
@@ -447,7 +447,7 @@ async function seedRescuePage() {
 
 async function seedAboutPage() {
   console.log('\n👤 Seeding About Page...')
-  
+
   const aboutPage = {
     _id: 'aboutPage',
     _type: 'aboutPage',
@@ -493,7 +493,7 @@ async function seedAboutPage() {
     seoTitle: 'About Euro Pet Express | Premium Pet Transport Founded by David',
     seoDescription: 'Euro Pet Express was founded by David, a dog transport professional with over a decade of experience who decided the industry had to be done better. Premium pet transport between the UK and Europe. Welfare first. Paperwork right. No corners cut.',
   }
-  
+
   await upsertDocument(aboutPage)
 }
 
@@ -503,7 +503,7 @@ async function seedAboutPage() {
 
 async function seedCompliancePage() {
   console.log('\n📋 Seeding Compliance Page...')
-  
+
   const compliancePage = {
     _id: 'compliancePage',
     _type: 'compliancePage',
@@ -532,7 +532,7 @@ async function seedCompliancePage() {
       },
     ],
   }
-  
+
   await upsertDocument(compliancePage)
 }
 
@@ -542,7 +542,7 @@ async function seedCompliancePage() {
 
 async function seedContactPage() {
   console.log('\n📞 Seeding Contact Page...')
-  
+
   const contactPage = {
     _id: 'contactPage',
     _type: 'contactPage',
@@ -553,7 +553,7 @@ async function seedContactPage() {
     seoTitle: 'Request a Quote | Euro Pet Express',
     seoDescription: 'Get a personalised pet transport quote from Euro Pet Express. Tell us about your pet and route — we\'ll respond within 12–24 hours with pricing and availability.',
   }
-  
+
   await upsertDocument(contactPage)
 }
 
@@ -563,12 +563,8 @@ async function seedContactPage() {
 
 async function main() {
   try {
-    // Check connection
-    const project = await client.request({
-      uri: '/projects/' + client.config().projectId,
-    })
-    console.log(`✓ Connected to Sanity project: ${project.displayName}\n`)
-    
+    console.log('✓ Starting Sanity seed...\n')
+
     // Seed all content
     await seedSiteSettings()
     await seedHomePage()
@@ -579,10 +575,10 @@ async function main() {
     await seedAboutPage()
     await seedCompliancePage()
     await seedContactPage()
-    
+
     console.log('\n✅ Seed complete! All content has been pushed to Sanity.')
     console.log('🎉 Your Sanity Studio is ready to use at: /studio')
-    
+
     process.exit(0)
   } catch (error) {
     console.error('\n❌ Seed failed:', error.message)
@@ -590,5 +586,4 @@ async function main() {
     process.exit(1)
   }
 }
-
 main()
