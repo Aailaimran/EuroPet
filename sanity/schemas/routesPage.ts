@@ -4,7 +4,6 @@ export default defineType({
   name: 'routesPage',
   title: 'Routes Page',
   type: 'document',
-  __experimental_actions: ['update', 'publish'],
   fields: [
     defineField({
       name: 'pageHeading',
