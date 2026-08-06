@@ -4,7 +4,6 @@ export default defineType({
   name: 'contactPage',
   title: 'Contact / Quote Page',
   type: 'document',
-  __experimental_actions: ['update', 'publish'],
   fields: [
     defineField({
       name: 'pageHeading',

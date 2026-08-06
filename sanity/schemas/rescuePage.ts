@@ -4,7 +4,6 @@ export default defineType({
   name: 'rescuePage',
   title: 'Rescue a Dog Page',
   type: 'document',
-  __experimental_actions: ['update', 'publish'],
   fields: [
     defineField({ name: 'pageHeading', title: 'Page Heading', type: 'string' }),
     defineField({ name: 'pageSubheading', title: 'Page Introduction', type: 'text', rows: 2 }),
