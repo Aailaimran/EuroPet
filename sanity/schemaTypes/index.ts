@@ -1,6 +1,3 @@
-import { schemaTypes } from '../schemas'
-import { type SchemaTypeDefinition } from 'sanity'
-
-export const schema: { types: SchemaTypeDefinition[] } = {
-  types: schemaTypes,
-}
+// This file is kept for backward compatibility.
+// The canonical schema source is in sanity/schemas/index.ts
+export { schemaTypes } from '../schemas'
