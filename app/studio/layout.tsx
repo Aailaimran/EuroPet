@@ -8,9 +8,22 @@ export default function StudioLayout({
   children: React.ReactNode
 }) {
   return (
-    <html>
-      <head></head>
-      <body>{children}</body>
-    </html>
+    <>
+      <style>{`
+        /* Hide navbar, footer, and other site chrome in Sanity Studio */
+        header, footer, nav, .scroll-progress, .floating-whatsapp, .back-to-top {
+          display: none !important;
+        }
+        main {
+          padding-top: 0 !important;
+          margin-top: 0 !important;
+        }
+        body {
+          background-color: #0d1117 !important;
+          overflow: auto !important;
+        }
+      `}</style>
+      {children}
+    </>
   )
 }

@@ -14,58 +14,55 @@ import PageHero from '@/components/ui/PageHero'
 import Link from 'next/link'
 import { Heart, Shield, Award, FileText, Star } from 'lucide-react'
 import { PET_IMAGES } from '@/lib/petImages'
+import { sanityFetch } from '@/sanity/sanity.client'
+import { SERVICES_PAGE_QUERY } from '@/sanity/queries'
+
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'Our Services | Euro Pet Express',
   description: 'Premium pet transport services including scheduled European routes, rescue and breeder transport, family relocation, and bespoke transport options.',
 }
 
-export default function Services() {
-  const services = [
-    {
-      icon: <Heart className="w-5 h-5 text-brand-gold" />,
-      title: 'Private Owner Transport',
-      desc: "You're moving to the UK or reuniting with your pet. We provide door-to-door or collection-point transport for privately owned pets with full welfare documentation support.",
-      features: ['Flexible collection points', 'Welfare updates during journey', 'TRACES documentation support', 'Microchip & vaccination verification'],
-      image: PET_IMAGES.dogHappy,
-    },
-    {
-      icon: <Shield className="w-5 h-5 text-brand-gold" />,
-      title: 'Rescue & Shelter Transport',
-      desc: 'We work directly with registered rescue organisations to transport rehomed pets from European shelters to their UK foster or forever homes.',
-      features: ['Volume discount for registered rescues', 'Coordination with shelter staff', 'Full EU/UK import compliance', 'DEFRA-authorised journey documentation'],
-      image: PET_IMAGES.dogFamily,
-    },
-    {
-      icon: <Award className="w-5 h-5 text-brand-gold" />,
-      title: 'Breeder Transport',
-      desc: 'Trusted by registered breeders across Romania and Poland to transport puppies and adult pets to new owners in the UK safely and in compliance with all regulations.',
-      features: ['Age-verified puppy transport (min. 15 weeks)', 'Health certificate coordination', 'Rabies titre test verification', 'Microchip & passport checking'],
-      image: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80',
-    },
-    {
-      icon: <FileText className="w-5 h-5 text-brand-gold" />,
-      title: 'Documentation Assistance',
-      desc: 'Navigating UK pet import rules post-Brexit is complex. We guide owners and organisations through the required paperwork.',
-      features: ['TRACES NT movement document guidance', 'Health certificate requirements', 'Rabies vaccination timing', 'Tapeworm treatment guidance'],
-      image: PET_IMAGES.assistanceDoc,
-    },
-    {
-      title: 'Bespoke Pet Transport',
-      subtitle: 'Pricing: P.O.A.',
-      icon: <Star className="w-5 h-5 text-brand-gold" />,
-      image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&q=80',
-      alt: 'Bespoke premium pet transport service',
-      desc: 'For unique or complex transport requirements, we offer fully bespoke pet transport solutions tailored to your specific needs. Whether transporting multiple pets, exotic animals, or requiring specialist handling, we can accommodate.',
-      features: [
-        'Fully tailored transport solution',
-        'Specialist handling available',
-        'Flexible scheduling and routing',
-        'Price on application — contact us to discuss',
-      ],
-      poa: true,
-    }
-  ]
+// Icon map — Services page images/icons are not stored in Sanity;
+// we match by title keywords to assign the right icon.
+function iconForService(title: string) {
+  const t = title.toLowerCase()
+  if (t.includes('private') || t.includes('owner')) return <Heart className="w-5 h-5 text-brand-gold" />
+  if (t.includes('rescue') || t.includes('shelter')) return <Shield className="w-5 h-5 text-brand-gold" />
+  if (t.includes('breeder')) return <Award className="w-5 h-5 text-brand-gold" />
+  if (t.includes('document')) return <FileText className="w-5 h-5 text-brand-gold" />
+  return <Star className="w-5 h-5 text-brand-gold" />
+}
+
+// Fallback images by service position
+const SERVICE_IMAGES = [PET_IMAGES.dogHappy, PET_IMAGES.dogFamily, 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80', PET_IMAGES.assistanceDoc, 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&q=80']
+
+export default async function Services() {
+  const cms = await sanityFetch<any>(SERVICES_PAGE_QUERY)
+
+  // Use CMS services if populated; otherwise fall back to hardcoded list
+  type ServiceItem = { title: string; desc: string; features: string[]; image: string; icon: React.ReactNode; poa?: boolean; alt?: string }
+  const services: ServiceItem[] = (cms?.services && cms.services.length > 0)
+    ? cms.services
+        .filter((s: { isVisible: boolean }) => s.isVisible !== false)
+        .map((s: { title: string; description: string; features: string[]; isPriceOnApplication: boolean }, i: number) => ({
+          title: s.title,
+          desc: s.description,
+          features: s.features || [],
+          image: SERVICE_IMAGES[i] || SERVICE_IMAGES[0],
+          icon: iconForService(s.title),
+          poa: s.isPriceOnApplication,
+        }))
+    : [
+        { icon: <Heart className="w-5 h-5 text-brand-gold" />, title: 'Private Owner Transport', desc: "You're moving to the UK or reuniting with your pet. We provide door-to-door or collection-point transport for privately owned pets with full welfare documentation support.", features: ['Flexible collection points', 'Welfare updates during journey', 'TRACES documentation support', 'Microchip & vaccination verification'], image: PET_IMAGES.dogHappy },
+        { icon: <Shield className="w-5 h-5 text-brand-gold" />, title: 'Rescue & Shelter Transport', desc: 'We work directly with registered rescue organisations to transport rehomed pets from European shelters to their UK foster or forever homes.', features: ['Volume discount for registered rescues', 'Coordination with shelter staff', 'Full EU/UK import compliance', 'DEFRA-authorised journey documentation'], image: PET_IMAGES.dogFamily },
+        { icon: <Award className="w-5 h-5 text-brand-gold" />, title: 'Breeder Transport', desc: 'Trusted by registered breeders across Romania and Poland to transport puppies and adult pets to new owners in the UK safely and in compliance with all regulations.', features: ['Age-verified puppy transport (min. 15 weeks)', 'Health certificate coordination', 'Rabies titre test verification', 'Microchip & passport checking'], image: 'https://images.unsplash.com/photo-1587300003388-59208cc962cb?w=600&q=80' },
+        { icon: <FileText className="w-5 h-5 text-brand-gold" />, title: 'Documentation Assistance', desc: 'Navigating UK pet import rules post-Brexit is complex. We guide owners and organisations through the required paperwork.', features: ['TRACES NT movement document guidance', 'Health certificate requirements', 'Rabies vaccination timing', 'Tapeworm treatment guidance'], image: PET_IMAGES.assistanceDoc },
+        { icon: <Star className="w-5 h-5 text-brand-gold" />, title: 'Bespoke Pet Transport', desc: 'For unique or complex transport requirements, we offer fully bespoke pet transport solutions tailored to your specific needs.', features: ['Fully tailored transport solution', 'Specialist handling available', 'Flexible scheduling and routing', 'Price on application — contact us to discuss'], image: 'https://images.unsplash.com/photo-1548199973-03cce0bbc87b?w=600&q=80', poa: true },
+      ]
+
+
 
   const servicesList = [
     'Scheduled European Pet Transport',
@@ -82,7 +79,10 @@ export default function Services() {
 
   return (
     <div>
-      <PageHero title="Our Services" subtitle="Tailored pet transport for rescues, breeders, shelters and private owners." />
+      <PageHero
+        title={cms?.pageHeading || "Our Services"}
+        subtitle={cms?.pageSubheading || "Tailored pet transport for rescues, breeders, shelters and private owners."}
+      />
 
       <section className="py-16 bg-off-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

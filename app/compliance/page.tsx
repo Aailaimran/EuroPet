@@ -1,15 +1,22 @@
 import type { Metadata } from 'next'
 import PageHero from '@/components/ui/PageHero'
+import { sanityFetch } from '@/sanity/sanity.client'
+import { COMPLIANCE_PAGE_QUERY } from '@/sanity/queries'
+
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'Licensing & Compliance | Euro Pet Express',
   description: 'Euro Pet Express is pending DEFRA Type 2 approval and TRACES NT registered. Learn about our animal welfare policy, compliance standards, and regulatory authorisations for pet transport between the UK and Europe.',
 }
 
-export default function Compliance() {
+export default async function Compliance() {
+  const cms = await sanityFetch<any>(COMPLIANCE_PAGE_QUERY)
+  const pageHeading = cms?.pageHeading || 'Licensing & Compliance'
+  const pageIntroduction = cms?.pageIntroduction || 'Fully authorised. Fully regulated. Fully transparent.'
   return (
     <div>
-      <PageHero title="Licensing & Compliance" subtitle="Fully authorised. Fully regulated. Fully transparent." />
+      <PageHero title={pageHeading} subtitle={pageIntroduction} />
 
       {/* Change 4: Founder statement — between PageHero and first compliance block */}
       <div className="bg-brand-dark">

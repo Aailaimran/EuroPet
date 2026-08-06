@@ -8,19 +8,23 @@ export const client = createClient({
   token: process.env.SANITY_API_READ_TOKEN,
 })
 
-export async function sanityFetch<T>({
-  query,
-  params = {},
-  revalidate = 3600,
-}: {
-  query: string
-  params?: Record<string, unknown>
-  revalidate?: number
-}): Promise<T> {
-  return client.fetch<T>(query, params, {
-    next: {
-      revalidate,
-      tags: ['sanity'],
-    },
-  })
+const isDev = process.env.NODE_ENV === 'development'
+
+/**
+ * Fetch data from Sanity.
+ * - In development: bypasses the Next.js cache entirely so Studio changes
+ *   appear immediately on every page refresh (no waiting for revalidation).
+ * - In production: uses ISR with 60-second revalidation.
+ */
+export async function sanityFetch<T>(
+  query: string,
+  params: Record<string, unknown> = {}
+): Promise<T> {
+  return client.fetch<T>(
+    query,
+    params,
+    isDev
+      ? { cache: 'no-store' }
+      : { next: { revalidate: 60, tags: ['sanity'] } }
+  )
 }

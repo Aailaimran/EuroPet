@@ -15,6 +15,10 @@ import ManifestoSection from '@/components/home/ManifestoSection'
 import { PET_IMAGES } from '@/lib/petImages'
 import PhotoCarousel from '@/components/ui/PhotoCarousel'
 import Script from 'next/script'
+import { sanityFetch } from '@/sanity/sanity.client'
+import { ABOUT_PAGE_QUERY } from '@/sanity/queries'
+
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'About Euro Pet Express | Premium Pet Transport Founded by David',
@@ -60,7 +64,27 @@ export const metadata: Metadata = {
   },
 }
 
-export default function About() {
+export default async function About() {
+  // Fetch from Sanity; fall back to hardcoded strings if CMS not yet populated
+  const cms = await sanityFetch<any>(ABOUT_PAGE_QUERY)
+
+  const founderName = cms?.founderName || 'David'
+  const founderTitle = cms?.founderTitle || 'Managing Director'
+  const p1 = cms?.founderParagraph1 || "I've been around dogs my whole life, and for over a decade I've been moving them across Europe and into the UK."
+  const p2 = cms?.founderParagraph2 || "I've seen puppies put on the road before they were ready. I've seen vans packed too tight and journeys running too long with no proper stops. And gosh, I've seen people taking paperwork for granted which gives troubles later. Consequently, I've watched dogs arrive frightened and shut down, and watched people sign for them anyway, because there was money to be made and a schedule to keep."
+  const p3 = cms?.founderParagraph3 || "For years I told myself it was just how things were done. Then I decided I didn't want to be part of how things were done anymore."
+  const p4 = cms?.founderParagraph4 || "That's why Euro Pet Express exists. I know every shortcut in this trade, because I've witnessed them firsthand. That's exactly why I can avoid them."
+  const p5 = cms?.founderParagraph5 || "When you hand us your dog, you're handing it to someone who spent over a decade learning what not to do, and built a company to prove there's a better way."
+
+  const faqItems: { question: string; answer: string }[] = cms?.faqItems || [
+    { question: 'What documents does my pet need to travel?', answer: 'All pets (dogs, cats, and ferrets) entering Great Britain must have a valid microchip, an up-to-date rabies vaccination administered after microchipping, and an Animal Health Certificate (AHC) or valid pet passport issued by an official vet within the required timeframe before travel. Dogs entering Great Britain also require a tapeworm treatment administered 24–120 hours before arrival — this requirement does not currently apply to cats or ferrets. Euro Pet Express will guide you through the exact requirements for your specific pet and route when you request a quote.' },
+    { question: 'How long does the journey take?', answer: 'Journey duration varies based on weather, traffic, border crossings, welfare stops, and ferry or tunnel schedules. Please contact Euro Pet Express for current estimates on your specific route.' },
+    { question: 'Can I track my pet during the transport journey?', answer: 'Yes. Euro Pet Express provides regular WhatsApp updates throughout the journey including welfare check photos and location updates at key stages, so you always know how your pet is doing.' },
+    { question: 'What size transport crates do you use?', answer: "Euro Pet Express carries crates suitable for pets from small breeds up to large breeds. Please state your pet's breed, weight, and height when requesting a quote so we can confirm crate availability for your pet." },
+    { question: 'Do you transport cats and other animals as well as dogs?', answer: 'Yes, Euro Pet Express transports dogs, cats, ferrets, and other small animals between the UK and Europe. For bespoke or exotic pet transport requirements, please contact us to discuss your specific needs.' },
+    { question: 'How far in advance should I book pet transport?', answer: 'We recommend booking at least 3 to 4 weeks in advance of your preferred departure date, as spaces on each scheduled run are limited. Contact Euro Pet Express as early as possible to secure your slot.' },
+  ]
+
   return (
     <div>
       <>
@@ -293,10 +317,10 @@ export default function About() {
                 {/* Founder name badge overlaid at bottom */}
                 <div className="absolute bottom-4 left-4 right-4 bg-brand-dark/85 backdrop-blur-sm rounded-xl p-4 border border-brand-gold/20">
                   <p className="font-playfair text-white font-bold text-lg">
-                    David
+                    {founderName}
                   </p>
                   <p className="text-brand-gold text-xs font-semibold uppercase tracking-wider mt-0.5">
-                    Managing Director, Euro Pet Express
+                    {founderTitle}, Euro Pet Express
                   </p>
                 </div>
 
@@ -330,28 +354,14 @@ export default function About() {
                 itemType="https://schema.org/Article"
                 className="space-y-6"
               >
-                <meta itemProp="author" content="David" />
+                <meta itemProp="author" content={founderName} />
                 <meta itemProp="publisher" content="Euro Pet Express" />
 
-                <p className="text-gray-600 text-lg leading-relaxed font-medium">
-                  I&apos;ve been around dogs my whole life, and for over a decade I&apos;ve been moving them across Europe and into the UK.
-                </p>
-
-                <p className="text-gray-600 text-base leading-relaxed">
-                  I&apos;ve seen puppies put on the road before they were ready. I&apos;ve seen vans packed too tight and journeys running too long with no proper stops. And gosh, I&apos;ve seen people taking paperwork for granted which gives troubles later. Consequently, I&apos;ve watched dogs arrive frightened and shut down, and watched people sign for them anyway, because there was money to be made and a schedule to keep.
-                </p>
-
-                <p className="text-gray-600 text-base leading-relaxed">
-                  For years I told myself it was just how things were done. Then I decided I didn&apos;t want to be part of how things were done anymore.
-                </p>
-
-                <p className="text-brand-dark text-base leading-relaxed font-semibold border-l-4 border-brand-gold pl-5 py-2 bg-brand-gold/5 rounded-r-lg">
-                  That&apos;s why Euro Pet Express exists. I know every shortcut in this trade, because I&apos;ve witnessed them firsthand. That&apos;s exactly why I can avoid them.
-                </p>
-
-                <p className="text-gray-600 text-base leading-relaxed">
-                  When you hand us your dog, you&apos;re handing it to someone who spent over a decade learning what not to do, and built a company to prove there&apos;s a better way.
-                </p>
+                <p className="text-gray-600 text-lg leading-relaxed font-medium">{p1}</p>
+                <p className="text-gray-600 text-base leading-relaxed">{p2}</p>
+                <p className="text-gray-600 text-base leading-relaxed">{p3}</p>
+                <p className="text-brand-dark text-base leading-relaxed font-semibold border-l-4 border-brand-gold pl-5 py-2 bg-brand-gold/5 rounded-r-lg">{p4}</p>
+                <p className="text-gray-600 text-base leading-relaxed">{p5}</p>
 
               </article>
 
@@ -361,17 +371,11 @@ export default function About() {
                 itemType="https://schema.org/Person"
                 className="mt-10 pt-8 border-t border-gray-200"
               >
-                <span itemProp="name" className="sr-only">
-                  David
-                </span>
-                <span itemProp="jobTitle" className="sr-only">
-                  Managing Director, Euro Pet Express
-                </span>
+                <span itemProp="name" className="sr-only">{founderName}</span>
+                <span itemProp="jobTitle" className="sr-only">{founderTitle}, Euro Pet Express</span>
                 <div className="flex items-center gap-3">
                   <div className="w-12 h-0.5 bg-brand-gold" />
-                  <p className="text-gray-400 text-sm italic">
-                    David, Managing Director
-                  </p>
+                  <p className="text-gray-400 text-sm italic">{founderName}, {founderTitle}</p>
                 </div>
               </div>
 
@@ -431,32 +435,10 @@ export default function About() {
           <h3 className="font-display text-2xl text-navy font-bold mb-6">Frequently Asked Questions</h3>
 
           <div className="space-y-4">
-            {[
-              {
-                q: 'What documents does my pet need to travel?',
-                a: (
-                  <>
-                    All pets (dogs, cats, and ferrets) entering Great Britain must have a valid microchip, an up-to-date rabies vaccination administered after microchipping, and an Animal Health Certificate (AHC) or valid pet passport issued by an official vet within the required timeframe before travel. Dogs entering Great Britain also require a tapeworm treatment administered 24–120 hours before arrival — this requirement does not currently apply to cats or ferrets. Euro Pet Express will guide you through the exact requirements for your specific pet and route when you request a quote. For full official guidance, visit the{' '}
-                    <a
-                      href="https://www.gov.uk/bring-pet-to-great-britain"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-brand-gold hover:underline"
-                    >
-                      UK Government&apos;s pet travel page
-                    </a>.
-                  </>
-                )
-              },
-              { q: 'How long does the journey take?', a: 'Journey duration varies based on weather, traffic, border crossings, welfare stops, and ferry/tunnel schedules. Please contact us for current estimates.' },
-              { q: 'Can I track my pet during the journey?', a: 'We provide regular WhatsApp updates throughout the journey including welfare check photos and location updates at key stages.' },
-              { q: 'What size are the transport crates?', a: "We carry crates suitable for pets from small breeds up to large breeds. Please state your pet's breed, weight, and height when requesting a quote so we can confirm crate availability." },
-              { q: 'Do you transport cats or other animals?', a: 'Yes, we transport dogs, cats, ferrets, and other small animals. For bespoke or exotic pet transport, please contact us to discuss your requirements.' },
-              { q: 'How far in advance should I book?', a: 'We recommend booking at least 3–4 weeks in advance of your preferred departure date, as spaces on each run are limited. Contact us as early as possible to secure your slot.' },
-            ].map((item) => (
-              <details key={item.q} className="bg-white border border-gray-200 rounded-xl p-4 group">
-                <summary className="flex justify-between items-center cursor-pointer font-medium text-navy">{item.q}</summary>
-                <div className="mt-3 text-sm text-gray-700 leading-relaxed">{item.a}</div>
+            {faqItems.map((item) => (
+              <details key={item.question} className="bg-white border border-gray-200 rounded-xl p-4 group">
+                <summary className="flex justify-between items-center cursor-pointer font-medium text-navy">{item.question}</summary>
+                <div className="mt-3 text-sm text-gray-700 leading-relaxed">{item.answer}</div>
               </details>
             ))}
           </div>

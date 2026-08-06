@@ -2,6 +2,8 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CalendarDays } from 'lucide-react'
 
+export const revalidate = 60
+
 export const metadata: Metadata = {
   title: 'Euro Pet Express | Premium Pet Transport UK & Europe',
   description: 'Premium pet transport between the UK and Europe. Safe, compliant, scheduled departures for dogs, cats and small animals.',
@@ -12,11 +14,23 @@ import RoutesSection from '@/components/home/RoutesSection'
 import ManifestoSection from '@/components/home/ManifestoSection'
 import VehicleSection from '@/components/home/VehicleSection'
 import CtaStrip from '@/components/home/CtaStrip'
+import { sanityFetch } from '@/sanity/sanity.client'
+import { HOME_PAGE_QUERY, SITE_SETTINGS_QUERY } from '@/sanity/queries'
 
-export default function HomePage() {
+export default async function HomePage() {
+  const homeData = await sanityFetch<any>(HOME_PAGE_QUERY)
+  const settingsData = await sanityFetch<any>(SITE_SETTINGS_QUERY)
+
   return (
     <>
-      <HeroSection />
+      <HeroSection
+        defraStatus={settingsData?.defraStatus}
+        heroHeadlineLine1={homeData?.heroHeadlineLine1}
+        heroHeadlineLine2={homeData?.heroHeadlineLine2}
+        heroSubtext={homeData?.heroSubtext}
+        founderQuote={homeData?.founderQuote}
+        responseTime={settingsData?.responseTime}
+      />
       <TrustBar />
       <RoutesSection />
 
@@ -68,7 +82,7 @@ export default function HomePage() {
       {/* Manifesto section — NEW */}
       <ManifestoSection />
 
-      <VehicleSection />
+      <VehicleSection description={homeData?.vehicleDescription} features={homeData?.vehicleFeatures} />
       <CtaStrip />
     </>
   )

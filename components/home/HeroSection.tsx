@@ -15,7 +15,23 @@ import {
   easeOutExpo,
 } from '@/lib/motion'
 
-export default function HeroSection() {
+interface HeroSectionProps {
+  defraStatus?: string
+  heroHeadlineLine1?: string
+  heroHeadlineLine2?: string
+  heroSubtext?: string
+  founderQuote?: string
+  responseTime?: string
+}
+
+export default function HeroSection({
+  defraStatus = 'Pending DEFRA Type 2 Approval — End August 2026',
+  heroHeadlineLine1 = 'Your dog is family.',
+  heroHeadlineLine2 = 'Every journey treats it that way.',
+  heroSubtext = 'Euro Pet Express was founded by someone who spent over a decade moving dogs across Europe the way this industry does it, and decided it had to be done better. Welfare first. Paperwork right. No corners cut, ever.',
+  founderQuote = "I've been around dogs my whole life, and for over a decade I've been moving them across Europe and into the UK.",
+  responseTime = 'within 12–24 hours',
+}: HeroSectionProps) {
   const sectionRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -66,22 +82,22 @@ export default function HeroSection() {
               transition={{ duration: 0.5, delay: 0.2, ease: easeOutExpo }}
               className="inline-block text-gold uppercase tracking-[0.2em] text-xs font-bold mb-6 border border-gold/30 px-4 py-1.5 rounded-full backdrop-blur-sm bg-gold/5"
             >
-              Pending DEFRA Type 2 Approval — End August 2026
+              {defraStatus}
             </motion.span>
 
             {/* 1A: Updated headline */}
             <h1 className="font-playfair font-bold text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
               <span className="text-white block">
-                Your dog is family.
+                {heroHeadlineLine1}
               </span>
               <span className="text-brand-gold block mt-2">
-                Every journey treats it that way.
+                {heroHeadlineLine2}
               </span>
             </h1>
 
             {/* 1B: Updated subheadline */}
             <p className="text-gray-300 text-lg leading-relaxed mb-8 max-w-xl">
-              Euro Pet Express was founded by someone who spent over a decade moving dogs across Europe the way this industry does it, and decided it had to be done better. Welfare first. Paperwork right. No corners cut, ever.
+              {heroSubtext}
             </p>
 
             {/* CTAs */}
@@ -120,7 +136,7 @@ export default function HeroSection() {
               className="flex items-center gap-2 text-gray-400 text-sm mt-6"
             >
               <Clock className="w-4 h-4" />
-              Typical response time: within 12–24 hours
+              Typical response time: {responseTime}
             </motion.div>
 
             {/* Trust badge strip removed — content covered by TrustBar component below hero */}
@@ -135,7 +151,7 @@ export default function HeroSection() {
               <div className="w-0.5 h-12 bg-brand-gold/40 shrink-0 mt-1" />
               <div>
                 <p className="text-gray-400 text-sm leading-relaxed italic max-w-sm">
-                  &ldquo;I&apos;ve been around dogs my whole life, and for over a decade I&apos;ve been moving them across Europe and into the UK.&rdquo;
+                  &ldquo;{founderQuote}&rdquo;
                 </p>
                 <a
                   href="/about#founder-story"

@@ -2,18 +2,33 @@ import type { Metadata } from 'next'
 import PageHero from '@/components/ui/PageHero'
 import TransportQuoteForm from '@/components/forms/TransportQuoteForm'
 import { Phone, MessageCircle, Mail, Clock, Camera, MapPin, Shield } from 'lucide-react'
+import { sanityFetch } from '@/sanity/sanity.client'
+import { SITE_SETTINGS_QUERY, CONTACT_PAGE_QUERY } from '@/sanity/queries'
+
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'Request a Transport Quote | Euro Pet Express',
   description: 'Get a personalised pet transport quote. We respond within 12–24 hours.',
 }
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const settings = await sanityFetch<Record<string, string>>(SITE_SETTINGS_QUERY)
+  const contactCms = await sanityFetch<any>(CONTACT_PAGE_QUERY)
+
+  const phone = settings?.phoneNumber || '+44 1524 959304'
+  const whatsapp = settings?.whatsappNumber || '447853147342'
+  const email = settings?.emailAddress || 'Info@europetexpress.co.uk'
+  const responseTime = settings?.responseTime || '12–24 hours'
+
+  const title = contactCms?.pageHeading || 'Request a Transport Quote'
+  const subtitle = contactCms?.pageSubheading || 'Tell us about your pet and journey. We will get back to you within 12–24 hours.'
+
   return (
     <div>
       <PageHero
-        title="Request a Transport Quote"
-        subtitle="Tell us about your pet and journey. We will get back to you within 12–24 hours."
+        title={title}
+        subtitle={subtitle}
         breadcrumb="Home / Request a Quote"
       />
 
@@ -32,15 +47,15 @@ export default function ContactPage() {
                 
                 <div className="space-y-4">
                   <div>
-                    <a href="tel:+441524959304" className="text-brand-gold font-semibold flex items-center gap-2 hover:underline">
+                    <a href={`tel:${phone.replace(/\s/g, '')}`} className="text-brand-gold font-semibold flex items-center gap-2 hover:underline">
                       <Phone className="w-4 h-4 shrink-0" />
-                      +44 1524 959304
+                      {phone}
                     </a>
                     <p className="text-gray-400 text-xs mt-0.5 ml-6">Mon–Sat, 8am–8pm UK time</p>
                   </div>
 
                   <div>
-                    <a href="https://wa.me/447853147342" target="_blank" rel="noopener noreferrer" className="text-brand-gold font-semibold flex items-center gap-2 hover:underline">
+                    <a href={`https://wa.me/${whatsapp}`} target="_blank" rel="noopener noreferrer" className="text-brand-gold font-semibold flex items-center gap-2 hover:underline">
                       <MessageCircle className="w-4 h-4 shrink-0" />
                       Chat on WhatsApp
                     </a>
@@ -48,9 +63,9 @@ export default function ContactPage() {
                   </div>
 
                   <div>
-                    <a href="mailto:Info@europetexpress.co.uk" className="text-brand-gold font-semibold flex items-center gap-2 hover:underline">
+                    <a href={`mailto:${email}`} className="text-brand-gold font-semibold flex items-center gap-2 hover:underline">
                       <Mail className="w-4 h-4 shrink-0" />
-                      Info@europetexpress.co.uk
+                      {email}
                     </a>
                   </div>
                 </div>
@@ -106,7 +121,7 @@ export default function ContactPage() {
                 <div className="pt-2">
                   <div className="inline-flex items-center gap-2 bg-green-900/50 text-green-300 text-xs px-3 py-2 rounded-xl border border-green-500/10">
                     <Clock className="w-4 h-4 shrink-0" />
-                    <span>Typical response: 12–24 hours</span>
+                    <span>Typical response: {responseTime}</span>
                   </div>
                 </div>
               </div>

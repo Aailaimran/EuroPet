@@ -19,7 +19,12 @@ import {
   easeOutExpo,
 } from '@/lib/motion'
 
-const features = [
+interface VehicleSectionProps {
+  description?: string
+  features?: string[]
+}
+
+const defaultFeatures = [
   'Climate-controlled transport area',
   'Secure fixed crate system',
   'Regular welfare inspection stops',
@@ -27,7 +32,10 @@ const features = [
   'DEFRA-compliant long-journey vehicle',
 ]
 
-export default function VehicleSection() {
+export default function VehicleSection({
+  description = 'Our fleet of purpose-built, climate-controlled vehicles is configured for the safe and comfortable transport of pets in individual secure crates, catering for single pets through to large rescue or breeder consignments.',
+  features = defaultFeatures,
+}: VehicleSectionProps) {
   const { ref, isInView } = useScrollAnimation()
 
   return (
@@ -58,7 +66,7 @@ export default function VehicleSection() {
               animate={isInView ? 'visible' : 'hidden'}
               className="text-gray-300 text-sm leading-relaxed mb-6"
             >
-              Our fleet of purpose-built, climate-controlled vehicles is configured for the safe and comfortable transport of pets in individual secure crates, catering for single pets through to large rescue or breeder consignments.
+              {description}
             </motion.p>
 
             <motion.ul

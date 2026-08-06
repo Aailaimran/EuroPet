@@ -2,19 +2,54 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import PageHero from '@/components/ui/PageHero'
 import RouteCard from '@/components/ui/RouteCard'
+import { sanityFetch } from '@/sanity/sanity.client'
+import { ALL_ROUTES_QUERY, ROUTES_PAGE_QUERY } from '@/sanity/queries'
 import { ROUTES } from '@/lib/routesData'
+
+export const revalidate = 60
 
 export const metadata: Metadata = {
   title: 'Routes & Schedule | Euro Pet Express',
   description: 'Explore our scheduled pet transport routes connecting the UK with Romania, Serbia, Hungary, Croatia, France, Spain, Germany, Netherlands, Czech Republic, and beyond.',
 }
 
-export default function RoutesPage() {
-  const activeRoutes = ROUTES.filter(r => r.isActive).sort((a, b) => a.displayOrder - b.displayOrder)
+export default async function RoutesPage() {
+  const routesPageCms = await sanityFetch<any>(ROUTES_PAGE_QUERY)
+  // Fetch from Sanity; fall back to hardcoded data if CMS is empty
+  const sanityRoutes = await sanityFetch<any>(ALL_ROUTES_QUERY)
+
+  const routes = (sanityRoutes && sanityRoutes.length > 0)
+    ? sanityRoutes.map((r: {
+        _id: string; name: string; slug: string; destinationCountry: string;
+        destinationCode: string; departureFrequency: string; shortDescription: string;
+        routeHighlights: string[]; isActive: boolean; displayOrder: number;
+      }) => ({
+        id: r._id,
+        name: r.name,
+        slug: r.slug,
+        originCountry: 'United Kingdom',
+        destinationCountry: r.destinationCountry,
+        originCode: 'GB',
+        destinationCode: r.destinationCode,
+        departureFrequency: r.departureFrequency,
+        shortDescription: r.shortDescription,
+        routeHighlights: r.routeHighlights || [],
+        pickupCities: [],
+        typicalTravelTime: '',
+        priceFrom: 0,
+        isActive: r.isActive,
+        displayOrder: r.displayOrder,
+      }))
+    : ROUTES
+
+  const activeRoutes = routes.filter((r: typeof routes[0]) => r.isActive).sort((a: typeof routes[0], b: typeof routes[0]) => a.displayOrder - b.displayOrder)
 
   return (
     <div>
-      <PageHero title="Routes & Schedule" subtitle="Regular scheduled departures between the United Kingdom and Europe." />
+      <PageHero
+        title={routesPageCms?.pageHeading || "Routes & Schedule"}
+        subtitle={routesPageCms?.pageSubheading || "Regular scheduled departures between the United Kingdom and Europe."}
+      />
 
       <section className="bg-off-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -28,7 +63,7 @@ export default function RoutesPage() {
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
-            {activeRoutes.map((route, index) => (
+            {activeRoutes.map((route: typeof routes[0], index: number) => (
               <div key={route.id} id={route.slug}>
                 <RouteCard route={route} index={index} />
               </div>
@@ -47,3 +82,4 @@ export default function RoutesPage() {
     </div>
   )
 }
+
